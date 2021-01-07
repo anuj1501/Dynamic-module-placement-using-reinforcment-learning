@@ -1,0 +1,7 @@
+1. Open ubuntu
+
+2. type cd /mnt/c/Users/user/Desktop/YAFS
+
+3. activate virtual ennvironment : conda activate yafs
+
+4. deactivate : deactivate
