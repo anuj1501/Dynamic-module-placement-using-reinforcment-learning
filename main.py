@@ -40,7 +40,7 @@ sys.dont_write_bytecode = True
 
 
 # @profile
-def main(add_time, iteration, simulated_time):
+def main(get_action,add_time, iteration, simulated_time):
 
     random.seed(RANDOM_SEED)
     np.random.seed(RANDOM_SEED)
@@ -58,7 +58,7 @@ def main(add_time, iteration, simulated_time):
     """
     # Their "selector" is actually the shortest way, there is not type of orchestration algorithm.
     # This implementation is already created in selector.class,called: First_ShortestPath
-    selectorPath = CustomPath(Selection)
+    selectorPath = CustomPath(Selection,get_action)
     selectorPath.create_topology()
     selectorPath.set_population()
 
@@ -76,19 +76,14 @@ def main(add_time, iteration, simulated_time):
     # s.draw_allocated_topology() # for debugging
 
 
-if __name__ == '__main__':
-    #import logging.config
-    #import os
-
-    # logging.config.fileConfig(os.getcwd()+'/logging.ini')
-
+def driver(get_action):
     start_time = time.time()
 
     add_time = 0
 
     for i in range(10):
 
-        main(add_time, i, simulated_time=100)
+        main(get_action,add_time, i, simulated_time=100)
 
         add_time += 100
 
@@ -112,29 +107,38 @@ if __name__ == '__main__':
         print m.get_df_service_utilization("ServiceA", 100)
         print "\n\t- Stats of each DEVICE -"
 
-Results = pd.DataFrame(columns=["id", "type", "app", "module", "message", "DES.src", "DES.dst", "TOPO.src",
-                                "TOPO.dst", "module.src", "service", "time_in", "time_out", "time_emit", "time_reception"])
 
-Results_link = pd.DataFrame(
-    columns=["id", "type", "src", "dst", "app", "latency", "message", "ctime", "size", "buffer"])
+if __name__ == '__main__':
+    #import logging.config
+    #import os
 
+    # logging.config.fileConfig(os.getcwd()+'/logging.ini')
 
-for i in range(10):
+    driver()
 
-    result_temp = pd.read_csv("Results_" + str(i) + ".csv")
+# Results = pd.DataFrame(columns=["id", "type", "app", "module", "message", "DES.src", "DES.dst", "TOPO.src",
+#                                 "TOPO.dst", "module.src", "service", "time_in", "time_out", "time_emit", "time_reception"])
 
-    result_link_temp = pd.read_csv(
-        "Results_" + str(i) + "_link.csv")
-
-    Results = Results.append(result_temp, ignore_index=True)
-
-    Results_link = Results_link.append(result_link_temp, ignore_index=True)
-
-    os.remove("Results_" + str(i) + ".csv")
-
-    os.remove("Results_" + str(i) + "_link.csv")
+# Results_link = pd.DataFrame(
+#     columns=["id", "type", "src", "dst", "app", "latency", "message", "ctime", "size", "buffer"])
 
 
-Results.to_csv("Results.csv", index=False)
+# for i in range(10):
 
-Results_link.to_csv("Results_link.csv", index=False)
+#     result_temp = pd.read_csv("Results_" + str(i) + ".csv")
+
+#     result_link_temp = pd.read_csv(
+#         "Results_" + str(i) + "_link.csv")
+
+#     Results = Results.append(result_temp, ignore_index=True)
+
+#     Results_link = Results_link.append(result_link_temp, ignore_index=True)
+
+#     os.remove("Results_" + str(i) + ".csv")
+
+#     os.remove("Results_" + str(i) + "_link.csv")
+
+
+# Results.to_csv("Results.csv", index=False)
+
+# Results_link.to_csv("Results_link.csv", index=False)

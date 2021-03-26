@@ -52,7 +52,7 @@ def create_application():
 
 class CustomPath(Selection):
 
-    def __init__(self, s):
+    def __init__(self, s,get_action):
 
         Selection.__init__(self, s)
         self.topology = Topology()
@@ -60,6 +60,7 @@ class CustomPath(Selection):
         self.number_of_sensor_nodes = 0
         self.pop = None
         self.app = None
+        self.get_action = get_action
 
     def init_state(self, sim):
         self.states = []
@@ -209,6 +210,9 @@ class CustomPath(Selection):
         print ("\tNode _ src (id_topology): %i" % node_src)
         print ("\tRequest service: %s " % message.dst)
         print ("\tProcess serving that service: %s " % DES_dst)
+        
+        
+        global final_node
 
         if message.src == "Sensor":
 
@@ -251,23 +255,43 @@ class CustomPath(Selection):
                 if len(self.states) > 5:
                     self.states.pop(0)
 
-                print("printing states :")
-                print(self.states)
+                # print("printing states :")
+                # print(self.states)
                 #####
-            # Select Node
-            destination_nodes = set()
-            for a in DES_dst:
-                destination_nodes.add(alloc_DES[a])
-            print("destination nodes : ", destination_nodes)
 
-            min_val = 1000000000
-            global final_node
-            final_node = 0
-            for single_node in destination_nodes:
+                self.get_action(current_state)
 
-                if self.dict[single_node] < min_val:
-                    min_val = self.dict[single_node]
-                    final_node = single_node
+                 # Select Node
+                destination_nodes = set()
+                for a in DES_dst:
+                    destination_nodes.add(alloc_DES[a])
+                print("destination nodes : ", destination_nodes)
+
+                min_val = 1000000000
+                final_node = 0
+                for single_node in destination_nodes:
+
+                    if self.dict[single_node] < min_val:
+                        min_val = self.dict[single_node]
+                        final_node = single_node
+
+                
+
+
+            else:
+                # Select Node
+                destination_nodes = set()
+                for a in DES_dst:
+                    destination_nodes.add(alloc_DES[a])
+                print("destination nodes : ", destination_nodes)
+
+                min_val = 1000000000
+                final_node = 0
+                for single_node in destination_nodes:
+
+                    if self.dict[single_node] < min_val:
+                        min_val = self.dict[single_node]
+                        final_node = single_node
 
             path = list(nx.shortest_path(sim.topology.G,
                                          source=node_src, target=final_node))
