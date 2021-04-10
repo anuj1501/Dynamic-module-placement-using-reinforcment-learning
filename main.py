@@ -72,7 +72,7 @@ def main(get_action,add_time, iteration, simulated_time):
     s.deploy_app(selectorPath.app, placement, selectorPath.pop, selectorPath)
     selectorPath.init_state(s)
     s.run(stop_time, selectorPath, show_progress_monitor=False)
-    # s.draw_allocated_topology()
+    s.draw_allocated_topology()
     # s.draw_allocated_topology() # for debugging
 
 
@@ -81,7 +81,7 @@ def driver(get_action):
 
     add_time = 0
 
-    for i in range(10):
+    for i in range(1):
 
         main(get_action,add_time, i, simulated_time=100)
 
@@ -106,6 +106,12 @@ def driver(get_action):
         print m.get_df_modules()
         print m.get_df_service_utilization("ServiceA", 100)
         print "\n\t- Stats of each DEVICE -"
+
+    data = pd.read_csv("Results_0.csv")
+
+    data = data[data["TOPO.src"] == 2]
+
+    print(data)
 
 
 if __name__ == '__main__':

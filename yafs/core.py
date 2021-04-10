@@ -259,12 +259,17 @@ class Sim:
 
                 # print "MESSAGES"
                 # May be, the selector of path decides broadcasting multiples paths
+                id = message.id
                 for idx, path in enumerate(paths):
                     msg = copy.copy(message)
                     msg.path = copy.copy(path)
                     msg.app_name = app_name
                     msg.idDES = DES_dst[idx]
-
+                    # msg.id = int(path[0]*10 + path[1])
+                    # id  += 1
+                    print("FOR LOOOP")
+                    # print(idx,path,DES_dst[idx])
+                    print(msg.id)
                     self.network_ctrl_pipe.put(msg)
         except KeyError:
             self.logger.warning(
@@ -284,12 +289,6 @@ class Sim:
 
             message = yield self.network_ctrl_pipe.get()
 
-            # print "NetworkProcess --- Current time %d " %self.env.now
-            # print "name " + message.name
-            # print "Path:",message.path
-            # print "DST_INT:",message.dst_int
-            # #print message.timestamp
-            # print "DST",message.dst
 
             # If same SRC and PATH or the message has achieved the penultimate node to reach the dst
             if not message.path or message.path[-1] == message.dst_int or len(message.path) == 1:
@@ -312,6 +311,14 @@ class Sim:
                         message.dst_int) + 1]
                 # arista set by (src_int,message.dst_int)
                 link = (src_int, message.dst_int)
+
+                print "NetworkProcess --- Current time %d " %self.env.now
+                print "name " + message.name
+                print "Path:",message.path
+                print "DST_INT:",message.dst_int
+                print message.timestamp
+                print "DST",message.dst
+
 
                 # Links in the topology are bidirectional: (a,b) == (b,a)
                 try:
@@ -337,7 +344,7 @@ class Sim:
                     latency_msg_link = transmit + propagation
 
                     #print "-link: %s -- lat: %d" %(link,latency_msg_link)
-
+                    
                     # update link metrics
                     self.metrics.insert_link(
                         {"id": message.id, "type": self.LINK_METRIC, "src": link[0], "dst": link[1], "app": message.app_name, "latency": latency_msg_link, "message": message.name, "ctime": self.env.now, "size": message.bytes, "buffer": self.network_pump})  # "path":message.path})

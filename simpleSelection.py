@@ -215,7 +215,8 @@ class CustomPath(Selection):
         global final_node
 
         if message.src == "Sensor":
-
+            new_arr = []
+            new_path = []
             if node_src == self.test_sensor:
                 print("This is the test sensor")
                 # State Computation
@@ -287,18 +288,24 @@ class CustomPath(Selection):
 
                 min_val = 1000000000
                 final_node = 0
-                for single_node in destination_nodes:
+                alloc_des_reverse = {v: k for k, v in alloc_DES.iteritems()}
 
+                for single_node in destination_nodes:
+                    this_des = alloc_des_reverse[single_node]
+                    this_path = list(nx.shortest_path(sim.topology.G,
+                                         source=node_src, target=single_node))
+                    new_arr.append(this_des)
+                    new_path.append(this_path)
                     if self.dict[single_node] < min_val:
                         min_val = self.dict[single_node]
                         final_node = single_node
 
             path = list(nx.shortest_path(sim.topology.G,
                                          source=node_src, target=final_node))
-            bestPath = [path]
+            bestPath =new_path
             alloc_des_reverse = {v: k for k, v in alloc_DES.iteritems()}
             final_des = alloc_des_reverse[final_node]
-            bestDES = [final_des]
+            bestDES = new_arr
         # print("band : ")
         # print( sim.topology.nodeAttributes[final_node]["device_bandwidth"] )
         # print( "start node :")
@@ -385,5 +392,7 @@ class CustomPath(Selection):
             print " link bw"
             print sim.topology.get_edge((node_src, dst_node))[
                 Topology.LINK_BW]
+        print('Best Path : {}'.format(bestPath))
+        print('Best Des : {}'.format(bestDES))
 
         return bestPath, bestDES
