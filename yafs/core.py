@@ -33,8 +33,9 @@ EVENT_DOWN_ENTITY = "node_down"
 
 NETWORK_LIMIT = 100000000
 
-band_array = [10, 20, 30]
-#ipt_array = [2500 * 10 ^ 6,5000 * 10 ^ 6,4000 * 10 ^ 6,3000 * 10 ^ 6,6000 * 10 ^ 6,7000 * 10 ^ 6,4500 * 10 ^ 6,3500 * 10 ^ 6,5500 * 10 ^ 6]
+df_band = pd.read_csv('server_output.csv')
+
+band_array = df_band["Bandwidth"]
 peak_memories = [200, 400, 600]
 input_size_array = [900, 1000, 1100]
 
@@ -264,6 +265,10 @@ class Sim:
                     msg = copy.copy(message)
                     msg.path = copy.copy(path)
                     msg.app_name = app_name
+                    print("here")
+                    print(message)
+                    print(DES_dst,idx)
+                    print(len(paths))
                     msg.idDES = DES_dst[idx]
                     # msg.id = int(path[0]*10 + path[1])
                     # id  += 1
@@ -1407,7 +1412,7 @@ class Sim:
         while True:
             #print("test running")
             # print(self.env.now)
-            if self.env.now % 30 == 0 and self.env.now > 0:
+            if self.env.now % 30 == 0:
                 print(self.env.now % 30)
                 value = {"mytag": "cloud"}
                 id_cluster = self.topology.find_IDs(value)
