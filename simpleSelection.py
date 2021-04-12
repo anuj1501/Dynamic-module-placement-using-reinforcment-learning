@@ -181,7 +181,7 @@ class CustomPath(Selection):
             # print sim.topology.nodeAttributes[one_node]["services"]
             num_services[one_node] = len(
                 self.topology.nodeAttributes[one_node]["services"])
-        print num_services
+        # print num_services
 
     def get_path(self, sim, app_name, message, topology_src, alloc_DES, alloc_module, traffic, from_des):
         """
@@ -193,11 +193,11 @@ class CustomPath(Selection):
         if self.var == 1:
             # print sim.topology.get_nodes_att()
             self.node_dict = sim.topology.get_nodes_att()
-            print(self.node_dict)
+            # print(self.node_dict)
             for key, value in self.node_dict.items():
                 if 'cloud' in value["model"]:
                     self.dict[key] = sim.env.now
-            print self.dict
+            # print self.dict
             self.var = 0
 
         node_src = topology_src
@@ -236,6 +236,8 @@ class CustomPath(Selection):
                 all_links = sim.topology.get_edges()
 
                 smallest_node = min(id_cluster)
+
+                print("the minimum ID of edges is : ", smallest_node)
 
                 for edge_node in id_cluster:
                     one_link = (self.test_sensor, edge_node)
@@ -336,12 +338,12 @@ class CustomPath(Selection):
                                         [Topology.LINK_BW] * 1000000.0)
 
                 propagation = sim.topology.get_edge(link)[Topology.LINK_PR]
-                print " link bw"
-                print sim.topology.get_edge(link)[Topology.LINK_BW]
-                print "transmit"
-                print transmit
-                print "propagation"
-                print propagation
+                # print " link bw"
+                # print sim.topology.get_edge(link)[Topology.LINK_BW]
+                # print "transmit"
+                # print transmit
+                # print "propagation"
+                # print propagation
 
                 ipt = 1
 
@@ -351,8 +353,8 @@ class CustomPath(Selection):
 
                         ipt = float(value)
 
-                print "ipt"
-                print ipt
+                # print "ipt"
+                # print ipt
 
                 # self.dict[final_node] = sim.env.now
                 # print("value is : \n", self.dict[final_node])
@@ -360,7 +362,7 @@ class CustomPath(Selection):
                 # print("value is : \n", self.dict[final_node])
                 if self.dict[one_final_node] < sim.env.now + transmit + propagation:
 
-                    print("true")
+                    # print("true")
 
                     self.dict[one_final_node] = sim.env.now
 
@@ -369,7 +371,7 @@ class CustomPath(Selection):
 
                 else:
 
-                    print("false")
+                    # print("false")
 
                     self.dict[one_final_node] += message.inst / ipt
 
@@ -394,9 +396,9 @@ class CustomPath(Selection):
                 bestPath = [path]
                 bestDES = [des]
 
-            print " link bw"
-            print sim.topology.get_edge((node_src, dst_node))[
-                Topology.LINK_BW]
+            # print " link bw"
+            # print sim.topology.get_edge((node_src, dst_node))[
+            #     Topology.LINK_BW]
         print('Best Path : {}'.format(bestPath))
         print('Best Des : {}'.format(bestDES))
 

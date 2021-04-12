@@ -5,6 +5,7 @@ import time
 from main import driver 
 import math
 import json
+import sys
 
 NO_EPISODES = 1
 MOVE_PENALTY = 1  
@@ -64,13 +65,11 @@ def get_subsets(fullset):
   return subsets[1:]
 
 
-subsets = get_subsets(set([0,1,2]))
-
-
 def get_action(state):
 
-    new_state = {}
+    subsets = get_subsets(set([0,1,2]))
 
+    new_state = {}
 
     new_state['PR'] = state['PR']
     new_state['input_size'] = math.floor(state['input_size'] - state['input_size']%10)
@@ -88,13 +87,18 @@ def get_action(state):
     q_vals = q_table[new_state]
     action = np.argmax(q_vals)
 
+    print("action : ",action)
+    print(subsets)
     return_arr = subsets[action]
+    print(return_arr)
+    print("List of edge indices : ",return_arr)
 
     return return_arr
     
 
 # def update_q(state,action,obs_latency):
 
+sys.stdout = open("test.txt", "w")
 
 for episode in range(NO_EPISODES):
 
@@ -106,12 +110,9 @@ for episode in range(NO_EPISODES):
 
     driver(get_action)
 
-
-
-
     epsilon *= EPS_DECAY
 
-
+sys.stdout.close()
 
 # with open(f"qtable-{int(time.time())}.pickle", "wb") as f:
 #     pickle.dump(q_table, f)

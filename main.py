@@ -83,7 +83,7 @@ def driver(get_action):
 
     for i in range(1):
 
-        main(get_action,add_time, i, simulated_time=100)
+        main(get_action,add_time, i, simulated_time=500)
 
         add_time += 100
 
@@ -106,12 +106,6 @@ def driver(get_action):
         print m.get_df_modules()
         print m.get_df_service_utilization("ServiceA", 100)
         print "\n\t- Stats of each DEVICE -"
-
-    data = pd.read_csv("Results_0.csv")
-
-    data = data[data["TOPO.src"] == 2]
-
-    print(data)
 
 
 if __name__ == '__main__':

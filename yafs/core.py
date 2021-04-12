@@ -215,7 +215,7 @@ class Sim:
         # 	break
 
     def get_stats(self):
-        print("lmnop")
+        # print("lmnop")
         self.module_out_expected = []
         # print(self.control_movement_class.current_step)
         att_node = self.topology.G.nodes[id_node]
@@ -1343,7 +1343,7 @@ class Sim:
         for one_node in id_cluster:
             num_services[one_node] = len(
                 self.topology.nodeAttributes[one_node]["services"])
-            num_sensors[one_node] = 0
+            # num_sensors[one_node] = 0
 
         links = self.topology.get_edges()
         for link in links:
@@ -1476,7 +1476,7 @@ class Sim:
                 for one_node in id_cluster:
                     num_services[one_node] = len(
                         self.topology.nodeAttributes[one_node]["services"])
-                    num_sensors[one_node] = 0
+                    # num_sensors[one_node] = 0
 
                 links = self.topology.get_edges()
                 for link in links:
