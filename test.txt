@@ -10,7 +10,7 @@ ___ APP. Name: SimpleCase
 		 M_In: M.A  -> M_Out: M.B 
 
 services
-{'ServiceA': [{'dist': <function fractional_selectivity at 0x7f5b7857e398>, 'module_dest': [], 'param': {'threshold': 1.0}, 'message_out': <yafs.application.Message instance at 0x7f5b74a30d40>, 'p': [], 'message_in': <yafs.application.Message instance at 0x7f5b76bcffc8>, 'type': 'MODULE'}]}
+{'ServiceA': [{'dist': <function fractional_selectivity at 0x7f51a02d7398>, 'module_dest': [], 'param': {'threshold': 1.0}, 'message_out': <yafs.application.Message instance at 0x7f519c789d40>, 'p': [], 'message_in': <yafs.application.Message instance at 0x7f519e928fc8>, 'type': 'MODULE'}]}
 {'ServiceA': 2}
 node atrributes
 {'uptime': (0, None), 'mytag': 'cloud', 'peak_memory': 0, 'COST': 2, 'RAM': 20000, 'residual_memory': 20000, 'WATT': 10.0, 'sensors_accessing': set([]), 'device_bandwidth': 10, 'devices': [], 'IPT': 25006, 'services': set(['ServiceA']), 'unitilised_bandwidth': 0, 'model': 'cloud--15', 'id': 5}
@@ -11536,7 +11536,7 @@ DST_INT: 4
 496.5700416859953
 DST Actuator
 
---- 0.54461312294 seconds ---
+--- 0.542818069458 seconds ---
 	Simulation Time: 100.00
 	Application loops delays:
 		0 - ['M.A', 'M.B'] :	 48.356774
