@@ -6,6 +6,7 @@ from main import driver
 import math
 import json
 import sys
+import matplotlib.pyplot as plt
 
 NO_EPISODES = 1 
 epsilon = 1
@@ -31,7 +32,13 @@ DISCOUNT = 0.95
 # } : [.....]
 # }
 
+latencies = []
 
+mean_latency = 0
+
+gamma = 0
+
+beta = 3
 
 if start_q_table is None:
     q_table = {}
@@ -83,6 +90,10 @@ def get_action(state):
     global q_table
     global current_state
     global current_action
+    global gamma
+    global epsilon
+    global EPS_DECAY
+
     subsets = get_subsets(set([0,1,2]))
 
     new_state = {}
@@ -101,7 +112,19 @@ def get_action(state):
         q_table[new_state] =  [np.random.uniform(-5, 0) for a in range(7)]
    
     q_vals = q_table[new_state]
-    action = np.argmax(q_vals)
+
+    random_value = np.random.uniform(0,1)
+
+    if random_value > epsilon:
+
+        action = np.argmax(q_vals)
+
+    else:
+
+        action = np.random.randint(0,len(q_vals))
+
+    print("action :",action)
+    epsilon -= EPS_DECAY
 
     current_state = new_state
     current_action = action
@@ -114,6 +137,8 @@ def get_action(state):
     print(return_arr)
     print("List of edge indices : ",return_arr)
 
+    gamma = len(return_arr)
+
     return return_arr
     
 
@@ -123,10 +148,53 @@ def reward(obs_latency):
     global is_first
     global current_state
     global current_action
-    print("visited")
+    global latencies
+    global mean_latency
+    global beta
+    global gamma
+    # print("visited")
     if is_first:
-        print("Reward function {}".format(obs_latency))
+        # print("Reward function {}".format(obs_latency))
+
+        latencies.append(obs_latency)
+
+        median_latency = np.median(latencies)
+
+        lamda = obs_latency - median_latency
+
+        reward = 0
+
+        delta = 0
+
+        alpha = 0.001
+
+        if lamda < 0:
+
+            delta = (alpha * np.exp(-1 * lamda))
+        else:
+
+            delta = (alpha * np.exp(lamda))
+        
+        if lamda == 0:
+
+            reward = 0
+
+        elif lamda > 0 and beta - gamma == 1:
+
+            reward = 0
+
+        elif lamda > 0 and beta - gamma > 1:
+
+            reward = (-1 * np.exp(beta - gamma - 1) * delta)
+
+        elif lamda > 0:
+            
+            reward = (-1 * np.exp(gamma) * delta)
+
         is_first = False
+
+        q_table[current_state][current_action] += reward 
+
     else:
         print("Didnt run")  
 
@@ -146,6 +214,9 @@ for episode in range(NO_EPISODES):
 
     epsilon *= EPS_DECAY
 
+print(latencies)
+plt.plot(np.arange(len(latencies)), latencies)
+plt.show()
 # sys.stdout.close()
 
 # with open(f"qtable-{int(time.time())}.pickle", "wb") as f:
