@@ -10,7 +10,7 @@ ___ APP. Name: SimpleCase
 		 M_In: M.A  -> M_Out: M.B 
 
 services
-{'ServiceA': [{'dist': <function fractional_selectivity at 0x7f51a02d7398>, 'module_dest': [], 'param': {'threshold': 1.0}, 'message_out': <yafs.application.Message instance at 0x7f519c789d40>, 'p': [], 'message_in': <yafs.application.Message instance at 0x7f519e928fc8>, 'type': 'MODULE'}]}
+{'ServiceA': [{'dist': <function fractional_selectivity at 0x7f6d6de87500>, 'module_dest': [], 'param': {'threshold': 1.0}, 'message_out': <yafs.application.Message instance at 0x7f6d6c5bcb90>, 'p': [], 'message_in': <yafs.application.Message instance at 0x7f6d6c6e13b0>, 'type': 'MODULE'}]}
 {'ServiceA': 2}
 node atrributes
 {'uptime': (0, None), 'mytag': 'cloud', 'peak_memory': 0, 'COST': 2, 'RAM': 20000, 'residual_memory': 20000, 'WATT': 10.0, 'sensors_accessing': set([]), 'device_bandwidth': 10, 'devices': [], 'IPT': 25006, 'services': set(['ServiceA']), 'unitilised_bandwidth': 0, 'model': 'cloud--15', 'id': 5}
@@ -149,30 +149,35 @@ Path: [0, 6]
 DST_INT: 6
 10
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 10 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 10
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 10 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 10
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 10 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 10
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 10 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 10
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(3, 5): 15.00055, (0, 6): 13.00055, (2, 6): 11.00055, (0, 7): 15.00055, (1, 5): 15.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -197,6 +202,7 @@ Path: [6, 4]
 DST_INT: 4
 15.744132000319924
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 23.744882000319926, (2, 6): 11.00055, (1, 5): 15.00055, (0, 7): 15.00055, (0, 6): 13.00055, (3, 5): 15.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -221,6 +227,7 @@ Path: [6, 4]
 DST_INT: 4
 15.744132000319924
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 31.745632000319926, (2, 6): 11.00055, (1, 5): 15.00055, (0, 7): 15.00055, (0, 6): 13.00055, (3, 5): 15.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -263,12 +270,14 @@ Path: [7, 4]
 DST_INT: 4
 19.744132000319922
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 19 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 19.744132000319922
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 31.745632000319926, (5, 4): 24.744882000319922, (2, 6): 11.00055, (1, 5): 15.00055, (0, 7): 15.00055, (7, 4): 22.744882000319922, (0, 6): 13.00055, (3, 5): 15.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -374,30 +383,35 @@ Path: [0, 6]
 DST_INT: 6
 20
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 20 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 20
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 20 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 20
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 20 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 20
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 20 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 20
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(6, 4): 31.745632000319926, (5, 4): 24.744882000319922, (2, 6): 21.00055, (1, 5): 25.00055, (0, 7): 25.00055, (7, 4): 22.744882000319922, (0, 6): 23.00055, (3, 5): 25.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -422,6 +436,7 @@ Path: [5, 4]
 DST_INT: 4
 24.487714000639848
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 31.745632000319926, (5, 4): 29.745632000319922, (2, 6): 21.00055, (1, 5): 25.00055, (0, 7): 25.00055, (7, 4): 22.744882000319922, (0, 6): 23.00055, (3, 5): 25.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -446,6 +461,7 @@ Path: [6, 4]
 DST_INT: 4
 25.744132000319922
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 39.746382000319926, (5, 4): 29.745632000319922, (2, 6): 21.00055, (1, 5): 25.00055, (0, 7): 25.00055, (7, 4): 22.744882000319922, (0, 6): 23.00055, (3, 5): 25.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -470,6 +486,7 @@ Path: [6, 4]
 DST_INT: 4
 25.744132000319922
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 47.74713200031992, (5, 4): 29.745632000319922, (2, 6): 21.00055, (1, 5): 25.00055, (0, 7): 25.00055, (7, 4): 22.744882000319922, (0, 6): 23.00055, (3, 5): 25.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -512,12 +529,14 @@ Path: [7, 4]
 DST_INT: 4
 29.744132000319922
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 29 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 29.744132000319922
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 47.74713200031992, (5, 4): 34.746382000319926, (2, 6): 21.00055, (1, 5): 25.00055, (0, 7): 25.00055, (7, 4): 32.74488200031992, (0, 6): 23.00055, (3, 5): 25.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -624,30 +643,35 @@ Path: [0, 6]
 DST_INT: 6
 30
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 30 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 30
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 30 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 30
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 30 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 30
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 30 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 30
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(6, 4): 47.74713200031992, (5, 4): 34.746382000319926, (2, 6): 31.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 32.74488200031992, (0, 6): 33.00055, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -672,6 +696,7 @@ Path: [5, 4]
 DST_INT: 4
 34.48771400063985
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 47.74713200031992, (5, 4): 39.74713200031992, (2, 6): 31.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 32.74488200031992, (0, 6): 33.00055, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -696,6 +721,7 @@ Path: [6, 4]
 DST_INT: 4
 35.74413200031992
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 55.74788200031992, (5, 4): 39.74713200031992, (2, 6): 31.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 32.74488200031992, (0, 6): 33.00055, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -720,6 +746,7 @@ Path: [6, 4]
 DST_INT: 4
 35.74413200031992
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 63.748632000319915, (5, 4): 39.74713200031992, (2, 6): 31.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 32.74488200031992, (0, 6): 33.00055, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -762,12 +789,14 @@ Path: [7, 4]
 DST_INT: 4
 39.74413200031992
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 39 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 39.74413200031992
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 63.748632000319915, (5, 4): 44.74788200031992, (2, 6): 31.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 33.00055, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -873,30 +902,35 @@ Path: [0, 5]
 DST_INT: 5
 40
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 40 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 40
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 40 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 40
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 40 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 40
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 40 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 40
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(6, 4): 63.748632000319915, (5, 4): 44.74788200031992, (2, 6): 41.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 43.00055, (0, 5): 48.000550000000004, (3, 6): 48.000550000000004, (1, 7): 48.000550000000004, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -921,6 +955,7 @@ Path: [5, 4]
 DST_INT: 4
 44.48771400063985
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 63.748632000319915, (5, 4): 49.748632000319915, (2, 6): 41.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 43.00055, (0, 5): 48.000550000000004, (3, 6): 48.000550000000004, (1, 7): 48.000550000000004, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -945,6 +980,7 @@ Path: [6, 4]
 DST_INT: 4
 44.83042611773174
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 71.74938200031991, (5, 4): 49.748632000319915, (2, 6): 41.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 43.00055, (0, 5): 48.000550000000004, (3, 6): 48.000550000000004, (1, 7): 48.000550000000004, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -969,6 +1005,7 @@ Path: [5, 4]
 DST_INT: 4
 48.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 71.74938200031991, (5, 4): 54.74938200031991, (2, 6): 41.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 43.00055, (0, 5): 48.000550000000004, (3, 6): 48.000550000000004, (1, 7): 48.000550000000004, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -993,6 +1030,7 @@ Path: [6, 4]
 DST_INT: 4
 48.66030223546348
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 79.75013200031991, (5, 4): 54.74938200031991, (2, 6): 41.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 43.00055, (0, 5): 48.000550000000004, (3, 6): 48.000550000000004, (1, 7): 48.000550000000004, (3, 5): 35.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -1098,30 +1136,35 @@ Path: [0, 5]
 DST_INT: 5
 50
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 50 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 50
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 50 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 50
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 50 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 50
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 50 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 50
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(6, 4): 79.75013200031991, (5, 4): 54.74938200031991, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 42.74488200031992, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -1146,6 +1189,7 @@ Path: [7, 4]
 DST_INT: 4
 51.83042611773175
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 79.75013200031991, (5, 4): 54.74938200031991, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1170,6 +1214,7 @@ Path: [6, 4]
 DST_INT: 4
 52.490178353195226
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 87.7508820003199, (5, 4): 54.74938200031991, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1194,6 +1239,7 @@ Path: [6, 4]
 DST_INT: 4
 56.32005447092697
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 95.7516320003199, (5, 4): 54.74938200031991, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1218,6 +1264,7 @@ Path: [5, 4]
 DST_INT: 4
 58.83042611773174
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 95.7516320003199, (5, 4): 63.831176117731744, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1242,6 +1289,7 @@ Path: [5, 4]
 DST_INT: 4
 58.83042611773174
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 95.7516320003199, (5, 4): 68.83192611773174, (2, 6): 51.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 53.00055, (0, 5): 58.000550000000004, (3, 6): 48.000550000000004, (1, 7): 58.000550000000004, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -1348,30 +1396,35 @@ Path: [0, 5]
 DST_INT: 5
 60
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 60 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 60
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 60 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 60
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 60 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 60
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 60 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 60
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(6, 4): 95.7516320003199, (5, 4): 68.83192611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1396,6 +1449,7 @@ Path: [6, 4]
 DST_INT: 4
 60.14993058865871
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 103.7523820003199, (5, 4): 68.83192611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 54.831176117731744, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -1420,6 +1474,7 @@ Path: [7, 4]
 DST_INT: 4
 61.83042611773175
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 103.7523820003199, (5, 4): 68.83192611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 64.83117611773174, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1444,6 +1499,7 @@ Path: [6, 4]
 DST_INT: 4
 64.83042611773175
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 111.7531320003199, (5, 4): 68.83192611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 64.83117611773174, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1468,6 +1524,7 @@ Path: [5, 4]
 DST_INT: 4
 68.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 111.7531320003199, (5, 4): 73.83267611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 64.83117611773174, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1492,6 +1549,7 @@ Path: [6, 4]
 DST_INT: 4
 68.66030223546349
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 119.75388200031989, (5, 4): 73.83267611773174, (2, 6): 61.00055, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 64.83117611773174, (0, 6): 63.00055, (0, 5): 68.00055, (3, 6): 68.00055, (1, 7): 68.00055, (3, 5): 55.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -1597,30 +1655,35 @@ Path: [0, 5]
 DST_INT: 5
 70
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 70 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 70
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 70 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 70
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 70 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 70
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 70 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 70
 DST ServiceA
+Reward function 5.0005
 ('traffic : ', {(6, 4): 119.75388200031989, (5, 4): 73.83267611773174, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 64.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -1645,6 +1708,7 @@ Path: [7, 4]
 DST_INT: 4
 71.83042611773175
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 119.75388200031989, (5, 4): 73.83267611773174, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1669,6 +1733,7 @@ Path: [6, 4]
 DST_INT: 4
 72.49017835319523
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 127.75463200031989, (5, 4): 73.83267611773174, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1693,6 +1758,7 @@ Path: [6, 4]
 DST_INT: 4
 76.31868150963768
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 135.75538200031988, (5, 4): 73.83267611773174, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1717,6 +1783,7 @@ Path: [5, 4]
 DST_INT: 4
 78.82900315644245
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 135.75538200031988, (5, 4): 83.82975315644245, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1741,6 +1808,7 @@ Path: [5, 4]
 DST_INT: 4
 78.82900315644245
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 135.75538200031988, (5, 4): 88.83050315644245, (2, 6): 71.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 73.0005, (0, 5): 78.0005, (3, 6): 68.00055, (1, 7): 78.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -1846,30 +1914,35 @@ Path: [0, 5]
 DST_INT: 5
 80
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 80 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 80
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 80 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 80
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 80 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 80
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 80 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 80
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(6, 4): 135.75538200031988, (5, 4): 88.83050315644245, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1894,6 +1967,7 @@ Path: [6, 4]
 DST_INT: 4
 80.14718466608014
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 143.7561320003199, (5, 4): 88.83050315644245, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 74.83117611773174, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -1918,6 +1992,7 @@ Path: [7, 4]
 DST_INT: 4
 81.82900315644245
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 143.7561320003199, (5, 4): 88.83050315644245, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 84.82975315644245, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1942,6 +2017,7 @@ Path: [6, 4]
 DST_INT: 4
 84.82900315644245
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 151.7568820003199, (5, 4): 88.83050315644245, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 84.82975315644245, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -1966,6 +2042,7 @@ Path: [5, 4]
 DST_INT: 4
 88.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 151.7568820003199, (5, 4): 93.83125315644244, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 84.82975315644245, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -1990,6 +2067,7 @@ Path: [6, 4]
 DST_INT: 4
 88.6575063128849
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 159.75763200031992, (5, 4): 93.83125315644244, (2, 6): 81.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 84.82975315644245, (0, 6): 83.0005, (0, 5): 88.0005, (3, 6): 88.0005, (1, 7): 88.0005, (3, 5): 75.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -2096,30 +2174,35 @@ Path: [0, 5]
 DST_INT: 5
 90
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 90 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 90
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 90 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 90
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 90 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 90
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 90 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 90
 DST ServiceA
+Reward function 5.0005
 ('traffic : ', {(6, 4): 159.75763200031992, (5, 4): 93.83125315644244, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 84.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2144,6 +2227,7 @@ Path: [7, 4]
 DST_INT: 4
 91.82900315644245
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 159.75763200031992, (5, 4): 93.83125315644244, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2168,6 +2252,7 @@ Path: [6, 4]
 DST_INT: 4
 92.48600946932736
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 167.75838200031993, (5, 4): 93.83125315644244, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2192,6 +2277,7 @@ Path: [6, 4]
 DST_INT: 4
 96.31451262576981
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 175.75913200031994, (5, 4): 93.83125315644244, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -2216,6 +2302,7 @@ Path: [5, 4]
 DST_INT: 4
 98.82900315644245
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 175.75913200031994, (5, 4): 103.82975315644245, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -2240,6 +2327,7 @@ Path: [5, 4]
 DST_INT: 4
 98.82900315644245
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 175.75913200031994, (5, 4): 108.83050315644245, (2, 6): 91.0005, (1, 5): 35.00055, (0, 7): 35.00055, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -2333,24 +2421,28 @@ Path: [0, 7]
 DST_INT: 7
 100
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 100 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 100
 DST ServiceA
+Reward function 7.00045
 NetworkProcess --- Current time 100 
 name M.A
 Path: [2, 5]
 DST_INT: 5
 100
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 100 
 name M.A
 Path: [3, 7]
 DST_INT: 7
 100
 DST ServiceA
+Reward function 1.00045
 ('traffic : ', {(6, 4): 175.75913200031994, (5, 4): 108.83050315644245, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2375,6 +2467,7 @@ Path: [6, 4]
 DST_INT: 4
 100.14301578221226
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 108.83050315644245, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 94.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2399,6 +2492,7 @@ Path: [7, 4]
 DST_INT: 4
 101.82900315644245
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 108.83050315644245, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 104.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -2423,6 +2517,7 @@ Path: [5, 4]
 DST_INT: 4
 104.82941081020556
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 113.83125315644244, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 104.82975315644245, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2447,6 +2542,7 @@ Path: [7, 4]
 DST_INT: 4
 105.657963966648
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 113.83125315644244, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 108.658713966648, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2471,6 +2567,7 @@ Path: [7, 4]
 DST_INT: 4
 109.48692477685356
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 113.83125315644244, (2, 6): 91.0005, (3, 7): 101.00045, (1, 5): 35.00055, (0, 7): 105.00045, (7, 4): 112.48767477685355, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 88.0005, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -2564,24 +2661,28 @@ Path: [0, 7]
 DST_INT: 7
 110
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 110 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 110
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 110 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 110
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 110 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 110
 DST ServiceA
+Reward function 8.00045
 ('traffic : ', {(6, 4): 183.75988200031995, (5, 4): 113.83125315644244, (2, 6): 111.00045, (3, 7): 101.00045, (1, 5): 115.00045, (0, 7): 115.00045, (7, 4): 112.48767477685355, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 118.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2606,6 +2707,7 @@ Path: [6, 4]
 DST_INT: 4
 110.82941081020556
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 191.76063200031996, (5, 4): 113.83125315644244, (2, 6): 111.00045, (3, 7): 101.00045, (1, 5): 115.00045, (0, 7): 115.00045, (7, 4): 112.48767477685355, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 118.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2630,6 +2732,7 @@ Path: [6, 4]
 DST_INT: 4
 114.82941081020556
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 199.76138200031997, (5, 4): 113.83125315644244, (2, 6): 111.00045, (3, 7): 101.00045, (1, 5): 115.00045, (0, 7): 115.00045, (7, 4): 112.48767477685355, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 118.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2672,12 +2775,14 @@ Path: [7, 4]
 DST_INT: 4
 118.82941081020556
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 118 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 118.82941081020556
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 199.76138200031997, (5, 4): 123.83016081020556, (2, 6): 111.00045, (3, 7): 101.00045, (1, 5): 115.00045, (0, 7): 115.00045, (7, 4): 121.83016081020556, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 118.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -2772,24 +2877,28 @@ Path: [0, 7]
 DST_INT: 7
 120
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 120 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 120
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 120 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 120
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 120 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 120
 DST ServiceA
+Reward function 8.00045
 ('traffic : ', {(6, 4): 199.76138200031997, (5, 4): 123.83016081020556, (2, 6): 121.00045, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 121.83016081020556, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 128.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2814,6 +2923,7 @@ Path: [6, 4]
 DST_INT: 4
 121.82941081020556
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 207.76213200031998, (5, 4): 123.83016081020556, (2, 6): 121.00045, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 121.83016081020556, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 128.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -2838,6 +2948,7 @@ Path: [6, 4]
 DST_INT: 4
 125.65837162041112
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 215.76288200032, (5, 4): 123.83016081020556, (2, 6): 121.00045, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 121.83016081020556, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 128.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -2880,12 +2991,14 @@ Path: [7, 4]
 DST_INT: 4
 128.82941081020556
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 128 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 128.82941081020556
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 215.76288200032, (5, 4): 133.83016081020557, (2, 6): 121.00045, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 93.0005, (0, 5): 98.0005, (3, 6): 128.00045, (1, 7): 98.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -2991,30 +3104,35 @@ Path: [0, 5]
 DST_INT: 5
 130
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 130 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 130
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 130 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 130
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 130 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 130
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 130 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 130
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(6, 4): 215.76288200032, (5, 4): 133.83016081020557, (2, 6): 131.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 133.0005, (0, 5): 138.0005, (3, 6): 138.0005, (1, 7): 138.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3039,6 +3157,7 @@ Path: [6, 4]
 DST_INT: 4
 131.82941081020556
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 223.76363200032, (5, 4): 133.83016081020557, (2, 6): 131.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 133.0005, (0, 5): 138.0005, (3, 6): 138.0005, (1, 7): 138.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3063,6 +3182,7 @@ Path: [6, 4]
 DST_INT: 4
 136.60571505718627
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 231.76438200032, (5, 4): 133.83016081020557, (2, 6): 131.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 133.0005, (0, 5): 138.0005, (3, 6): 138.0005, (1, 7): 138.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3087,6 +3207,7 @@ Path: [5, 4]
 DST_INT: 4
 138.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 231.76438200032, (5, 4): 143.00125, (2, 6): 131.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 133.0005, (0, 5): 138.0005, (3, 6): 138.0005, (1, 7): 138.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 95.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -3192,30 +3313,35 @@ Path: [0, 5]
 DST_INT: 5
 140
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 140 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 140
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 140 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 140
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 140 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 140
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 140 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 140
 DST ServiceA
+Reward function 5.0005
 ('traffic : ', {(6, 4): 231.76438200032, (5, 4): 143.00125, (2, 6): 141.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 143.0005, (0, 5): 148.0005, (3, 6): 138.0005, (1, 7): 148.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 145.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3240,6 +3366,7 @@ Path: [6, 4]
 DST_INT: 4
 141.382019304167
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 239.76513200032002, (5, 4): 143.00125, (2, 6): 141.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 131.83016081020557, (0, 6): 143.0005, (0, 5): 148.0005, (3, 6): 138.0005, (1, 7): 148.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 145.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -3264,6 +3391,7 @@ Path: [7, 4]
 DST_INT: 4
 142.7768042469807
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 239.76513200032002, (5, 4): 143.00125, (2, 6): 141.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 145.7775542469807, (0, 6): 143.0005, (0, 5): 148.0005, (3, 6): 138.0005, (1, 7): 148.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 145.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3288,6 +3416,7 @@ Path: [5, 4]
 DST_INT: 4
 145.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 239.76513200032002, (5, 4): 150.00125, (2, 6): 141.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 145.7775542469807, (0, 6): 143.0005, (0, 5): 148.0005, (3, 6): 138.0005, (1, 7): 148.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 145.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3312,6 +3441,7 @@ Path: [6, 4]
 DST_INT: 4
 146.1583235511477
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 247.76588200032003, (5, 4): 150.00125, (2, 6): 141.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 145.7775542469807, (0, 6): 143.0005, (0, 5): 148.0005, (3, 6): 138.0005, (1, 7): 148.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 145.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -3418,30 +3548,35 @@ Path: [0, 5]
 DST_INT: 5
 150
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 150 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 150
 DST ServiceA
+Reward function 3.0005
 NetworkProcess --- Current time 150 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 150
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 150 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 150
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 150 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 150
 DST ServiceA
+Reward function 5.0005
 ('traffic : ', {(6, 4): 247.76588200032003, (5, 4): 150.00125, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 145.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3466,6 +3601,7 @@ Path: [6, 4]
 DST_INT: 4
 150.93462779812842
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 255.76663200032004, (5, 4): 150.00125, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 145.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3508,12 +3644,14 @@ Path: [5, 4]
 DST_INT: 4
 152.7768042469807
 DST Actuator
+Reward function 5.00075
 NetworkProcess --- Current time 152 
 name M.B
 Path: [7, 4]
 DST_INT: 4
 152.7768042469807
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 255.76663200032004, (5, 4): 157.7775542469807, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3538,6 +3676,7 @@ Path: [6, 4]
 DST_INT: 4
 155.71093204510913
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 263.76738200032, (5, 4): 157.7775542469807, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3562,6 +3701,7 @@ Path: [5, 4]
 DST_INT: 4
 159.7768042469807
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 263.76738200032, (5, 4): 164.7775542469807, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3586,6 +3726,7 @@ Path: [5, 4]
 DST_INT: 4
 159.7768042469807
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 263.76738200032, (5, 4): 169.77830424698072, (2, 6): 151.0005, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 158.0005, (3, 6): 138.0005, (1, 7): 158.0005, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -3679,24 +3820,28 @@ Path: [0, 5]
 DST_INT: 5
 160
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 160 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 160
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 160 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 160
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 160 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 160
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(6, 4): 263.76738200032, (5, 4): 169.77830424698072, (2, 6): 161.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 168.00055, (3, 6): 168.00055, (1, 7): 168.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3721,6 +3866,7 @@ Path: [6, 4]
 DST_INT: 4
 160.48723629208985
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 271.76813200032, (5, 4): 169.77830424698072, (2, 6): 161.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 155.7775542469807, (0, 6): 153.0005, (0, 5): 168.00055, (3, 6): 168.00055, (1, 7): 168.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -3745,6 +3891,7 @@ Path: [7, 4]
 DST_INT: 4
 162.7768042469807
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 271.76813200032, (5, 4): 169.77830424698072, (2, 6): 161.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 165.7775542469807, (0, 6): 153.0005, (0, 5): 168.00055, (3, 6): 168.00055, (1, 7): 168.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3769,6 +3916,7 @@ Path: [6, 4]
 DST_INT: 4
 165.26354053907056
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 279.76888200032, (5, 4): 169.77830424698072, (2, 6): 161.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 165.7775542469807, (0, 6): 153.0005, (0, 5): 168.00055, (3, 6): 168.00055, (1, 7): 168.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -3793,6 +3941,7 @@ Path: [5, 4]
 DST_INT: 4
 168.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(6, 4): 279.76888200032, (5, 4): 174.77905424698073, (2, 6): 161.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 165.7775542469807, (0, 6): 153.0005, (0, 5): 168.00055, (3, 6): 168.00055, (1, 7): 168.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -3886,24 +4035,28 @@ Path: [0, 5]
 DST_INT: 5
 170
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 170 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 170
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 170 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 170
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 170 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 170
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(6, 4): 279.76888200032, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 165.7775542469807, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3928,6 +4081,7 @@ Path: [6, 4]
 DST_INT: 4
 170.05037082380224
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 287.76963200032, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 165.7775542469807, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 7
@@ -3952,6 +4106,7 @@ Path: [7, 4]
 DST_INT: 4
 172.78738028473168
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 287.76963200032, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 175.7881302847317, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -3976,6 +4131,7 @@ Path: [6, 4]
 DST_INT: 4
 174.83720110853392
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 295.77038200031996, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 175.7881302847317, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4000,6 +4156,7 @@ Path: [6, 4]
 DST_INT: 4
 179.6240313932656
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 303.77113200031994, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 175.7881302847317, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4024,6 +4181,7 @@ Path: [6, 4]
 DST_INT: 4
 179.6240313932656
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 311.7718820003199, (5, 4): 174.77905424698073, (2, 6): 171.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 175.7881302847317, (0, 6): 153.0005, (0, 5): 178.00055, (3, 6): 178.00055, (1, 7): 178.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -4118,24 +4276,28 @@ Path: [0, 5]
 DST_INT: 5
 180
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 180 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 180
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 180 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 180
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 180 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 180
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(6, 4): 311.7718820003199, (5, 4): 174.77905424698073, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 175.7881302847317, (0, 6): 153.0005, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4178,12 +4340,14 @@ Path: [5, 4]
 DST_INT: 4
 182.78738028473168
 DST Actuator
+Reward function 5.00075
 NetworkProcess --- Current time 182 
 name M.B
 Path: [7, 4]
 DST_INT: 4
 182.78738028473168
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(6, 4): 311.7718820003199, (5, 4): 187.7881302847317, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 185.7881302847317, (0, 6): 153.0005, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4208,6 +4372,7 @@ Path: [6, 4]
 DST_INT: 4
 185.78738028473168
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(6, 4): 319.7726320003199, (5, 4): 187.7881302847317, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 125.00045, (0, 7): 125.00045, (7, 4): 185.7881302847317, (0, 6): 153.0005, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 155.0005})
 GET PATH
 	Node _ src (id_topology): 0
@@ -4301,24 +4466,28 @@ Path: [0, 6]
 DST_INT: 6
 190
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 190 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 190
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 190 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 190
 DST ServiceA
+Reward function 9.00045
 NetworkProcess --- Current time 190 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 190
 DST ServiceA
+Reward function 5.00045
 ('traffic : ', {(2, 7): 199.00045, (6, 4): 319.7726320003199, (5, 4): 187.7881302847317, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 195.00045, (0, 7): 125.00045, (7, 4): 185.7881302847317, (0, 6): 193.00045, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4379,18 +4548,21 @@ Path: [5, 4]
 DST_INT: 4
 192.78738028473168
 DST Actuator
+Reward function 5.00075
 NetworkProcess --- Current time 192 
 name M.B
 Path: [7, 4]
 DST_INT: 4
 192.78738028473168
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 192 
 name M.B
 Path: [6, 4]
 DST_INT: 4
 192.78738028473168
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 199.00045, (6, 4): 327.7733820003199, (5, 4): 197.7881302847317, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 195.00045, (0, 7): 125.00045, (7, 4): 195.7881302847317, (0, 6): 193.00045, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4415,6 +4587,7 @@ Path: [6, 4]
 DST_INT: 4
 196.87128613612734
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 199.00045, (6, 4): 335.77413200031987, (5, 4): 197.7881302847317, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 195.00045, (0, 7): 125.00045, (7, 4): 195.7881302847317, (0, 6): 193.00045, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4439,6 +4612,7 @@ Path: [5, 4]
 DST_INT: 4
 198.87128613612734
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 199.00045, (6, 4): 335.77413200031987, (5, 4): 203.87203613612735, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 195.00045, (0, 7): 125.00045, (7, 4): 195.7881302847317, (0, 6): 193.00045, (0, 5): 188.00055, (3, 6): 188.00055, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -4532,24 +4706,28 @@ Path: [0, 6]
 DST_INT: 6
 200
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 200 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 200
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 200 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 200
 DST ServiceA
+Reward function 9.00045
 NetworkProcess --- Current time 200 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 200
 DST ServiceA
+Reward function 8.00045
 ('traffic : ', {(2, 7): 209.00045, (6, 4): 335.77413200031987, (5, 4): 203.87203613612735, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 205.00045, (0, 7): 125.00045, (7, 4): 195.7881302847317, (0, 6): 203.00045, (0, 5): 188.00055, (3, 6): 208.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4574,6 +4752,7 @@ Path: [5, 4]
 DST_INT: 4
 202.74212227225468
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 209.00045, (6, 4): 335.77413200031987, (5, 4): 208.87278613612736, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 205.00045, (0, 7): 125.00045, (7, 4): 195.7881302847317, (0, 6): 203.00045, (0, 5): 188.00055, (3, 6): 208.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -4598,6 +4777,7 @@ Path: [7, 4]
 DST_INT: 4
 202.87128613612734
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 209.00045, (6, 4): 335.77413200031987, (5, 4): 208.87278613612736, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 205.00045, (0, 7): 125.00045, (7, 4): 205.87203613612735, (0, 6): 203.00045, (0, 5): 188.00055, (3, 6): 208.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4622,6 +4802,7 @@ Path: [6, 4]
 DST_INT: 4
 206.87128613612734
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 209.00045, (6, 4): 343.77488200031985, (5, 4): 208.87278613612736, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 205.00045, (0, 7): 125.00045, (7, 4): 205.87203613612735, (0, 6): 203.00045, (0, 5): 188.00055, (3, 6): 208.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4646,6 +4827,7 @@ Path: [5, 4]
 DST_INT: 4
 208.87128613612734
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 209.00045, (6, 4): 343.77488200031985, (5, 4): 213.87353613612737, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 205.00045, (0, 7): 125.00045, (7, 4): 205.87203613612735, (0, 6): 203.00045, (0, 5): 188.00055, (3, 6): 208.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -4740,24 +4922,28 @@ Path: [0, 6]
 DST_INT: 6
 210
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 210 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 210
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 210 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 210
 DST ServiceA
+Reward function 9.00045
 NetworkProcess --- Current time 210 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 210
 DST ServiceA
+Reward function 8.00045
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 343.77488200031985, (5, 4): 213.87353613612737, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 205.87203613612735, (0, 6): 213.00045, (0, 5): 188.00055, (3, 6): 218.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4782,6 +4968,7 @@ Path: [6, 4]
 DST_INT: 4
 211.87128613612734
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 351.77563200031983, (5, 4): 213.87353613612737, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 205.87203613612735, (0, 6): 213.00045, (0, 5): 188.00055, (3, 6): 218.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -4806,6 +4993,7 @@ Path: [7, 4]
 DST_INT: 4
 212.87128613612734
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 351.77563200031983, (5, 4): 213.87353613612737, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 215.87203613612735, (0, 6): 213.00045, (0, 5): 188.00055, (3, 6): 218.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -4830,6 +5018,7 @@ Path: [6, 4]
 DST_INT: 4
 216.87128613612734
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 359.7763820003198, (5, 4): 213.87353613612737, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 215.87203613612735, (0, 6): 213.00045, (0, 5): 188.00055, (3, 6): 218.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -4854,6 +5043,7 @@ Path: [5, 4]
 DST_INT: 4
 218.87128613612734
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 359.7763820003198, (5, 4): 223.87203613612735, (2, 6): 181.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 215.87203613612735, (0, 6): 213.00045, (0, 5): 188.00055, (3, 6): 218.00045, (1, 7): 188.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -4959,30 +5149,35 @@ Path: [0, 5]
 DST_INT: 5
 220
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 220 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 220
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 220 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 220
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 220 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 220
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 220 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 220
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 359.7763820003198, (5, 4): 223.87203613612735, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 215.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5007,6 +5202,7 @@ Path: [6, 4]
 DST_INT: 4
 221.87128613612734
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 367.7771320003198, (5, 4): 223.87203613612735, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 215.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -5031,6 +5227,7 @@ Path: [7, 4]
 DST_INT: 4
 222.87128613612734
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 367.7771320003198, (5, 4): 223.87203613612735, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 225.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5055,6 +5252,7 @@ Path: [6, 4]
 DST_INT: 4
 225.6993316384068
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 375.7778820003198, (5, 4): 223.87203613612735, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 225.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -5079,6 +5277,7 @@ Path: [5, 4]
 DST_INT: 4
 228.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 375.7778820003198, (5, 4): 233.00130000000001, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 225.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5103,6 +5302,7 @@ Path: [6, 4]
 DST_INT: 4
 229.52737714068624
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 383.77863200031976, (5, 4): 233.00130000000001, (2, 6): 221.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 225.87203613612735, (0, 6): 223.00055, (0, 5): 228.00055, (3, 6): 228.00055, (1, 7): 228.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 195.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -5208,30 +5408,35 @@ Path: [0, 5]
 DST_INT: 5
 230
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 230 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 230
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 230 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 230
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 230 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 230
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 230 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 230
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 383.77863200031976, (5, 4): 233.00130000000001, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 225.87203613612735, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -5256,6 +5461,7 @@ Path: [7, 4]
 DST_INT: 4
 231.82859550227946
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 383.77863200031976, (5, 4): 233.00130000000001, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5280,6 +5486,7 @@ Path: [6, 4]
 DST_INT: 4
 233.3554226429657
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 391.77938200031974, (5, 4): 233.00130000000001, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5304,6 +5511,7 @@ Path: [6, 4]
 DST_INT: 4
 237.18346814524514
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 399.7801320003197, (5, 4): 233.00130000000001, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -5328,6 +5536,7 @@ Path: [5, 4]
 DST_INT: 4
 238.82859550227946
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 399.7801320003197, (5, 4): 243.82934550227947, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -5352,6 +5561,7 @@ Path: [5, 4]
 DST_INT: 4
 238.82859550227946
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 399.7801320003197, (5, 4): 248.83009550227948, (2, 6): 231.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 233.00055, (0, 5): 238.00055, (3, 6): 228.00055, (1, 7): 238.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -5458,30 +5668,35 @@ Path: [0, 5]
 DST_INT: 5
 240
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 240 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 240
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 240 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 240
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 240 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 240
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 240 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 240
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 399.7801320003197, (5, 4): 248.83009550227948, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5506,6 +5721,7 @@ Path: [6, 4]
 DST_INT: 4
 241.0115136475246
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 407.7808820003197, (5, 4): 248.83009550227948, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 234.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -5530,6 +5746,7 @@ Path: [7, 4]
 DST_INT: 4
 241.82859550227946
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 407.7808820003197, (5, 4): 248.83009550227948, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 244.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5554,6 +5771,7 @@ Path: [6, 4]
 DST_INT: 4
 244.83955914980405
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 415.7816320003197, (5, 4): 248.83009550227948, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 244.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -5578,6 +5796,7 @@ Path: [5, 4]
 DST_INT: 4
 248.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 415.7816320003197, (5, 4): 253.8308455022795, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 244.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5602,6 +5821,7 @@ Path: [6, 4]
 DST_INT: 4
 248.6676046520835
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 423.78238200031967, (5, 4): 253.8308455022795, (2, 6): 241.00055, (3, 7): 101.00045, (1, 5): 215.00045, (0, 7): 125.00045, (7, 4): 244.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 248.00055, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -5695,24 +5915,28 @@ Path: [0, 7]
 DST_INT: 7
 250
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 250 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 250
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 250 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 250
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 250 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 250
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 423.78238200031967, (5, 4): 253.8308455022795, (2, 6): 251.0005, (3, 7): 101.00045, (1, 5): 255.0005, (0, 7): 255.0005, (7, 4): 244.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 258.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -5737,6 +5961,7 @@ Path: [7, 4]
 DST_INT: 4
 251.82859550227946
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 423.78238200031967, (5, 4): 253.8308455022795, (2, 6): 251.0005, (3, 7): 101.00045, (1, 5): 255.0005, (0, 7): 255.0005, (7, 4): 254.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 258.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5761,6 +5986,7 @@ Path: [6, 4]
 DST_INT: 4
 252.49565015436295
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 431.78313200031965, (5, 4): 253.8308455022795, (2, 6): 251.0005, (3, 7): 101.00045, (1, 5): 255.0005, (0, 7): 255.0005, (7, 4): 254.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 258.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5785,6 +6011,7 @@ Path: [6, 4]
 DST_INT: 4
 257.2806498264417
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 439.78388200031964, (5, 4): 253.8308455022795, (2, 6): 251.0005, (3, 7): 101.00045, (1, 5): 255.0005, (0, 7): 255.0005, (7, 4): 254.82934550227947, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 258.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -5827,12 +6054,14 @@ Path: [7, 4]
 DST_INT: 4
 259.7854996720787
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 259 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 259.7854996720787
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 439.78388200031964, (5, 4): 264.78624967207867, (2, 6): 251.0005, (3, 7): 101.00045, (1, 5): 255.0005, (0, 7): 255.0005, (7, 4): 262.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 258.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -5926,24 +6155,28 @@ Path: [0, 7]
 DST_INT: 7
 260
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 260 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 260
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 260 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 260
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 260 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 260
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 439.78388200031964, (5, 4): 264.78624967207867, (2, 6): 261.0005, (3, 7): 101.00045, (1, 5): 265.0005, (0, 7): 265.0005, (7, 4): 262.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 268.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5968,6 +6201,7 @@ Path: [6, 4]
 DST_INT: 4
 262.7854996720787
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 447.7846320003196, (5, 4): 264.78624967207867, (2, 6): 261.0005, (3, 7): 101.00045, (1, 5): 265.0005, (0, 7): 265.0005, (7, 4): 262.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 268.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -5992,6 +6226,7 @@ Path: [6, 4]
 DST_INT: 4
 267.5704993441574
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 455.7853820003196, (5, 4): 264.78624967207867, (2, 6): 261.0005, (3, 7): 101.00045, (1, 5): 265.0005, (0, 7): 265.0005, (7, 4): 262.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 268.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6034,12 +6269,14 @@ Path: [7, 4]
 DST_INT: 4
 269.7854996720787
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 269 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 269.7854996720787
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 455.7853820003196, (5, 4): 274.78624967207867, (2, 6): 261.0005, (3, 7): 101.00045, (1, 5): 265.0005, (0, 7): 265.0005, (7, 4): 272.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 268.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -6134,24 +6371,28 @@ Path: [0, 7]
 DST_INT: 7
 270
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 270 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 270
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 270 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 270
 DST ServiceA
+Reward function 1.0005
 NetworkProcess --- Current time 270 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 270
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 455.7853820003196, (5, 4): 274.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 275.0005, (7, 4): 272.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 278.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6176,6 +6417,7 @@ Path: [6, 4]
 DST_INT: 4
 272.7854996720787
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 463.7861320003196, (5, 4): 274.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 275.0005, (7, 4): 272.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 278.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6200,6 +6442,7 @@ Path: [6, 4]
 DST_INT: 4
 277.5704993441574
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 471.78688200031957, (5, 4): 274.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 275.0005, (7, 4): 272.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 278.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6242,12 +6485,14 @@ Path: [7, 4]
 DST_INT: 4
 279.7854996720787
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 279 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 279.7854996720787
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 219.00045, (6, 4): 471.78688200031957, (5, 4): 284.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 275.0005, (7, 4): 282.78624967207867, (0, 6): 243.00055, (0, 5): 248.00055, (3, 6): 278.0005, (1, 7): 248.00055, (1, 6): 107.00045, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -6353,30 +6598,35 @@ Path: [0, 5]
 DST_INT: 5
 280
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 280 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 280
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 280 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 280
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 280 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 280
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 280 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 280
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 289.00055, (6, 4): 471.78688200031957, (5, 4): 284.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 285.00055, (7, 4): 282.78624967207867, (0, 6): 243.00055, (0, 5): 288.00055, (3, 6): 288.00055, (1, 7): 248.00055, (1, 6): 287.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6401,6 +6651,7 @@ Path: [6, 4]
 DST_INT: 4
 282.7854996720787
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 289.00055, (6, 4): 479.78763200031955, (5, 4): 284.78624967207867, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 285.00055, (7, 4): 282.78624967207867, (0, 6): 243.00055, (0, 5): 288.00055, (3, 6): 288.00055, (1, 7): 248.00055, (1, 6): 287.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -6425,6 +6676,7 @@ Path: [5, 4]
 DST_INT: 4
 288.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 289.00055, (6, 4): 479.78763200031955, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 285.00055, (7, 4): 282.78624967207867, (0, 6): 243.00055, (0, 5): 288.00055, (3, 6): 288.00055, (1, 7): 248.00055, (1, 6): 287.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6449,6 +6701,7 @@ Path: [7, 4]
 DST_INT: 4
 289.78669380548666
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 289.00055, (6, 4): 479.78763200031955, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 285.00055, (7, 4): 292.78744380548665, (0, 6): 243.00055, (0, 5): 288.00055, (3, 6): 288.00055, (1, 7): 248.00055, (1, 6): 287.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -6554,30 +6807,35 @@ Path: [0, 5]
 DST_INT: 5
 290
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 290 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 290
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 290 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 290
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 290 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 290
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 290 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 290
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 479.78763200031955, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 292.78744380548665, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6602,6 +6860,7 @@ Path: [6, 4]
 DST_INT: 4
 291.78669380548666
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 487.78838200031953, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 292.78744380548665, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6626,6 +6885,7 @@ Path: [7, 4]
 DST_INT: 4
 294.57283761097335
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 487.78838200031953, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 297.57358761097333, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6650,6 +6910,7 @@ Path: [6, 4]
 DST_INT: 4
 296.57283761097335
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 495.7891320003195, (5, 4): 293.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 297.57358761097333, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -6674,6 +6935,7 @@ Path: [5, 4]
 DST_INT: 4
 298.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 495.7891320003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 297.57358761097333, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6698,6 +6960,7 @@ Path: [7, 4]
 DST_INT: 4
 299.78669380548666
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 299.00055, (6, 4): 495.7891320003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 295.00055, (7, 4): 302.78744380548665, (0, 6): 243.00055, (0, 5): 298.00055, (3, 6): 298.00055, (1, 7): 248.00055, (1, 6): 297.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -6804,30 +7067,35 @@ Path: [0, 5]
 DST_INT: 5
 300
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 300 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 300
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 300 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 300
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 300 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 300
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 300 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 300
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 495.7891320003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 302.78744380548665, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6852,6 +7120,7 @@ Path: [6, 4]
 DST_INT: 4
 301.78669380548666
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 503.7898820003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 302.78744380548665, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6876,6 +7145,7 @@ Path: [7, 4]
 DST_INT: 4
 304.57283761097335
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 503.7898820003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 307.57358761097333, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -6900,6 +7170,7 @@ Path: [6, 4]
 DST_INT: 4
 306.57283761097335
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 511.7906320003195, (5, 4): 303.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 307.57358761097333, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -6924,6 +7195,7 @@ Path: [5, 4]
 DST_INT: 4
 308.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 511.7906320003195, (5, 4): 313.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 307.57358761097333, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -6948,6 +7220,7 @@ Path: [7, 4]
 DST_INT: 4
 309.78669380548666
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 511.7906320003195, (5, 4): 313.00129999999996, (2, 6): 271.0005, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 305.00055, (7, 4): 312.78744380548665, (0, 6): 243.00055, (0, 5): 308.00055, (3, 6): 308.00055, (1, 7): 248.00055, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 235.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -7065,36 +7338,42 @@ Path: [0, 5]
 DST_INT: 5
 310
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 310 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 310
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 310 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 310
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 310 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 310
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 310 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 310
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 310 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 310
 DST ServiceA
+Reward function 5.00045
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 511.7906320003195, (5, 4): 313.00129999999996, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 312.78744380548665, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7119,6 +7398,7 @@ Path: [6, 4]
 DST_INT: 4
 311.78669380548666
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 519.7913820003195, (5, 4): 313.00129999999996, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 312.78744380548665, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7143,6 +7423,7 @@ Path: [7, 4]
 DST_INT: 4
 314.57283761097335
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 519.7913820003195, (5, 4): 313.00129999999996, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 317.57358761097333, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7167,6 +7448,7 @@ Path: [5, 4]
 DST_INT: 4
 315.00045
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 519.7913820003195, (5, 4): 320.0012, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 317.57358761097333, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7191,6 +7473,7 @@ Path: [6, 4]
 DST_INT: 4
 316.57283761097335
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 527.7921320003195, (5, 4): 320.0012, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 317.57358761097333, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7215,6 +7498,7 @@ Path: [5, 4]
 DST_INT: 4
 318.00045
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 527.7921320003195, (5, 4): 325.00194999999997, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 317.57358761097333, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7239,6 +7523,7 @@ Path: [7, 4]
 DST_INT: 4
 319.78728028473165
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 527.7921320003195, (5, 4): 325.00194999999997, (2, 6): 311.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 315.00045, (7, 4): 322.78803028473163, (0, 6): 313.00045, (0, 5): 318.00045, (3, 6): 308.00055, (1, 7): 318.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 315.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -7356,36 +7641,42 @@ Path: [0, 5]
 DST_INT: 5
 320
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 320 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 320
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 320 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 320
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 320 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 320
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 320 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 320
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 320 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 320
 DST ServiceA
+Reward function 5.00045
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 527.7921320003195, (5, 4): 325.00194999999997, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 322.78803028473163, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7410,6 +7701,7 @@ Path: [6, 4]
 DST_INT: 4
 321.359667895705
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 535.7928820003195, (5, 4): 325.00194999999997, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 322.78803028473163, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7434,6 +7726,7 @@ Path: [7, 4]
 DST_INT: 4
 324.5741105694633
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 535.7928820003195, (5, 4): 325.00194999999997, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 327.5748605694633, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7458,6 +7751,7 @@ Path: [7, 4]
 DST_INT: 4
 325.00045
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 535.7928820003195, (5, 4): 325.00194999999997, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 330.57561056946327, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7482,6 +7776,7 @@ Path: [6, 4]
 DST_INT: 4
 326.14649818043665
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 543.7936320003196, (5, 4): 325.00194999999997, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 330.57561056946327, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7506,6 +7801,7 @@ Path: [5, 4]
 DST_INT: 4
 329.78728028473165
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 543.7936320003196, (5, 4): 334.78803028473163, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 330.57561056946327, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7530,6 +7826,7 @@ Path: [5, 4]
 DST_INT: 4
 329.78728028473165
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 543.7936320003196, (5, 4): 339.7887802847316, (2, 6): 321.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 325.00045, (7, 4): 330.57561056946327, (0, 6): 323.00045, (0, 5): 328.00045, (3, 6): 308.00055, (1, 7): 328.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 325.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -7648,36 +7945,42 @@ Path: [0, 5]
 DST_INT: 5
 330
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 330 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 330
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 330 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 330
 DST ServiceA
+Reward function 5.00045
 NetworkProcess --- Current time 330 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 330
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 330 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 330
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 330 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 330
 DST ServiceA
+Reward function 5.00045
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 543.7936320003196, (5, 4): 339.7887802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 330.57561056946327, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7702,6 +8005,7 @@ Path: [6, 4]
 DST_INT: 4
 330.9333284651683
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 551.7943820003196, (5, 4): 339.7887802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 330.57561056946327, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7726,6 +8030,7 @@ Path: [7, 4]
 DST_INT: 4
 332.78728028473165
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 551.7943820003196, (5, 4): 339.7887802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 335.78803028473163, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7750,6 +8055,7 @@ Path: [7, 4]
 DST_INT: 4
 335.00045
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 551.7943820003196, (5, 4): 339.7887802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7774,6 +8080,7 @@ Path: [6, 4]
 DST_INT: 4
 335.72015874989995
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 559.7951320003197, (5, 4): 339.7887802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7798,6 +8105,7 @@ Path: [5, 4]
 DST_INT: 4
 339.78728028473165
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 559.7951320003197, (5, 4): 344.7895302847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -7822,6 +8130,7 @@ Path: [5, 4]
 DST_INT: 4
 339.78728028473165
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 309.00055, (6, 4): 559.7951320003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 335.00045, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 338.00045, (3, 6): 308.00055, (1, 7): 338.00045, (1, 6): 307.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -7927,30 +8236,35 @@ Path: [0, 5]
 DST_INT: 5
 340
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 340 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 340
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 340 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 340
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 340 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 340
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 340 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 340
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 559.7951320003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -7975,6 +8289,7 @@ Path: [6, 4]
 DST_INT: 4
 340.5069890346316
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 567.7958820003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 338.7887802847316, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -7999,6 +8314,7 @@ Path: [7, 4]
 DST_INT: 4
 342.78728028473165
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 567.7958820003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 345.78803028473163, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8023,6 +8339,7 @@ Path: [7, 4]
 DST_INT: 4
 345.00055
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 567.7958820003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 348.7887802847316, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8047,6 +8364,7 @@ Path: [6, 4]
 DST_INT: 4
 345.29381931936325
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 575.7966320003197, (5, 4): 349.7902802847316, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 348.7887802847316, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -8071,6 +8389,7 @@ Path: [5, 4]
 DST_INT: 4
 348.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 349.00055, (6, 4): 575.7966320003197, (5, 4): 354.79103028473156, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 345.00055, (7, 4): 348.7887802847316, (0, 6): 333.00045, (0, 5): 348.00055, (3, 6): 348.00055, (1, 7): 338.00045, (1, 6): 347.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -8176,30 +8495,35 @@ Path: [0, 5]
 DST_INT: 5
 350
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 350 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 350
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 350 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 350
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 350 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 350
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 350 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 350
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 575.7966320003197, (5, 4): 354.79103028473156, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 348.7887802847316, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8224,6 +8548,7 @@ Path: [6, 4]
 DST_INT: 4
 350.82951081020553
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 583.7973820003198, (5, 4): 354.79103028473156, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 348.7887802847316, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8248,6 +8573,7 @@ Path: [7, 4]
 DST_INT: 4
 352.82951081020553
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 583.7973820003198, (5, 4): 354.79103028473156, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 355.8302608102055, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8272,6 +8598,7 @@ Path: [6, 4]
 DST_INT: 4
 354.6584716204111
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 591.7981320003198, (5, 4): 354.79103028473156, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 355.8302608102055, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -8296,6 +8623,7 @@ Path: [5, 4]
 DST_INT: 4
 358.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 591.7981320003198, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 355.8302608102055, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8320,6 +8648,7 @@ Path: [7, 4]
 DST_INT: 4
 358.82951081020553
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 359.00055, (6, 4): 591.7981320003198, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 355.00055, (7, 4): 361.8302608102055, (0, 6): 333.00045, (0, 5): 358.00055, (3, 6): 358.00055, (1, 7): 338.00045, (1, 6): 357.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -8426,30 +8755,35 @@ Path: [0, 5]
 DST_INT: 5
 360
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 360 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 360
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 360 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 360
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 360 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 360
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 360 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 360
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 591.7981320003198, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 361.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8474,6 +8808,7 @@ Path: [6, 4]
 DST_INT: 4
 360.82951081020553
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 599.7988820003198, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 361.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8498,6 +8833,7 @@ Path: [7, 4]
 DST_INT: 4
 362.82951081020553
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 599.7988820003198, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 365.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8522,6 +8858,7 @@ Path: [6, 4]
 DST_INT: 4
 364.6584716204111
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 607.7996320003199, (5, 4): 363.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 365.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -8546,6 +8883,7 @@ Path: [5, 4]
 DST_INT: 4
 368.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 607.7996320003199, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 365.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8570,6 +8908,7 @@ Path: [7, 4]
 DST_INT: 4
 368.82951081020553
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 369.00055, (6, 4): 607.7996320003199, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 365.00055, (7, 4): 371.8302608102055, (0, 6): 333.00045, (0, 5): 368.00055, (3, 6): 368.00055, (1, 7): 338.00045, (1, 6): 367.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -8675,30 +9014,35 @@ Path: [0, 5]
 DST_INT: 5
 370
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 370 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 370
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 370 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 370
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 370 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 370
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 370 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 370
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 379.00055, (6, 4): 607.7996320003199, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 375.00055, (7, 4): 371.8302608102055, (0, 6): 333.00045, (0, 5): 378.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 377.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8723,6 +9067,7 @@ Path: [6, 4]
 DST_INT: 4
 370.82951081020553
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 379.00055, (6, 4): 615.8003820003199, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 375.00055, (7, 4): 371.8302608102055, (0, 6): 333.00045, (0, 5): 378.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 377.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8747,6 +9092,7 @@ Path: [7, 4]
 DST_INT: 4
 372.82951081020553
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 379.00055, (6, 4): 615.8003820003199, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 375.00055, (7, 4): 375.8302608102055, (0, 6): 333.00045, (0, 5): 378.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 377.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8771,6 +9117,7 @@ Path: [6, 4]
 DST_INT: 4
 374.6584716204111
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 379.00055, (6, 4): 623.80113200032, (5, 4): 373.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 375.00055, (7, 4): 375.8302608102055, (0, 6): 333.00045, (0, 5): 378.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 377.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -8795,6 +9142,7 @@ Path: [5, 4]
 DST_INT: 4
 378.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 379.00055, (6, 4): 623.80113200032, (5, 4): 383.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 375.00055, (7, 4): 375.8302608102055, (0, 6): 333.00045, (0, 5): 378.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 377.00055, (2, 5): 101.00045, (3, 5): 335.00045})
 GET PATH
 	Node _ src (id_topology): 0
@@ -8900,30 +9248,35 @@ Path: [0, 5]
 DST_INT: 5
 380
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 380 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 380
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 380 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 380
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 380 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 380
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 380 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 380
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 623.80113200032, (5, 4): 383.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 375.8302608102055, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -8948,6 +9301,7 @@ Path: [7, 4]
 DST_INT: 4
 380.7042897464608
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 623.80113200032, (5, 4): 383.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 383.7050397464608, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -8972,6 +9326,7 @@ Path: [6, 4]
 DST_INT: 4
 382.7042897464608
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 631.80188200032, (5, 4): 383.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 383.7050397464608, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -8996,6 +9351,7 @@ Path: [5, 4]
 DST_INT: 4
 385.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 631.80188200032, (5, 4): 390.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 383.7050397464608, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9020,6 +9376,7 @@ Path: [7, 4]
 DST_INT: 4
 386.4080294929216
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 631.80188200032, (5, 4): 390.00129999999996, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 389.4087794929216, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9044,6 +9401,7 @@ Path: [5, 4]
 DST_INT: 4
 388.00055
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 631.80188200032, (5, 4): 395.00204999999994, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 389.4087794929216, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9068,6 +9426,7 @@ Path: [6, 4]
 DST_INT: 4
 388.4080294929216
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 639.80263200032, (5, 4): 395.00204999999994, (2, 6): 331.00045, (3, 7): 101.00045, (1, 5): 275.0005, (0, 7): 385.00055, (7, 4): 389.4087794929216, (0, 6): 333.00045, (0, 5): 388.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 387.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -9174,30 +9533,35 @@ Path: [0, 5]
 DST_INT: 5
 390
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 390 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 390
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 390 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 390
 DST ServiceA
+Reward function 7.00055
 NetworkProcess --- Current time 390 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 390
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 390 
 name M.A
 Path: [3, 7]
 DST_INT: 7
 390
 DST ServiceA
+Reward function 1.00055
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 639.80263200032, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 275.0005, (0, 7): 395.00055, (7, 4): 389.4087794929216, (0, 6): 333.00045, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9222,6 +9586,7 @@ Path: [7, 4]
 DST_INT: 4
 392.11176923938245
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 639.80263200032, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 275.0005, (0, 7): 395.00055, (7, 4): 395.11251923938244, (0, 6): 333.00045, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9246,6 +9611,7 @@ Path: [6, 4]
 DST_INT: 4
 394.11176923938245
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 647.8033820003201, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 275.0005, (0, 7): 395.00055, (7, 4): 395.11251923938244, (0, 6): 333.00045, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9270,6 +9636,7 @@ Path: [6, 4]
 DST_INT: 4
 394.11176923938245
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 655.8041320003201, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 275.0005, (0, 7): 395.00055, (7, 4): 395.11251923938244, (0, 6): 333.00045, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9294,6 +9661,7 @@ Path: [7, 4]
 DST_INT: 4
 397.8155089858433
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 389.00055, (6, 4): 655.8041320003201, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 275.0005, (0, 7): 395.00055, (7, 4): 400.81625898584326, (0, 6): 333.00045, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 385.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -9387,24 +9755,28 @@ Path: [0, 6]
 DST_INT: 6
 400
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 400 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 400
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 400 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 400
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 400 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 400
 DST ServiceA
+Reward function 5.00055
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 655.8041320003201, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 400.81625898584326, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9429,6 +9801,7 @@ Path: [6, 4]
 DST_INT: 4
 402.7042897464608
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 663.8048820003202, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 400.81625898584326, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9453,6 +9826,7 @@ Path: [7, 4]
 DST_INT: 4
 403.5192487323041
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 663.8048820003202, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 406.5199987323041, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9477,6 +9851,7 @@ Path: [7, 4]
 DST_INT: 4
 403.5192487323041
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 663.8048820003202, (5, 4): 395.00204999999994, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 409.52074873230407, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9501,6 +9876,7 @@ Path: [5, 4]
 DST_INT: 4
 403.7042897464608
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 663.8048820003202, (5, 4): 408.7050397464608, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 409.52074873230407, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9525,6 +9901,7 @@ Path: [6, 4]
 DST_INT: 4
 407.78806676797564
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 671.8056320003202, (5, 4): 408.7050397464608, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 409.52074873230407, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9549,6 +9926,7 @@ Path: [5, 4]
 DST_INT: 4
 409.78806676797564
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 671.8056320003202, (5, 4): 414.7888167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 409.52074873230407, (0, 6): 403.00055, (0, 5): 398.00055, (3, 6): 378.00055, (1, 7): 338.00045, (1, 6): 397.00055, (2, 5): 101.00045, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -9642,24 +10020,28 @@ Path: [0, 6]
 DST_INT: 6
 410
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 410 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 410
 DST ServiceA
+Reward function 8.00055
 NetworkProcess --- Current time 410 
 name M.A
 Path: [2, 5]
 DST_INT: 5
 410
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 410 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 410
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 671.8056320003202, (5, 4): 414.7888167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 409.52074873230407, (0, 6): 413.00055, (0, 5): 398.00055, (3, 6): 418.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9684,6 +10066,7 @@ Path: [7, 4]
 DST_INT: 4
 413.78806676797564
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 671.8056320003202, (5, 4): 414.7888167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 416.7888167679756, (0, 6): 413.00055, (0, 5): 398.00055, (3, 6): 418.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9708,6 +10091,7 @@ Path: [5, 4]
 DST_INT: 4
 414.5755835359513
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 671.8056320003202, (5, 4): 419.7895667679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 416.7888167679756, (0, 6): 413.00055, (0, 5): 398.00055, (3, 6): 418.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9732,6 +10116,7 @@ Path: [6, 4]
 DST_INT: 4
 417.78806676797564
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 679.8063820003202, (5, 4): 419.7895667679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 416.7888167679756, (0, 6): 413.00055, (0, 5): 398.00055, (3, 6): 418.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9756,6 +10141,7 @@ Path: [5, 4]
 DST_INT: 4
 419.36310030392696
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 409.00055, (6, 4): 679.8063820003202, (5, 4): 424.7903167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 405.00055, (0, 7): 395.00055, (7, 4): 416.7888167679756, (0, 6): 413.00055, (0, 5): 398.00055, (3, 6): 418.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -9850,24 +10236,28 @@ Path: [0, 6]
 DST_INT: 6
 420
 DST ServiceA
+Reward function 3.00055
 NetworkProcess --- Current time 420 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 420
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 420 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 420
 DST ServiceA
+Reward function 9.00055
 NetworkProcess --- Current time 420 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 420
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 679.8063820003202, (5, 4): 424.7903167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 425.00055, (0, 7): 395.00055, (7, 4): 416.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 428.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -9910,12 +10300,14 @@ Path: [7, 4]
 DST_INT: 4
 422.78806676797564
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 422 
 name M.B
 Path: [6, 4]
 DST_INT: 4
 422.78806676797564
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 687.8071320003203, (5, 4): 424.7903167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 425.00055, (0, 7): 395.00055, (7, 4): 425.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 428.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -9940,6 +10332,7 @@ Path: [6, 4]
 DST_INT: 4
 427.78806676797564
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 695.8078820003203, (5, 4): 424.7903167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 425.00055, (0, 7): 395.00055, (7, 4): 425.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 428.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -9964,6 +10357,7 @@ Path: [5, 4]
 DST_INT: 4
 429.78806676797564
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 695.8078820003203, (5, 4): 434.7888167679756, (2, 6): 391.00055, (3, 7): 391.00055, (1, 5): 425.00055, (0, 7): 395.00055, (7, 4): 425.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 428.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -10057,24 +10451,28 @@ Path: [0, 7]
 DST_INT: 7
 430
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 430 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 430
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 430 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 430
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 430 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 430
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 695.8078820003203, (5, 4): 434.7888167679756, (2, 6): 431.00055, (3, 7): 391.00055, (1, 5): 435.00055, (0, 7): 435.00055, (7, 4): 425.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 438.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10099,6 +10497,7 @@ Path: [6, 4]
 DST_INT: 4
 432.78806676797564
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 703.8086320003204, (5, 4): 434.7888167679756, (2, 6): 431.00055, (3, 7): 391.00055, (1, 5): 435.00055, (0, 7): 435.00055, (7, 4): 425.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 438.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10123,6 +10522,7 @@ Path: [7, 4]
 DST_INT: 4
 433.78806676797564
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 703.8086320003204, (5, 4): 434.7888167679756, (2, 6): 431.00055, (3, 7): 391.00055, (1, 5): 435.00055, (0, 7): 435.00055, (7, 4): 436.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 438.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10147,6 +10547,7 @@ Path: [6, 4]
 DST_INT: 4
 436.6165699244181
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 711.8093820003204, (5, 4): 434.7888167679756, (2, 6): 431.00055, (3, 7): 391.00055, (1, 5): 435.00055, (0, 7): 435.00055, (7, 4): 436.7888167679756, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 438.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10189,12 +10590,14 @@ Path: [7, 4]
 DST_INT: 4
 438.82905315644246
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 438 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 438.82905315644246
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 711.8093820003204, (5, 4): 443.82980315644244, (2, 6): 431.00055, (3, 7): 391.00055, (1, 5): 435.00055, (0, 7): 435.00055, (7, 4): 441.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 438.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -10288,24 +10691,28 @@ Path: [0, 7]
 DST_INT: 7
 440
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 440 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 440
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 440 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 440
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 440 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 440
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 711.8093820003204, (5, 4): 443.82980315644244, (2, 6): 441.00055, (3, 7): 391.00055, (1, 5): 445.00055, (0, 7): 445.00055, (7, 4): 441.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 448.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10330,6 +10737,7 @@ Path: [6, 4]
 DST_INT: 4
 441.82905315644246
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 719.8101320003204, (5, 4): 443.82980315644244, (2, 6): 441.00055, (3, 7): 391.00055, (1, 5): 445.00055, (0, 7): 445.00055, (7, 4): 441.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 448.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10354,6 +10762,7 @@ Path: [6, 4]
 DST_INT: 4
 445.65755631288494
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 727.8108820003205, (5, 4): 443.82980315644244, (2, 6): 441.00055, (3, 7): 391.00055, (1, 5): 445.00055, (0, 7): 445.00055, (7, 4): 441.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 448.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10396,12 +10805,14 @@ Path: [7, 4]
 DST_INT: 4
 448.82905315644246
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 448 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 448.82905315644246
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 727.8108820003205, (5, 4): 453.82980315644244, (2, 6): 441.00055, (3, 7): 391.00055, (1, 5): 445.00055, (0, 7): 445.00055, (7, 4): 451.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 448.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -10496,24 +10907,28 @@ Path: [0, 7]
 DST_INT: 7
 450
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 450 
 name M.A
 Path: [1, 5]
 DST_INT: 5
 450
 DST ServiceA
+Reward function 5.00055
 NetworkProcess --- Current time 450 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 450
 DST ServiceA
+Reward function 1.00055
 NetworkProcess --- Current time 450 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 450
 DST ServiceA
+Reward function 8.00055
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 727.8108820003205, (5, 4): 453.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 455.00055, (7, 4): 451.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 458.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10538,6 +10953,7 @@ Path: [6, 4]
 DST_INT: 4
 451.82905315644246
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 735.8116320003205, (5, 4): 453.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 455.00055, (7, 4): 451.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 458.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10562,6 +10978,7 @@ Path: [6, 4]
 DST_INT: 4
 455.65755631288494
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 743.8123820003206, (5, 4): 453.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 455.00055, (7, 4): 451.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 458.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10604,12 +11021,14 @@ Path: [7, 4]
 DST_INT: 4
 458.82905315644246
 DST Actuator
+Reward function 3.00075
 NetworkProcess --- Current time 458 
 name M.B
 Path: [5, 4]
 DST_INT: 4
 458.82905315644246
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 429.00055, (6, 4): 743.8123820003206, (5, 4): 463.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 455.00055, (7, 4): 461.82980315644244, (0, 6): 423.00055, (0, 5): 398.00055, (3, 6): 458.00055, (1, 7): 418.00055, (1, 6): 397.00055, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -10715,30 +11134,35 @@ Path: [0, 5]
 DST_INT: 5
 460
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 460 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 460
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 460 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 460
 DST ServiceA
+Reward function 7.0005
 NetworkProcess --- Current time 460 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 460
 DST ServiceA
+Reward function 9.0005
 NetworkProcess --- Current time 460 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 460
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 469.0005, (6, 4): 743.8123820003206, (5, 4): 463.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 465.0005, (7, 4): 461.82980315644244, (0, 6): 423.00055, (0, 5): 468.0005, (3, 6): 468.0005, (1, 7): 418.00055, (1, 6): 467.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10763,6 +11187,7 @@ Path: [6, 4]
 DST_INT: 4
 461.82905315644246
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 469.0005, (6, 4): 751.8131320003206, (5, 4): 463.82980315644244, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 465.0005, (7, 4): 461.82980315644244, (0, 6): 423.00055, (0, 5): 468.0005, (3, 6): 468.0005, (1, 7): 418.00055, (1, 6): 467.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -10787,6 +11212,7 @@ Path: [5, 4]
 DST_INT: 4
 468.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 469.0005, (6, 4): 751.8131320003206, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 465.0005, (7, 4): 461.82980315644244, (0, 6): 423.00055, (0, 5): 468.0005, (3, 6): 468.0005, (1, 7): 418.00055, (1, 6): 467.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10811,6 +11237,7 @@ Path: [7, 4]
 DST_INT: 4
 469.78527084299765
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 469.0005, (6, 4): 751.8131320003206, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 465.0005, (7, 4): 472.78602084299763, (0, 6): 423.00055, (0, 5): 468.0005, (3, 6): 468.0005, (1, 7): 418.00055, (1, 6): 467.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -10916,30 +11343,35 @@ Path: [0, 5]
 DST_INT: 5
 470
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 470 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 470
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 470 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 470
 DST ServiceA
+Reward function 7.0005
 NetworkProcess --- Current time 470 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 470
 DST ServiceA
+Reward function 9.0005
 NetworkProcess --- Current time 470 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 470
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 751.8131320003206, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 472.78602084299763, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -10964,6 +11396,7 @@ Path: [6, 4]
 DST_INT: 4
 471.78527084299765
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 759.8138820003206, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 472.78602084299763, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -10988,6 +11421,7 @@ Path: [7, 4]
 DST_INT: 4
 474.5700416859953
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 759.8138820003206, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 477.5707916859953, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -11012,6 +11446,7 @@ Path: [6, 4]
 DST_INT: 4
 476.5700416859953
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 767.8146320003207, (5, 4): 473.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 477.5707916859953, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -11036,6 +11471,7 @@ Path: [5, 4]
 DST_INT: 4
 478.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 767.8146320003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 477.5707916859953, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -11060,6 +11496,7 @@ Path: [7, 4]
 DST_INT: 4
 479.78527084299765
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 479.0005, (6, 4): 767.8146320003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 475.0005, (7, 4): 482.78602084299763, (0, 6): 423.00055, (0, 5): 478.0005, (3, 6): 478.0005, (1, 7): 418.00055, (1, 6): 477.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -11166,30 +11603,35 @@ Path: [0, 5]
 DST_INT: 5
 480
 DST ServiceA
+Reward function 8.0005
 NetworkProcess --- Current time 480 
 name M.A
 Path: [0, 7]
 DST_INT: 7
 480
 DST ServiceA
+Reward function 5.0005
 NetworkProcess --- Current time 480 
 name M.A
 Path: [1, 6]
 DST_INT: 6
 480
 DST ServiceA
+Reward function 7.0005
 NetworkProcess --- Current time 480 
 name M.A
 Path: [2, 7]
 DST_INT: 7
 480
 DST ServiceA
+Reward function 9.0005
 NetworkProcess --- Current time 480 
 name M.A
 Path: [3, 6]
 DST_INT: 6
 480
 DST ServiceA
+Reward function 8.0005
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 767.8146320003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 482.78602084299763, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -11214,6 +11656,7 @@ Path: [6, 4]
 DST_INT: 4
 481.78527084299765
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 775.8153820003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 482.78602084299763, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -11238,6 +11681,7 @@ Path: [7, 4]
 DST_INT: 4
 484.5700416859953
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 775.8153820003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 487.5707916859953, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 6
@@ -11262,6 +11706,7 @@ Path: [6, 4]
 DST_INT: 4
 486.5700416859953
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 783.8161320003207, (5, 4): 483.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 487.5707916859953, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 5
@@ -11286,6 +11731,7 @@ Path: [5, 4]
 DST_INT: 4
 488.0005
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 783.8161320003207, (5, 4): 493.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 487.5707916859953, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 7
@@ -11310,6 +11756,7 @@ Path: [7, 4]
 DST_INT: 4
 489.78527084299765
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 783.8161320003207, (5, 4): 493.00124999999997, (2, 6): 451.00055, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 492.78602084299763, (0, 6): 423.00055, (0, 5): 488.0005, (3, 6): 488.0005, (1, 7): 418.00055, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 405.00055})
 GET PATH
 	Node _ src (id_topology): 0
@@ -11415,30 +11862,35 @@ Path: [0, 5]
 DST_INT: 5
 490
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 490 
 name M.A
 Path: [0, 6]
 DST_INT: 6
 490
 DST ServiceA
+Reward function 3.00045
 NetworkProcess --- Current time 490 
 name M.A
 Path: [1, 7]
 DST_INT: 7
 490
 DST ServiceA
+Reward function 8.00045
 NetworkProcess --- Current time 490 
 name M.A
 Path: [2, 6]
 DST_INT: 6
 490
 DST ServiceA
+Reward function 1.00045
 NetworkProcess --- Current time 490 
 name M.A
 Path: [3, 5]
 DST_INT: 5
 490
 DST ServiceA
+Reward function 5.00045
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 783.8161320003207, (5, 4): 493.00124999999997, (2, 6): 491.00045, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 492.78602084299763, (0, 6): 493.00045, (0, 5): 498.00045, (3, 6): 488.0005, (1, 7): 498.00045, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 495.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -11463,6 +11915,7 @@ Path: [6, 4]
 DST_INT: 4
 491.78527084299765
 DST Actuator
+Reward function 8.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 791.8168820003208, (5, 4): 493.00124999999997, (2, 6): 491.00045, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 492.78602084299763, (0, 6): 493.00045, (0, 5): 498.00045, (3, 6): 488.0005, (1, 7): 498.00045, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 495.00045})
 GET PATH
 	Node _ src (id_topology): 7
@@ -11487,6 +11940,7 @@ Path: [7, 4]
 DST_INT: 4
 494.5700416859953
 DST Actuator
+Reward function 3.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 791.8168820003208, (5, 4): 493.00124999999997, (2, 6): 491.00045, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 497.5707916859953, (0, 6): 493.00045, (0, 5): 498.00045, (3, 6): 488.0005, (1, 7): 498.00045, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 495.00045})
 GET PATH
 	Node _ src (id_topology): 5
@@ -11511,6 +11965,7 @@ Path: [5, 4]
 DST_INT: 4
 495.00045
 DST Actuator
+Reward function 5.00075
 ('traffic : ', {(2, 7): 489.0005, (6, 4): 791.8168820003208, (5, 4): 500.0012, (2, 6): 491.00045, (3, 7): 391.00055, (1, 5): 455.00055, (0, 7): 485.0005, (7, 4): 497.5707916859953, (0, 6): 493.00045, (0, 5): 498.00045, (3, 6): 488.0005, (1, 7): 498.00045, (1, 6): 487.0005, (2, 5): 411.00055, (3, 5): 495.00045})
 GET PATH
 	Node _ src (id_topology): 6
@@ -11535,8 +11990,9 @@ Path: [6, 4]
 DST_INT: 4
 496.5700416859953
 DST Actuator
+Reward function 8.00075
 
---- 0.542818069458 seconds ---
+--- 0.426635026932 seconds ---
 	Simulation Time: 100.00
 	Application loops delays:
 		0 - ['M.A', 'M.B'] :	 48.356774

@@ -77,7 +77,9 @@ class Sim:
     SINK_METRIC = "SINK_M"
     LINK_METRIC = "LINK"
 
-    def __init__(self, topology, add_time, name_register='events_log.json', link_register='links_log.json', redis=None, purge_register=True, logger=None, default_results_path=None):
+    def __init__(self, reward, topology, add_time, name_register='events_log.json', link_register='links_log.json', redis=None, purge_register=True, logger=None, default_results_path=None):
+
+        self.reward = reward
 
         self.env = simpy.Environment()
         """
@@ -349,7 +351,8 @@ class Sim:
                     latency_msg_link = transmit + propagation
 
                     #print "-link: %s -- lat: %d" %(link,latency_msg_link)
-                    
+                    if src_int == 0 :
+                        self.reward(latency_msg_link)
                     # update link metrics
                     self.metrics.insert_link(
                         {"id": message.id, "type": self.LINK_METRIC, "src": link[0], "dst": link[1], "app": message.app_name, "latency": latency_msg_link, "message": message.name, "ctime": self.env.now, "size": message.bytes, "buffer": self.network_pump})  # "path":message.path})

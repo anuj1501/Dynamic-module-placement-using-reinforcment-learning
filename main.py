@@ -40,7 +40,7 @@ sys.dont_write_bytecode = True
 
 
 # @profile
-def main(get_action,add_time, iteration, simulated_time):
+def main(get_action,reward,add_time, iteration, simulated_time):
 
     random.seed(RANDOM_SEED)
     np.random.seed(RANDOM_SEED)
@@ -67,7 +67,7 @@ def main(get_action,add_time, iteration, simulated_time):
     """
 
     stop_time = simulated_time
-    s = Sim(selectorPath.topology, add_time,
+    s = Sim(reward,selectorPath.topology, add_time,
             default_results_path="Results_" + str(iteration))
     s.deploy_app(selectorPath.app, placement, selectorPath.pop, selectorPath)
     selectorPath.init_state(s)
@@ -76,14 +76,14 @@ def main(get_action,add_time, iteration, simulated_time):
     # s.draw_allocated_topology() # for debugging
 
 
-def driver(get_action):
+def driver(get_action,reward):
     start_time = time.time()
 
     add_time = 0
 
     for i in range(1):
 
-        main(get_action,add_time, i, simulated_time=500)
+        main(get_action,reward,add_time, i, simulated_time=100)
 
         add_time += 100
 

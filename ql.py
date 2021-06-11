@@ -7,12 +7,9 @@ import math
 import json
 import sys
 
-NO_EPISODES = 1
-MOVE_PENALTY = 1  
-ENEMY_PENALTY = 300  
-FOOD_REWARD = 25  
-epsilon = 0.5 
-EPS_DECAY = 0.9999 
+NO_EPISODES = 1 
+epsilon = 1
+EPS_DECAY = 0.01 
 
 start_q_table = None  
 
@@ -64,9 +61,28 @@ def get_subsets(fullset):
     subsets.append(subset)
   return subsets[1:]
 
+current_state = ''
+current_action = 0
+is_first = True
+
+
+# def get_first():
+#     global is_first
+#     return is_first
+
+# def first_false():
+#     global is_first
+#     is_first = False
+
+# def first_true():
+#     global is_first
+#     is_first = True
 
 def get_action(state):
-
+    global is_first
+    global q_table
+    global current_state
+    global current_action
     subsets = get_subsets(set([0,1,2]))
 
     new_state = {}
@@ -87,18 +103,36 @@ def get_action(state):
     q_vals = q_table[new_state]
     action = np.argmax(q_vals)
 
+    current_state = new_state
+    current_action = action
+
+
     print("action : ",action)
     print(subsets)
     return_arr = subsets[action]
+    is_first = True
     print(return_arr)
     print("List of edge indices : ",return_arr)
 
     return return_arr
     
 
-# def update_q(state,action,obs_latency):
+def reward(obs_latency):
+    #Store previous reward and update 
+    #reward = curr_reward + gamma*(prev_reward)
+    global is_first
+    global current_state
+    global current_action
+    print("visited")
+    if is_first:
+        print("Reward function {}".format(obs_latency))
+        is_first = False
+    else:
+        print("Didnt run")  
 
-sys.stdout = open("test.txt", "w")
+
+
+# sys.stdout = open("test.txt", "w")
 
 for episode in range(NO_EPISODES):
 
@@ -108,11 +142,11 @@ for episode in range(NO_EPISODES):
 
     time.sleep(5)
 
-    driver(get_action)
+    driver(get_action,reward)
 
     epsilon *= EPS_DECAY
 
-sys.stdout.close()
+# sys.stdout.close()
 
 # with open(f"qtable-{int(time.time())}.pickle", "wb") as f:
 #     pickle.dump(q_table, f)
