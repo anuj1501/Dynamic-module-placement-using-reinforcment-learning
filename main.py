@@ -72,7 +72,7 @@ def main(get_action,reward,add_time, iteration, simulated_time):
     s.deploy_app(selectorPath.app, placement, selectorPath.pop, selectorPath)
     selectorPath.init_state(s)
     s.run(stop_time, selectorPath, show_progress_monitor=False)
-    s.draw_allocated_topology()
+    # s.draw_allocated_topology()
     # s.draw_allocated_topology() # for debugging
 
 
@@ -81,13 +81,13 @@ def driver(get_action,reward):
 
     add_time = 0
 
-    for i in range(1):
+    for i in range(3):
 
         main(get_action,reward,add_time, i, simulated_time=100)
 
         add_time += 100
 
-        print("\n--- %s seconds ---" % (time.time() - start_time))
+        # print("\n--- %s seconds ---" % (time.time() - start_time))
 
         # Finally, you can analyse the results:
         # print "-"*20
@@ -95,17 +95,17 @@ def driver(get_action,reward):
         # print "-" * 20
         m = Stats(defaultPath="Results_" + str(i))  # Same name of the results
         time_loops = [["M.A", "M.B"]]
-        m.showResults2(100, time_loops=time_loops)
+        # m.showResults2(100, time_loops=time_loops)
 
-        print "\t- Network saturation -"
-        print "\t\tAverage waiting messages : %i" % m.average_messages_not_transmitted()
-        print "\t\tPeak of waiting messages : %i" % m.peak_messages_not_transmitted()
-        print "\t\tTOTAL messages not transmitted: %i" % m.messages_not_transmitted()
+        # print "\t- Network saturation -"
+        # print "\t\tAverage waiting messages : %i" % m.average_messages_not_transmitted()
+        # print "\t\tPeak of waiting messages : %i" % m.peak_messages_not_transmitted()
+        # print "\t\tTOTAL messages not transmitted: %i" % m.messages_not_transmitted()
 
-        print "\n\t- Stats of each service deployed -"
-        print m.get_df_modules()
-        print m.get_df_service_utilization("ServiceA", 100)
-        print "\n\t- Stats of each DEVICE -"
+        # print "\n\t- Stats of each service deployed -"
+        # print m.get_df_modules()
+        # print m.get_df_service_utilization("ServiceA", 100)
+        # print "\n\t- Stats of each DEVICE -"
 
 
 if __name__ == '__main__':

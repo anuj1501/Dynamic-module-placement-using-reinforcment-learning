@@ -26,23 +26,23 @@ class CloudPlacement(Placement):
 
         app = sim.apps[app_name]
         services = app.services
-        print("id_cluster")
-        print(id_cluster)
-        print("app")
-        print(app)
-        print("services")
-        print(services)
-        print(self.scaleServices)
+        # print("id_cluster")
+        # print(id_cluster)
+        # print("app")
+        # print(app)
+        # print("services")
+        # print(services)
+        # print(self.scaleServices)
 
         for module in services:
             if module in self.scaleServices:
                 for rep in range(0, self.scaleServices[module]):
                     for one_id in id_cluster:
                         if True:
-                            print "node atrributes"
+                            # print "node atrributes"
                             sim.topology.nodeAttributes[one_id]["services"].add(
                                 module)
-                            print(sim.topology.nodeAttributes[one_id])
+                            # print(sim.topology.nodeAttributes[one_id])
                             idDES = sim.deploy_module(
                                 app_name, module, services[module], [one_id])
 
@@ -50,7 +50,7 @@ class CloudPlacement(Placement):
         num_sensors = {}
 
         for one_node in id_cluster:
-            print sim.topology.nodeAttributes[one_node]["services"]
+            # print sim.topology.nodeAttributes[one_node]["services"]
             num_services[one_node] = len(
                 sim.topology.nodeAttributes[one_node]["services"])
             num_sensors[one_node] = 0

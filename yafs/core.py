@@ -267,16 +267,16 @@ class Sim:
                     msg = copy.copy(message)
                     msg.path = copy.copy(path)
                     msg.app_name = app_name
-                    print("here")
-                    print(message)
-                    print(DES_dst,idx)
-                    print(len(paths))
+                    # print("here")
+                    # print(message)
+                    # print(DES_dst,idx)
+                    # print(len(paths))
                     msg.idDES = DES_dst[idx]
                     # msg.id = int(path[0]*10 + path[1])
                     # id  += 1
-                    print("FOR LOOOP")
-                    # print(idx,path,DES_dst[idx])
-                    print(msg.id)
+                    # print("FOR LOOOP")
+                    # # print(idx,path,DES_dst[idx])
+                    # print(msg.id)
                     self.network_ctrl_pipe.put(msg)
         except KeyError:
             self.logger.warning(
@@ -319,12 +319,12 @@ class Sim:
                 # arista set by (src_int,message.dst_int)
                 link = (src_int, message.dst_int)
 
-                print "NetworkProcess --- Current time %d " %self.env.now
-                print "name " + message.name
-                print "Path:",message.path
-                print "DST_INT:",message.dst_int
-                print message.timestamp
-                print "DST",message.dst
+                # print "NetworkProcess --- Current time %d " %self.env.now
+                # print "name " + message.name
+                # print "Path:",message.path
+                # print "DST_INT:",message.dst_int
+                # print message.timestamp
+                # print "DST",message.dst
 
 
                 # Links in the topology are bidirectional: (a,b) == (b,a)
@@ -351,6 +351,7 @@ class Sim:
                     latency_msg_link = transmit + propagation
 
                     #print "-link: %s -- lat: %d" %(link,latency_msg_link)
+                    
                     if src_int == 0 :
                         self.reward(latency_msg_link)
                     # update link metrics
@@ -1164,13 +1165,13 @@ class Sim:
                     fullAssignation[des] = {
                         "ID": self.alloc_DES[des], "Module": module}
 
-        print "-"*40
-        print "DES\t| TOPO \t| Src.Mod \t| Modules"
-        print ("-" * 40)
-        for k in self.alloc_DES:
-            print k, "\t|", self.alloc_DES[k], "\t|", self.alloc_source[k]["name"] if k in self.alloc_source.keys(
-            ) else "--", "\t\t|", fullAssignation[k]["Module"] if k in fullAssignation.keys() else "--"
-        print "-" * 40
+        # print "-"*40
+        # print "DES\t| TOPO \t| Src.Mod \t| Modules"
+        # print ("-" * 40)
+        # for k in self.alloc_DES:
+        #     print k, "\t|", self.alloc_DES[k], "\t|", self.alloc_source[k]["name"] if k in self.alloc_source.keys(
+        #     ) else "--", "\t\t|", fullAssignation[k]["Module"] if k in fullAssignation.keys() else "--"
+        # print "-" * 40
         # exit()
 
     #
@@ -1325,7 +1326,7 @@ class Sim:
 
         sensor_IDs = self.topology.find_IDs({"mytag": "sensor"})
 
-        print(sensor_IDs)
+        # print(sensor_IDs)
 
         if len(sensor_IDs) > 0:
 
@@ -1335,7 +1336,7 @@ class Sim:
 
         sensor_IDs = self.topology.find_IDs({"mytag": "sensor"})
 
-        print(sensor_IDs)
+        # print(sensor_IDs)
 
     def update_bands(self):
         value = {"mytag": "cloud"}
@@ -1416,7 +1417,7 @@ class Sim:
             #print("test running")
             # print(self.env.now)
             if self.env.now % 30 == 0:
-                print(self.env.now % 30)
+                # print(self.env.now % 30)
                 value = {"mytag": "cloud"}
                 id_cluster = self.topology.find_IDs(value)
                 # print("Updating.....")
@@ -1605,7 +1606,7 @@ class Sim:
         for place in self.placement_policy.itervalues():
             for app_name in place["apps"]:
 
-                print "APP_NAME ", app_name
+                # print "APP_NAME ", app_name
                 # internally consideres the apps in charge
                 place["placement_policy"].initial_allocation(self, app_name)
 
@@ -1634,7 +1635,7 @@ class Sim:
 
         if not test_initial_deploy:
             # This does not stop the simpy.simulation at time. We have to force the stop
-            print(self.env.now)
+            # print(self.env.now)
             self.env.run(until=until)
         # while not self.stop :
 

@@ -123,9 +123,9 @@ class CustomPath(Selection):
 
         # MANDATORY FIELDS
 
-        self.number_of_sensor_nodes = random.randint(4, 8)
+        self.number_of_sensor_nodes = random.randint(4, 24)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(1, 3)
+        self.number_of_compute_nodes = random.randint(1, 17)
 
         topology_json = {}
         topology_json["entity"] = []
@@ -204,15 +204,15 @@ class CustomPath(Selection):
         DES_dst = alloc_module[app_name][message.dst]
 
         curr_traff = traffic
-        print ("traffic : ", traffic)
-        print ("GET PATH")
+        # print ("traffic : ", traffic)
+        # print ("GET PATH")
         # print(alloc_DES)
         # print(sim.topology.get_nodes_att())
         # print(sim.__get_id_process())
         # print(sim.get_stats())
-        print ("\tNode _ src (id_topology): %i" % node_src)
-        print ("\tRequest service: %s " % message.dst)
-        print ("\tProcess serving that service: %s " % DES_dst)
+        # print ("\tNode _ src (id_topology): %i" % node_src)
+        # print ("\tRequest service: %s " % message.dst)
+        # print ("\tProcess serving that service: %s " % DES_dst)
         
         
         global final_node
@@ -221,12 +221,12 @@ class CustomPath(Selection):
             new_arr = []
             new_path = []
             if node_src == self.test_sensor:
-                print("This is the test sensor")
+                # print("This is the test sensor")
                 # State Computation
                 value = {"mytag": "cloud"}
                 id_cluster = sim.topology.find_IDs(value)
-                print("Updating.....")
-                print(sim.env.now)
+                # print("Updating.....")
+                # print(sim.env.now)
 
                 current_state = dict()
                 current_bandwidths = dict()
@@ -237,7 +237,7 @@ class CustomPath(Selection):
 
                 smallest_node = min(id_cluster)
 
-                print("the minimum ID of edges is : ", smallest_node)
+                # print("the minimum ID of edges is : ", smallest_node)
 
                 for edge_node in id_cluster:
                     one_link = (self.test_sensor, edge_node)
@@ -294,7 +294,7 @@ class CustomPath(Selection):
                 destination_nodes = set()
                 for a in DES_dst:
                     destination_nodes.add(alloc_DES[a])
-                print("destination nodes : ", destination_nodes)
+                # print("destination nodes : ", destination_nodes)
 
                 min_val = 1000000000
                 final_node = 0
@@ -326,9 +326,9 @@ class CustomPath(Selection):
                 sim.topology.nodeAttributes[one_final_node]["sensors_accessing"].add(
                     node_src)
                 sim.update_bands()
-                print("sensors accessing : ")
-                print(
-                    sim.topology.nodeAttributes[one_final_node]["sensors_accessing"])
+                # print("sensors accessing : ")
+                # print(
+                #     sim.topology.nodeAttributes[one_final_node]["sensors_accessing"])
 
                 size_bits = message.bytes
 
@@ -388,7 +388,7 @@ class CustomPath(Selection):
             dst_node = 0
             for des in DES_dst:  # In this case, there are only one deployment
                 dst_node = alloc_DES[des]
-                print ("\t\t Looking the path to id_node: %i" % dst_node)
+                # print ("\t\t Looking the path to id_node: %i" % dst_node)
 
                 path = list(nx.shortest_path(sim.topology.G,
                                              source=node_src, target=dst_node))
@@ -399,7 +399,7 @@ class CustomPath(Selection):
             # print " link bw"
             # print sim.topology.get_edge((node_src, dst_node))[
             #     Topology.LINK_BW]
-        print('Best Path : {}'.format(bestPath))
-        print('Best Des : {}'.format(bestDES))
+        # print('Best Path : {}'.format(bestPath))
+        # print('Best Des : {}'.format(bestDES))
 
         return bestPath, bestDES

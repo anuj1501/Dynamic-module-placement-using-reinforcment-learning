@@ -1,4 +1,5 @@
 import numpy as np  
+import pandas as pd
 from PIL import Image  
 import pickle  
 import time  
@@ -8,7 +9,7 @@ import json
 import sys
 import matplotlib.pyplot as plt
 
-NO_EPISODES = 1 
+NO_EPISODES = 10
 epsilon = 1
 EPS_DECAY = 0.01 
 
@@ -38,7 +39,7 @@ mean_latency = 0
 
 gamma = 0
 
-beta = 3
+beta = 15
 
 if start_q_table is None:
     q_table = {}
@@ -93,8 +94,10 @@ def get_action(state):
     global gamma
     global epsilon
     global EPS_DECAY
+    global beta
 
-    subsets = get_subsets(set([0,1,2]))
+
+    subsets = get_subsets(set([x for x in range(beta)]))
 
     new_state = {}
 
@@ -103,16 +106,16 @@ def get_action(state):
 
     new_state['memories'] = {}
     new_state['bandwidth'] = {}
-    for a in range(0,3):
+
+    for a in range(0,beta):
         new_state['memories'][a] = (math.floor(state['memories'][a][0] - state['memories'][a][0]%200),math.floor(state['memories'][a][1] - state['memories'][a][1]%200))
         new_state['bandwidth'][a] = (math.floor(state['bandwidth'][a][0] - state['bandwidth'][a][0]%6),math.floor(state['bandwidth'][a][0] - state['bandwidth'][a][0]%6))
-
+    
     new_state = json.dumps(new_state)
     if q_table.get(new_state) is None:
-        q_table[new_state] =  [np.random.uniform(-5, 0) for a in range(7)]
+        q_table[new_state] =  [np.random.uniform(-5, 0) for a in range(2**beta - 1)]
    
     q_vals = q_table[new_state]
-
     random_value = np.random.uniform(0,1)
 
     if random_value > epsilon:
@@ -123,19 +126,19 @@ def get_action(state):
 
         action = np.random.randint(0,len(q_vals))
 
-    print("action :",action)
+    # print("action :",action)
     epsilon -= EPS_DECAY
 
     current_state = new_state
     current_action = action
 
 
-    print("action : ",action)
-    print(subsets)
+    # print("action : ",action)
+    # print(subsets)
     return_arr = subsets[action]
     is_first = True
-    print(return_arr)
-    print("List of edge indices : ",return_arr)
+    # print(return_arr)
+    # print("List of edge indices : ",return_arr)
 
     gamma = len(return_arr)
 
@@ -152,7 +155,6 @@ def reward(obs_latency):
     global mean_latency
     global beta
     global gamma
-    # print("visited")
     if is_first:
         # print("Reward function {}".format(obs_latency))
 
@@ -214,9 +216,12 @@ for episode in range(NO_EPISODES):
 
     epsilon *= EPS_DECAY
 
-print(latencies)
+
 plt.plot(np.arange(len(latencies)), latencies)
 plt.show()
+plt.savefig("reward.png")
+
+
 # sys.stdout.close()
 
 # with open(f"qtable-{int(time.time())}.pickle", "wb") as f:

@@ -257,9 +257,11 @@ class Topology:
 
     def show(self):
 
-        nx.draw(self.G)
-        mt.pyplot.savefig("Graph.png", format="PNG")
-        mt.pyplot.show()
+        return
+
+        # nx.draw(self.G)
+        # mt.pyplot.savefig("Graph.png", format="PNG")
+        # mt.pyplot.show()
 
     def draw_png(self, path_file):
         fig, ax = mt.pyplot.subplots(nrows=1, ncols=1)
