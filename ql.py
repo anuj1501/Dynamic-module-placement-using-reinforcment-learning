@@ -9,14 +9,18 @@ import json
 import sys
 import matplotlib.pyplot as plt
 
-NO_EPISODES = 10
-epsilon = 1
+total_rewards = []
+total_latency = []
+NO_EPISODES = 100
+epsilon = 0
+min_epsilon = 0.1
 EPS_DECAY = 0.01 
 
 start_q_table = None  
 
 LEARNING_RATE = 0.1
 DISCOUNT = 0.95
+REQUIRED_LATENCY = 3.00009631
 
 
 # #Ranges :-
@@ -34,12 +38,12 @@ DISCOUNT = 0.95
 # }
 
 latencies = []
-
+rewards = []
 mean_latency = 0
 
 gamma = 0
 
-beta = 15
+beta = 10
 
 if start_q_table is None:
     q_table = {}
@@ -127,8 +131,6 @@ def get_action(state):
         action = np.random.randint(0,len(q_vals))
 
     # print("action :",action)
-    epsilon -= EPS_DECAY
-
     current_state = new_state
     current_action = action
 
@@ -152,17 +154,18 @@ def reward(obs_latency):
     global current_state
     global current_action
     global latencies
-    global mean_latency
+    global REQUIRED_LATENCY
     global beta
     global gamma
+    global rewards
     if is_first:
         # print("Reward function {}".format(obs_latency))
 
         latencies.append(obs_latency)
 
-        median_latency = np.median(latencies)
+        # median_latency = np.median(latencies)
 
-        lamda = obs_latency - median_latency
+        lamda = obs_latency - REQUIRED_LATENCY
 
         reward = 0
 
@@ -196,9 +199,11 @@ def reward(obs_latency):
         is_first = False
 
         q_table[current_state][current_action] += reward 
+        rewards.append(reward)
 
     else:
-        print("Didnt run")  
+        pass
+        # print("Didnt run")  
 
 
 
@@ -210,16 +215,20 @@ for episode in range(NO_EPISODES):
 
     print('EPISODE NUMBER {}'.format(episode))
 
-    time.sleep(5)
+    # time.sleep(5)
 
     driver(get_action,reward)
+    total_latency.append(np.mean(latencies))
+    latencies= []
+    total_rewards.append(sum(rewards))
+    rewards = []
+    if epsilon > min_epsilon:
+        epsilon -= EPS_DECAY
 
-    epsilon *= EPS_DECAY
 
-
-plt.plot(np.arange(len(latencies)), latencies)
+plt.plot(np.arange(len(total_latency)), total_latency)
 plt.show()
-plt.savefig("reward.png")
+plt.savefig("episodic_latency.png")
 
 
 # sys.stdout.close()

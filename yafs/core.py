@@ -35,7 +35,8 @@ NETWORK_LIMIT = 100000000
 
 df_band = pd.read_csv('server_output.csv')
 
-band_array = df_band["Bandwidth"]
+temp_band = df_band["Bandwidth"].values
+band_array = temp_band[4:]
 peak_memories = [200, 400, 600]
 input_size_array = [900, 1000, 1100]
 
@@ -45,7 +46,7 @@ ipt_array = []
 for num in range(6, len(df["cycles"])):
     #ipt_val = float( df["cycles"][num] ) / float( df["exe_time"][num] )
     # ipt_array.append(ipt_val)
-    ipt_array.append(df["cycles"][num])
+    ipt_array.append(df["cycles"][num]/(26.8*8))
 # print "ipt_array"
 # print ipt_array
 
@@ -348,7 +349,7 @@ class Sim:
                          Topology.LINK_BW] * 1000000.0)  # MBITS!
                     propagation = self.topology.get_edge(
                         link)[Topology.LINK_PR]
-                    latency_msg_link = transmit + propagation
+                    latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
 
                     #print "-link: %s -- lat: %d" %(link,latency_msg_link)
                     

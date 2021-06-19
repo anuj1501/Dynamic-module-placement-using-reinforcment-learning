@@ -125,7 +125,7 @@ class CustomPath(Selection):
 
         self.number_of_sensor_nodes = random.randint(4, 24)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(1, 17)
+        self.number_of_compute_nodes = random.randint(1, 12)
 
         topology_json = {}
         topology_json["entity"] = []
