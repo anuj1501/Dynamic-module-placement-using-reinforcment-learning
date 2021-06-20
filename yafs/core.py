@@ -352,8 +352,9 @@ class Sim:
                     latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
 
                     #print "-link: %s -- lat: %d" %(link,latency_msg_link)
-                    
                     if src_int == 0 :
+                        # print("latency")
+                        # print(latency_msg_link)
                         self.reward(latency_msg_link)
                     # update link metrics
                     self.metrics.insert_link(
@@ -556,8 +557,8 @@ class Sim:
 
             #print("updating metrics")
             # print(self.env.now)
-                self.topology.nodeAttributes[id_node]["sensors_accessing"].remove(
-                    message.path[0])
+                # self.topology.nodeAttributes[id_node]["sensors_accessing"].remove(
+                #     message.path[0])
             # #print("latency :")
             #print(float(message.timestamp)- float(message.timestamp_rec))
             #self.latencies.append(float(message.timestamp)- float(message.timestamp_rec))
@@ -1352,67 +1353,96 @@ class Sim:
 
         links = self.topology.get_edges()
         for link in links:
-            if link[1] in num_sensors.keys():
+                    
+            if link[1] in id_cluster:
                 temp_data = self.topology.nodeAttributes[link[0]]["model"]
                 if "sensor" in temp_data:
-                    num_sensors[link[1]] += 1
+                    if link[1] in num_sensors.keys():
+                        num_sensors[link[1]] += 1
+                    else:
+                        num_sensors[link[1]] = 1
             else:
                 temp_data = self.topology.nodeAttributes[link[1]]["model"]
                 if "sensor" in temp_data:
-                    num_sensors[link[0]] += 1
+                    if link[0] in num_sensors.keys():
+                        num_sensors[link[0]] += 1
+                    else:
+                        num_sensors[link[0]] = 1
 
         for link in links:
             #print("link : ")
             # print(link)
-            # print(self.topology.get_edge(link))
-            if link[1] in num_sensors.keys():
+            # print(self.topology.G)
+            
+            if link[1] in id_cluster:
+                
                 temp_data = self.topology.nodeAttributes[link[0]]["model"]
+                
                 if "sensor" in temp_data:
+                    
                     if link[0] in self.topology.nodeAttributes[link[1]]["sensors_accessing"]:
+
+                        
                         node_bandwidth = self.topology.nodeAttributes[link[1]
-                                                                      ]["device_bandwidth"]
+                                                                        ]["device_bandwidth"]
                         accessing_s = len(
                             self.topology.nodeAttributes[link[1]]["sensors_accessing"])
                         if accessing_s == 0:
                             accessing_s = 1
-                        temp_val = node_bandwidth / \
+                        
+                        
+                        temp_val = float(node_bandwidth) / \
                             (num_services[link[1]] * accessing_s)
+                        
                         if self.topology.nodeAttributes[link[0]]["device_bandwidth"] > temp_val:
+                            
                             self.topology.get_edge(
                                 link)[self.topology.LINK_BW] = temp_val
                         else:
+                            
                             self.topology.get_edge(link)[
                                 self.topology.LINK_BW] = self.topology.nodeAttributes[link[0]]["device_bandwidth"]
                             self.topology.nodeAttributes[link[1]]["unitilised_bandwidth"] += temp_val - \
                                 self.topology.nodeAttributes[link[0]
-                                                             ]["device_bandwidth"]
+                                                                ]["device_bandwidth"]
                     else:
+                        
                         self.topology.get_edge(
-                            link)[self.topology.LINK_BW] = 0.00001
+                            link)[self.topology.LINK_BW] = 0.2
 
             else:
+                
                 temp_data = self.topology.nodeAttributes[link[1]]["model"]
-                if "sensor" in temp_data:
+                
+                if "sensor" in temp_data.lower():
+                    
                     if link[1] in self.topology.nodeAttributes[link[0]]["sensors_accessing"]:
+                        
                         node_bandwidth = self.topology.nodeAttributes[link[0]
-                                                                      ]["device_bandwidth"]
+                                                                        ]["device_bandwidth"]
                         accessing_s = len(
                             self.topology.nodeAttributes[link[0]]["sensors_accessing"])
-                        temp_val = node_bandwidth / \
+                        
+                        temp_val = float(node_bandwidth) / \
                             (num_services[link[0]] * accessing_s)
+                        
                         if self.topology.nodeAttributes[link[1]]["device_bandwidth"] > temp_val:
+                            
                             self.topology.get_edge(
                                 link)[self.topology.LINK_BW] = temp_val
                         else:
+                            
                             self.topology.get_edge(link)[
                                 self.topology.LINK_BW] = self.topology.nodeAttributes[link[1]]["device_bandwidth"]
                             self.topology.nodeAttributes[link[0]]["unitilised_bandwidth"] += temp_val - \
                                 self.topology.nodeAttributes[link[1]
-                                                             ]["device_bandwidth"]
+                                                                ]["device_bandwidth"]
                     else:
+                        
                         self.topology.get_edge(
-                            link)[self.topology.LINK_BW] = 0.000001
+                            link)[self.topology.LINK_BW] = 0.2
 
+        
     def my_proc(self):
         while True:
             #print("test running")
@@ -1485,66 +1515,100 @@ class Sim:
 
                 links = self.topology.get_edges()
                 for link in links:
-                    if link[1] in num_sensors.keys():
+                    
+                    if link[1] in id_cluster:
                         temp_data = self.topology.nodeAttributes[link[0]]["model"]
                         if "sensor" in temp_data:
-                            num_sensors[link[1]] += 1
-                        else:
-                            temp_data = self.topology.nodeAttributes[link[1]]["model"]
-                            if "sensor" in temp_data:
+                            if link[1] in num_sensors.keys():
+                                num_sensors[link[1]] += 1
+                            else:
+                                num_sensors[link[1]] = 1
+                    else:
+                        temp_data = self.topology.nodeAttributes[link[1]]["model"]
+                        if "sensor" in temp_data:
+                            if link[0] in num_sensors.keys():
                                 num_sensors[link[0]] += 1
+                            else:
+                                num_sensors[link[0]] = 1
 
                 for link in links:
                     #print("link : ")
                     # print(link)
                     # print(self.topology.G)
-                    if link[1] in num_sensors.keys():
+                    
+                    if link[1] in id_cluster:
+                        
                         temp_data = self.topology.nodeAttributes[link[0]]["model"]
+                        
                         if "sensor" in temp_data:
-                            if link[0] in self.topology.nodeAttributes[link[1]]["sensors_accessing"]:
+                            
+                            # if link[0] in self.topology.nodeAttributes[link[1]]["sensors_accessing"]:
+                            if True:
+                                
                                 node_bandwidth = self.topology.nodeAttributes[link[1]
                                                                               ]["device_bandwidth"]
                                 accessing_s = len(
                                     self.topology.nodeAttributes[link[1]]["sensors_accessing"])
                                 if accessing_s == 0:
                                     accessing_s = 1
-                                temp_val = node_bandwidth / \
+                                
+                                
+                                temp_val = float(node_bandwidth) / \
                                     (num_services[link[1]] * accessing_s)
+                                
+                                if temp_val < 1:
+                                    temp_val = 1.0
                                 if self.topology.nodeAttributes[link[0]]["device_bandwidth"] > temp_val:
+                                    
                                     self.topology.get_edge(
                                         link)[self.topology.LINK_BW] = temp_val
                                 else:
+                                    
                                     self.topology.get_edge(link)[
                                         self.topology.LINK_BW] = self.topology.nodeAttributes[link[0]]["device_bandwidth"]
                                     self.topology.nodeAttributes[link[1]]["unitilised_bandwidth"] += temp_val - \
                                         self.topology.nodeAttributes[link[0]
                                                                      ]["device_bandwidth"]
                             else:
+                                
                                 self.topology.get_edge(
-                                    link)[self.topology.LINK_BW] = 0.00001
+                                    link)[self.topology.LINK_BW] = 0.2
 
                     else:
+                        
                         temp_data = self.topology.nodeAttributes[link[1]]["model"]
-                        if "sensor" in temp_data:
-                            if link[1] in self.topology.nodeAttributes[link[0]]["sensors_accessing"]:
+                        
+                        if "sensor" in temp_data.lower():
+                            
+                            # if link[1] in self.topology.nodeAttributes[link[0]]["sensors_accessing"]:
+                            if True:
+                                
                                 node_bandwidth = self.topology.nodeAttributes[link[0]
                                                                               ]["device_bandwidth"]
                                 accessing_s = len(
                                     self.topology.nodeAttributes[link[0]]["sensors_accessing"])
-                                temp_val = node_bandwidth / \
+                                
+                                temp_val = float(node_bandwidth) / \
                                     (num_services[link[0]] * accessing_s)
+                                
+                                if temp_val < 1:
+                                    temp_val = 1.0
+                                
                                 if self.topology.nodeAttributes[link[1]]["device_bandwidth"] > temp_val:
+                                    
                                     self.topology.get_edge(
                                         link)[self.topology.LINK_BW] = temp_val
                                 else:
+                                    
                                     self.topology.get_edge(link)[
                                         self.topology.LINK_BW] = self.topology.nodeAttributes[link[1]]["device_bandwidth"]
                                     self.topology.nodeAttributes[link[0]]["unitilised_bandwidth"] += temp_val - \
                                         self.topology.nodeAttributes[link[1]
                                                                      ]["device_bandwidth"]
                             else:
+                                
                                 self.topology.get_edge(
-                                    link)[self.topology.LINK_BW] = 0.000001
+                                    link)[self.topology.LINK_BW] = 0.2
 
             yield self.env.timeout(1)
 

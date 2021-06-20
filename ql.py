@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 
 total_rewards = []
 total_latency = []
-NO_EPISODES = 100
-epsilon = 0
+NO_EPISODES = 30
+epsilon = 0.4
 min_epsilon = 0.1
 EPS_DECAY = 0.01 
 
@@ -100,7 +100,7 @@ def get_action(state):
     global EPS_DECAY
     global beta
 
-
+    # print(state)
     subsets = get_subsets(set([x for x in range(beta)]))
 
     new_state = {}
@@ -111,16 +111,25 @@ def get_action(state):
     new_state['memories'] = {}
     new_state['bandwidth'] = {}
 
-    for a in range(0,beta):
+    for a in range(0,len(state['PR'])):
         new_state['memories'][a] = (math.floor(state['memories'][a][0] - state['memories'][a][0]%200),math.floor(state['memories'][a][1] - state['memories'][a][1]%200))
         new_state['bandwidth'][a] = (math.floor(state['bandwidth'][a][0] - state['bandwidth'][a][0]%6),math.floor(state['bandwidth'][a][0] - state['bandwidth'][a][0]%6))
     
+    for a in range(len(state['PR']), beta):
+        new_state['PR'][a] = 15
+        new_state['bandwidth'][a] = (-1,-1)
+        new_state['memories'][a] = (0,0)
+
     new_state = json.dumps(new_state)
+    # print new_state
+    # print "\n"*2
     if q_table.get(new_state) is None:
         q_table[new_state] =  [np.random.uniform(-5, 0) for a in range(2**beta - 1)]
    
     q_vals = q_table[new_state]
     random_value = np.random.uniform(0,1)
+
+    valid_subsets = get_subsets(set([x for x in range(len(state['PR']))]))
 
     if random_value > epsilon:
 
@@ -130,6 +139,7 @@ def get_action(state):
 
         action = np.random.randint(0,len(q_vals))
 
+
     # print("action :",action)
     current_state = new_state
     current_action = action
@@ -138,6 +148,14 @@ def get_action(state):
     # print("action : ",action)
     # print(subsets)
     return_arr = subsets[action]
+
+    for valid_subset in valid_subsets:
+        # print("lol")
+        # print(type(return_arr))
+        # print(type(valid_subset))
+        if return_arr == valid_subset:
+                
+            q_table[new_state][action] -= 10000
     is_first = True
     # print(return_arr)
     # print("List of edge indices : ",return_arr)
@@ -160,7 +178,7 @@ def reward(obs_latency):
     global rewards
     if is_first:
         # print("Reward function {}".format(obs_latency))
-
+        # print obs_latency
         latencies.append(obs_latency)
 
         # median_latency = np.median(latencies)

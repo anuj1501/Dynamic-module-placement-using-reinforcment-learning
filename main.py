@@ -34,7 +34,7 @@ import numpy as np
 
 import sys
 
-RANDOM_SEED = 1
+# RANDOM_SEED = 0
 
 sys.dont_write_bytecode = True
 
@@ -42,8 +42,8 @@ sys.dont_write_bytecode = True
 # @profile
 def main(get_action,reward,add_time, iteration, simulated_time):
 
-    random.seed(RANDOM_SEED)
-    np.random.seed(RANDOM_SEED)
+    # random.seed(RANDOM_SEED)
+    # np.random.seed(RANDOM_SEED)
 
     """
     PLACEMENT algorithm

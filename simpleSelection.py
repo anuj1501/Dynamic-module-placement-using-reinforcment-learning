@@ -256,6 +256,10 @@ class CustomPath(Selection):
                 current_state["PR"] = current_prs
                 current_state["memories"] = memories
                 current_state["input_size"] = message.bytes
+
+                # print(current_state)
+
+                # print current_state
                 self.states.append(current_state)
 
                 # change 5 to a global variable =  history of the states
@@ -325,7 +329,7 @@ class CustomPath(Selection):
             for one_final_node in final_node:
                 sim.topology.nodeAttributes[one_final_node]["sensors_accessing"].add(
                     node_src)
-                sim.update_bands()
+                # sim.update_bands()
                 # print("sensors accessing : ")
                 # print(
                 #     sim.topology.nodeAttributes[one_final_node]["sensors_accessing"])
