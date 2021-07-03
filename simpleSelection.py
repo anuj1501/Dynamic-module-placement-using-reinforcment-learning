@@ -100,14 +100,14 @@ class CustomPath(Selection):
             for j in range(self.number_of_compute_nodes):
 
                 link = {"s": i, "d": j + self.number_of_sensor_nodes + 1, "BW": 1,
-                                "PR": random.randint(1, 3)}
+                                "PR": random.randint(1, 10)}
 
                 t["link"].append(link)
 
         for j in range(self.number_of_compute_nodes):
 
             link = {"s": j + self.number_of_sensor_nodes + 1, "d": self.number_of_sensor_nodes, "BW": 1,
-                    "PR": 1} #random.randint(1, 3)}
+                    "PR": random.randint(1, 10)}
 
             t["link"].append(link)
 
@@ -125,7 +125,7 @@ class CustomPath(Selection):
 
         self.number_of_sensor_nodes = random.randint(9, 11)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(1,10)
+        self.number_of_compute_nodes = random.randint(3,10)
 
         # print("sensors : ", self.number_of_sensor_nodes)
         # print("edges : ", self.number_of_compute_nodes)

@@ -18,7 +18,7 @@ import collections
 import matplotlib.pyplot as plt
 
 #Global Variables
-NO_EPISODES = 100
+NO_EPISODES = 30
 TRAIN_END = 0
 current_state = ''
 current_action = 0
@@ -104,9 +104,11 @@ class DeepQNetwork():
                 
     def build_model(self):
         model = keras.Sequential() 
-        model.add(keras.layers.Dense(24, input_dim=self.nS, activation='relu')) 
+        model.add(keras.layers.Dense(32, input_dim=self.nS, activation='relu')) 
 
-        model.add(keras.layers.Dense(24, activation='relu')) 
+        model.add(keras.layers.Dense(64, activation='relu')) 
+        model.add(keras.layers.Dense(128, activation='relu')) 
+
         model.add(keras.layers.Dense(self.nA, activation='linear')) 
 
         model.compile(loss='mean_squared_error', 
@@ -165,7 +167,6 @@ class DeepQNetwork():
         if valid:
             return return_arr
         else:
-            
             return valid_subsets[0]
 
 
@@ -211,7 +212,7 @@ class DeepQNetwork():
         #Reshape for Keras Fit
         x_reshape = np.array(x).reshape(batch_size,self.nS)
         y_reshape = np.array(y)
-        epoch_count = 1 #Epochs is the number or iterations
+        epoch_count = 10 #Epochs is the number or iterations
         hist = self.model.fit(x_reshape, y_reshape, epochs=epoch_count, verbose=0)
         #Graph Losses
         for i in range(epoch_count):
@@ -294,7 +295,9 @@ class DeepQNetwork():
 #Create the agent
 nS = 5*beta + 1
 nA = 2**beta - 1
-dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 0.4, 0.1, 0.01)
+dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 0.4, 0.1, 0.001)
+print(dqn.model.summary())
+
 
 for episode in range(NO_EPISODES):
 
@@ -303,7 +306,7 @@ for episode in range(NO_EPISODES):
     driver(dqn.get_action,dqn.reward)
 
     print("episode: {}/{}, score: {}, e: {}"
-                  .format(episode, NO_EPISODES, sum(rewards), dqn.epsilon))
+                  .format(episode+1, NO_EPISODES, sum(rewards), dqn.epsilon))
     # print("latencies : ", latencies)
     total_latency.append(np.mean(latencies))
     latencies= []
