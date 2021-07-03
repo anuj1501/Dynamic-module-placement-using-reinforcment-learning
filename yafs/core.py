@@ -294,7 +294,7 @@ class Sim:
 
         while not self.stop:
             #print("network running")
-
+            
             message = yield self.network_ctrl_pipe.get()
 
 
@@ -318,8 +318,8 @@ class Sim:
                     message.dst_int = message.path[message.path.index(
                         message.dst_int) + 1]
                 # arista set by (src_int,message.dst_int)
-                link = (src_int, message.dst_int)
-
+            link = (src_int, message.dst_int)
+            
                 # print "NetworkProcess --- Current time %d " %self.env.now
                 # print "name " + message.name
                 # print "Path:",message.path
@@ -328,73 +328,78 @@ class Sim:
                 # print "DST",message.dst
 
 
-                # Links in the topology are bidirectional: (a,b) == (b,a)
-                try:
-                    last_used = self.last_busy_time[link]
-                except KeyError:
-                    last_used = 0.0
+            # Links in the topology are bidirectional: (a,b) == (b,a)
+            try:
+                last_used = self.last_busy_time[link]
+            except KeyError:
+                last_used = 0.0
                     # self.last_busy_time[link] = last_used
-
+            
                     #link = (message.dst_int, src_int)
                     #last_used = self.last_busy_time[link]
-                """
-                Computing message latency
-                """
-                size_bits = message.bytes
-                #size_bits = message.bytes * 8
-                try:
-                   # transmit = size_bits / (self.topology.get_edge(link)[Topology.LINK_BW] * 1000000.0)  # MBITS!
-                    transmit = size_bits / \
-                        (self.topology.get_edge(link)[
-                         Topology.LINK_BW] * 1000000.0)  # MBITS!
-                    propagation = self.topology.get_edge(
-                        link)[Topology.LINK_PR]
-                    latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
+            """
+            Computing message latency
+            """
+            size_bits = message.bytes
+            #size_bits = message.bytes * 8
+            try:
+                # transmit = size_bits / (self.topology.get_edge(link)[Topology.LINK_BW] * 1000000.0)  # MBITS!
+                transmit = size_bits / \
+                    (self.topology.get_edge(link)[
+                        Topology.LINK_BW] * 1000000.0)  # MBITS!
+                propagation = self.topology.get_edge(
+                    link)[Topology.LINK_PR]
+                latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
+                
+                #print "-link: %s -- lat: %d" %(link,latency_msg_link)
+                
+                if src_int == 0 :
+                    # print("success")
+                    # print("latency")
+                    # print(latency_msg_link)
+                    self.reward(latency_msg_link)
+                
+                # update link metrics
+                self.metrics.insert_link(
+                    {"id": message.id, "type": self.LINK_METRIC, "src": link[0], "dst": link[1], "app": message.app_name, "latency": latency_msg_link, "message": message.name, "ctime": self.env.now, "size": message.bytes, "buffer": self.network_pump})  # "path":message.path})
 
-                    #print "-link: %s -- lat: %d" %(link,latency_msg_link)
-                    if src_int == 0 :
-                        # print("latency")
-                        # print(latency_msg_link)
-                        self.reward(latency_msg_link)
-                    # update link metrics
-                    self.metrics.insert_link(
-                        {"id": message.id, "type": self.LINK_METRIC, "src": link[0], "dst": link[1], "app": message.app_name, "latency": latency_msg_link, "message": message.name, "ctime": self.env.now, "size": message.bytes, "buffer": self.network_pump})  # "path":message.path})
+                # We compute the future latency considering the current utilization of the link
+                if last_used < self.env.now:
+                    shift_time = 0.0
+                    last_used = latency_msg_link + self.env.now  # future arrival time
+                else:
+                    shift_time = last_used - self.env.now
+                    last_used = self.env.now + shift_time + latency_msg_link
+                
+                # print "Send next WakeUp : ", last_used
+                # print "-" * 30
 
-                    # We compute the future latency considering the current utilization of the link
-                    if last_used < self.env.now:
-                        shift_time = 0.0
-                        last_used = latency_msg_link + self.env.now  # future arrival time
-                    else:
-                        shift_time = last_used - self.env.now
-                        last_used = self.env.now + shift_time + latency_msg_link
+                self.last_busy_time[link] = last_used
+                self.env.process(self.__wait_message(
+                    message, latency_msg_link, shift_time))
+                
+            except:
+                # This fact is produced when a node or edge the topology is changed or disappeared
+                self.logger.warning("The initial path assigned is unreachabled. Link: (%i,%i). Routing a new one. %i" % (
+                    link[0], link[1], self.env.now))
 
-                    # print "Send next WakeUp : ", last_used
-                    # print "-" * 30
+                paths, DES_dst = self.selector_path[message.app_name].get_path_from_failure(
+                    self, message, link, self.alloc_DES, self.alloc_module, self.last_busy_time, self.env.now, from_des=message.idDES)
 
-                    self.last_busy_time[link] = last_used
-                    self.env.process(self.__wait_message(
-                        message, latency_msg_link, shift_time))
-                except:
-                    # This fact is produced when a node or edge the topology is changed or disappeared
-                    self.logger.warning("The initial path assigned is unreachabled. Link: (%i,%i). Routing a new one. %i" % (
-                        link[0], link[1], self.env.now))
+                if DES_dst == [] and paths == []:
+                    # Message communication ending:
+                    # The message have arrived to the destination node but it is unavailable.
+                    None
+                    self.logger.debug("\t No path given. Message is lost")
+                else:
 
-                    paths, DES_dst = self.selector_path[message.app_name].get_path_from_failure(
-                        self, message, link, self.alloc_DES, self.alloc_module, self.last_busy_time, self.env.now, from_des=message.idDES)
-
-                    if DES_dst == [] and paths == []:
-                        # Message communication ending:
-                        # The message have arrived to the destination node but it is unavailable.
-                        None
-                        self.logger.debug("\t No path given. Message is lost")
-                    else:
-
-                        message.path = copy.copy(paths[0])
-                        message.idDES = DES_dst[0]
-                        self.logger.debug(
-                            "(\t New path given. Message is enrouting again.")
-                        # print "\t",msg.path
-                        self.network_ctrl_pipe.put(message)
+                    message.path = copy.copy(paths[0])
+                    message.idDES = DES_dst[0]
+                    self.logger.debug(
+                        "(\t New path given. Message is enrouting again.")
+                    # print "\t",msg.path
+                    self.network_ctrl_pipe.put(message)
+            
 
     def __wait_message(self, msg, latency, shift_time):
         """
@@ -1322,21 +1327,6 @@ class Sim:
     def set_movement_control(self, evol):
         self.control_movement_class = evol
 
-    def create_sensors(self):
-
-        no_of_sensors = random.randint(3, 11)
-
-        sensor_IDs = self.topology.find_IDs({"mytag": "sensor"})
-
-        # print(sensor_IDs)
-
-        if len(sensor_IDs) > 0:
-
-            for ID in sensor_IDs:
-
-                self.topology.remove_node(ID)
-
-        sensor_IDs = self.topology.find_IDs({"mytag": "sensor"})
 
         # print(sensor_IDs)
 
@@ -1447,7 +1437,7 @@ class Sim:
         while True:
             #print("test running")
             # print(self.env.now)
-            if self.env.now % 30 == 0:
+            if self.env.now % 25 == 0:
                 # print(self.env.now % 30)
                 value = {"mytag": "cloud"}
                 id_cluster = self.topology.find_IDs(value)

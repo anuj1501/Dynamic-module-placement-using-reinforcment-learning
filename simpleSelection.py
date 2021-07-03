@@ -64,13 +64,13 @@ class CustomPath(Selection):
         self.pop = None
         self.app = None
         self.get_action = get_action
+        self.test_sensor = 0
 
     def init_state(self, sim):
         self.states = []
 
         # self.latencies = []
 
-        self.test_sensor = 0
         for node, val in sim.topology.nodeAttributes.items():
             if "sensor" in val["model"]:
                 self.test_sensor = node
@@ -100,14 +100,14 @@ class CustomPath(Selection):
             for j in range(self.number_of_compute_nodes):
 
                 link = {"s": i, "d": j + self.number_of_sensor_nodes + 1, "BW": 1,
-                                "PR": random.randint(1, 10)}
+                                "PR": random.randint(1, 3)}
 
                 t["link"].append(link)
 
         for j in range(self.number_of_compute_nodes):
 
             link = {"s": j + self.number_of_sensor_nodes + 1, "d": self.number_of_sensor_nodes, "BW": 1,
-                    "PR": random.randint(1, 10)}
+                    "PR": 1} #random.randint(1, 3)}
 
             t["link"].append(link)
 
@@ -123,9 +123,12 @@ class CustomPath(Selection):
 
         # MANDATORY FIELDS
 
-        self.number_of_sensor_nodes = random.randint(4, 24)
+        self.number_of_sensor_nodes = random.randint(9, 11)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(1, 12)
+        self.number_of_compute_nodes = random.randint(1,10)
+
+        # print("sensors : ", self.number_of_sensor_nodes)
+        # print("edges : ", self.number_of_compute_nodes)
 
         topology_json = {}
         topology_json["entity"] = []
@@ -272,9 +275,13 @@ class CustomPath(Selection):
                 #####
 
                 list_node_id = self.get_action(current_state)
+                
 
                 for m in range(len(list_node_id)):
                     list_node_id[m] += smallest_node
+
+                # print("smallest edge : ", smallest_node)
+                # print("Edges : ", list_node_id)
 
                 alloc_des_reverse = {v: k for k, v in alloc_DES.iteritems()}
 
