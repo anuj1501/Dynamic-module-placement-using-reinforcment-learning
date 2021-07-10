@@ -350,7 +350,7 @@ class Sim:
                 propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
                 latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
-                
+                # latency_msg_link = transmit + propagation
                 #print "-link: %s -- lat: %d" %(link,latency_msg_link)
                 
                 if src_int == 0 :
@@ -1437,7 +1437,7 @@ class Sim:
         while True:
             #print("test running")
             # print(self.env.now)
-            if self.env.now % 25 == 0:
+            if self.env.now % 40 == 0:
                 # print(self.env.now % 30)
                 value = {"mytag": "cloud"}
                 id_cluster = self.topology.find_IDs(value)

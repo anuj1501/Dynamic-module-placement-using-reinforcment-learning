@@ -81,7 +81,7 @@ def driver(get_action,reward):
 
     add_time = 0
 
-    for i in range(10):
+    for i in range(3):
 
         main(get_action,reward,add_time, i, simulated_time=100)
 

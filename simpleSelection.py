@@ -123,9 +123,9 @@ class CustomPath(Selection):
 
         # MANDATORY FIELDS
 
-        self.number_of_sensor_nodes = random.randint(9, 11)
+        self.number_of_sensor_nodes = random.randint(6, 8)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(3,10)
+        self.number_of_compute_nodes = random.randint(4,10)
 
         # print("sensors : ", self.number_of_sensor_nodes)
         # print("edges : ", self.number_of_compute_nodes)
@@ -207,16 +207,6 @@ class CustomPath(Selection):
         DES_dst = alloc_module[app_name][message.dst]
 
         curr_traff = traffic
-        # print ("traffic : ", traffic)
-        # print ("GET PATH")
-        # print(alloc_DES)
-        # print(sim.topology.get_nodes_att())
-        # print(sim.__get_id_process())
-        # print(sim.get_stats())
-        # print ("\tNode _ src (id_topology): %i" % node_src)
-        # print ("\tRequest service: %s " % message.dst)
-        # print ("\tProcess serving that service: %s " % DES_dst)
-        
         
         global final_node
 
@@ -297,8 +287,6 @@ class CustomPath(Selection):
                 bestDES = new_arr
                 final_node = list_node_id
       
-
-
             else:
 
                 # Select Node
@@ -307,7 +295,7 @@ class CustomPath(Selection):
                     destination_nodes.add(alloc_DES[a])
                 # print("destination nodes : ", destination_nodes)
 
-                min_val = 1000000000
+                min_val = 10000000
                 final_node = 0
                 alloc_des_reverse = {v: k for k, v in alloc_DES.iteritems()}
 
@@ -324,22 +312,11 @@ class CustomPath(Selection):
                 final_des = alloc_des_reverse[final_node]
                 bestDES = [final_des]
                 final_node = [final_node]
-        # print("band : ")
-        # print( sim.topology.nodeAttributes[final_node]["device_bandwidth"] )
-        # print( "start node :")
-        # print node_src
-        # print( "final node :")
-        # print final_node
 
-            # update dict
-        # print("lol")
             for one_final_node in final_node:
                 sim.topology.nodeAttributes[one_final_node]["sensors_accessing"].add(
                     node_src)
-                # sim.update_bands()
-                # print("sensors accessing : ")
-                # print(
-                #     sim.topology.nodeAttributes[one_final_node]["sensors_accessing"])
+
 
                 size_bits = message.bytes
 
@@ -349,12 +326,7 @@ class CustomPath(Selection):
                                         [Topology.LINK_BW] * 1000000.0)
 
                 propagation = sim.topology.get_edge(link)[Topology.LINK_PR]
-                # print " link bw"
-                # print sim.topology.get_edge(link)[Topology.LINK_BW]
-                # print "transmit"
-                # print transmit
-                # print "propagation"
-                # print propagation
+
 
                 ipt = 1
 
@@ -364,16 +336,7 @@ class CustomPath(Selection):
 
                         ipt = float(value)
 
-                # print "ipt"
-                # print ipt
-
-                # self.dict[final_node] = sim.env.now
-                # print("value is : \n", self.dict[final_node])
-                # self.dict[final_node] = (message.inst / ipt) + transmit + propagation
-                # print("value is : \n", self.dict[final_node])
                 if self.dict[one_final_node] < sim.env.now + transmit + propagation:
-
-                    # print("true")
 
                     self.dict[one_final_node] = sim.env.now
 
@@ -382,35 +345,17 @@ class CustomPath(Selection):
 
                 else:
 
-                    # print("false")
-
                     self.dict[one_final_node] += message.inst / ipt
-
-            # print("new traffic : ", traffic)
-            # print("updated dict : ", self.dict)
-            # print("final node")
-            # print(final_node)
-            # print("final des")
-            # print(final_des)
-            # print message.inst
-            # print self.node_dict[final_node]
 
         else:
             dst_node = 0
-            for des in DES_dst:  # In this case, there are only one deployment
+            for des in DES_dst:  
                 dst_node = alloc_DES[des]
-                # print ("\t\t Looking the path to id_node: %i" % dst_node)
 
                 path = list(nx.shortest_path(sim.topology.G,
                                              source=node_src, target=dst_node))
 
                 bestPath = [path]
                 bestDES = [des]
-
-            # print " link bw"
-            # print sim.topology.get_edge((node_src, dst_node))[
-            #     Topology.LINK_BW]
-        # print('Best Path : {}'.format(bestPath))
-        # print('Best Des : {}'.format(bestDES))
 
         return bestPath, bestDES

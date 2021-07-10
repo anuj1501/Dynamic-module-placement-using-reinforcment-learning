@@ -18,7 +18,7 @@ import collections
 import matplotlib.pyplot as plt
 
 #Global Variables
-NO_EPISODES = 30
+NO_EPISODES = 100
 TRAIN_END = 0
 current_state = ''
 current_action = 0
@@ -29,8 +29,8 @@ rewards = []
 total_rewards = []
 mean_latency = 0
 beta = 10
-batch_size = 24
-REQUIRED_LATENCY = 3.00009631
+batch_size = 256
+REQUIRED_LATENCY = 2.00009631
 #Hyper Parameters
 def discount_rate(): #Gamma
     return 0.95
@@ -87,6 +87,7 @@ def get_state_input(state):
 
 
 
+
 class DeepQNetwork():
     def __init__(self, states, actions, alpha, reward_gamma, epsilon,epsilon_min, epsilon_decay):
         self.nS = states
@@ -103,13 +104,13 @@ class DeepQNetwork():
 
                 
     def build_model(self):
+
         model = keras.Sequential() 
         model.add(keras.layers.Dense(32, input_dim=self.nS, activation='relu')) 
-
-        model.add(keras.layers.Dense(64, activation='relu')) 
+        
         model.add(keras.layers.Dense(128, activation='relu')) 
 
-        model.add(keras.layers.Dense(self.nA, activation='linear')) 
+        model.add(keras.layers.Dense(self.nA, activation='softmax')) 
 
         model.compile(loss='mean_squared_error', 
                       optimizer=keras.optimizers.Adam(lr=self.alpha)) 
@@ -133,7 +134,7 @@ class DeepQNetwork():
 
         # if new_state['bandwidth'] not in all_bands:
         #     all_bands.append(new_state['bandwidth'])
-    
+        
         random_value = np.random.uniform(0,1)
 
         valid_subsets = get_subsets(set([x for x in range(no_of_edges)]))
@@ -156,16 +157,24 @@ class DeepQNetwork():
         return_arr = subsets[action]
 
         valid = False
+        possible_valid_actions = list()
 
         for valid_subset in valid_subsets:
             if return_arr == valid_subset:
                 valid = True
                 break
+
+            elif len(list(set(return_arr) & set(valid_subset))) > 0:
+                possible_valid_actions = list(set(return_arr) & set(valid_subset))
     
         is_first = True
         gamma = len(return_arr)
+
+        
         if valid:
             return return_arr
+        elif len(possible_valid_actions) > 0:
+            return possible_valid_actions
         else:
             return valid_subsets[0]
 
@@ -215,8 +224,10 @@ class DeepQNetwork():
         epoch_count = 10 #Epochs is the number or iterations
         hist = self.model.fit(x_reshape, y_reshape, epochs=epoch_count, verbose=0)
         #Graph Losses
+        loss_sum = 0
         for i in range(epoch_count):
-            self.loss.append( hist.history['loss'][i] )
+            loss_sum += hist.history['loss'][i]
+        self.loss.append(loss_sum / epoch_count)
         #Decay Epsilon
         if self.epsilon > self.epsilon_min:
             self.epsilon -= self.epsilon_decay
@@ -295,7 +306,7 @@ class DeepQNetwork():
 #Create the agent
 nS = 5*beta + 1
 nA = 2**beta - 1
-dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 0.4, 0.1, 0.001)
+dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 0.9, 0.1, 0.001)
 print(dqn.model.summary())
 
 
@@ -314,8 +325,6 @@ for episode in range(NO_EPISODES):
     total_rewards.append(sum(rewards))
     rewards = []
 
-# print("latencies = ", total_latency)
-# print("rewards = ", total_rewards)
 
 plt.figure(1)
 
@@ -329,6 +338,14 @@ plt.savefig("dql_episodic_rewards.png")
 plt.figure(2)
 
 plt.plot(np.arange(len(total_latency)), total_latency)
+
+plt.show()
+
+plt.savefig("dql_episodic_latency.png")
+
+plt.figure(3)
+
+plt.plot(np.arange(len(dqn.loss)), dqn.loss)
 
 plt.show()
 
