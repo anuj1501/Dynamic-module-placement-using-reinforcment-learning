@@ -123,9 +123,9 @@ class CustomPath(Selection):
 
         # MANDATORY FIELDS
 
-        self.number_of_sensor_nodes = random.randint(6, 8)
+        self.number_of_sensor_nodes = random.randint(6, 10)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(4,10)
+        self.number_of_compute_nodes = random.randint(3,7)
 
         # print("sensors : ", self.number_of_sensor_nodes)
         # print("edges : ", self.number_of_compute_nodes)

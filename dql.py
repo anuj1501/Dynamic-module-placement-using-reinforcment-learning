@@ -16,21 +16,34 @@ import json
 import sys
 import collections
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use( 'tkagg' )
+from matplotlib import style
+
+style.use("ggplot")
+# config = tf.ConfigProto( device_count = {'GPU': 1} ) 
+# sess = tf.Session(config=config) 
+# keras.backend.set_session(sess)
 
 #Global Variables
-NO_EPISODES = 100
+NO_EPISODES = 1000
 TRAIN_END = 0
 current_state = ''
 current_action = 0
 is_first = True
+invalid_action = False
 latencies = []
 total_latency = []
 rewards = []
 total_rewards = []
 mean_latency = 0
-beta = 10
-batch_size = 256
-REQUIRED_LATENCY = 2.00009631
+beta = 7
+batch_size = 192
+REQUIRED_LATENCY = 4.00009631
+
+
+def calculate_required_latency(message_size,bandwidth_of_handle):
+    pass
 #Hyper Parameters
 def discount_rate(): #Gamma
     return 0.95
@@ -106,13 +119,13 @@ class DeepQNetwork():
     def build_model(self):
 
         model = keras.Sequential() 
-        model.add(keras.layers.Dense(32, input_dim=self.nS, activation='relu')) 
+        model.add(keras.layers.Dense(self.nS*2, input_dim=self.nS, activation='relu')) 
         
-        model.add(keras.layers.Dense(128, activation='relu')) 
+        # model.add(keras.layers.Dense(self.ns*4, activation='relu')) 
 
         model.add(keras.layers.Dense(self.nA, activation='softmax')) 
 
-        model.compile(loss='mean_squared_error', 
+        model.compile(loss='categorical_crossentropy', 
                       optimizer=keras.optimizers.Adam(lr=self.alpha)) 
         return model
     
@@ -124,6 +137,7 @@ class DeepQNetwork():
         global epsilon
         global EPS_DECAY
         global beta
+        global invalid_action
 
         # print(state)
 
@@ -169,13 +183,15 @@ class DeepQNetwork():
     
         is_first = True
         gamma = len(return_arr)
-
         
         if valid:
+            invalid_action = False
             return return_arr
         elif len(possible_valid_actions) > 0:
+            invalid_action = False
             return possible_valid_actions
         else:
+            invalid_action = True
             return valid_subsets[0]
 
 
@@ -221,7 +237,7 @@ class DeepQNetwork():
         #Reshape for Keras Fit
         x_reshape = np.array(x).reshape(batch_size,self.nS)
         y_reshape = np.array(y)
-        epoch_count = 10 #Epochs is the number or iterations
+        epoch_count = 60 #Epochs is the number or iterations
         hist = self.model.fit(x_reshape, y_reshape, epochs=epoch_count, verbose=0)
         #Graph Losses
         loss_sum = 0
@@ -248,6 +264,7 @@ class DeepQNetwork():
         global previous_state
         global reward_gamma
         global batch_size
+        global invalid_action
 
         # print("came in reward")
         if is_first:
@@ -290,11 +307,16 @@ class DeepQNetwork():
                 reward = (-1 * np.exp(gamma) * delta)
 
             is_first = False
+
+            if invalid_action:
+                reward -= 1000
             
             # print("reward calculated = ",reward)
             self.store(current_state, current_action, reward)
             
+
             rewards.append(reward)
+                
             if len(self.memory) > batch_size:
                 self.experience_replay(batch_size)
 
@@ -306,7 +328,7 @@ class DeepQNetwork():
 #Create the agent
 nS = 5*beta + 1
 nA = 2**beta - 1
-dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 0.9, 0.1, 0.001)
+dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.0001)
 print(dqn.model.summary())
 
 
@@ -316,40 +338,52 @@ for episode in range(NO_EPISODES):
 
     driver(dqn.get_action,dqn.reward)
 
-    print("episode: {}/{}, score: {}, e: {}"
-                  .format(episode+1, NO_EPISODES, sum(rewards), dqn.epsilon))
     # print("latencies : ", latencies)
-    total_latency.append(np.mean(latencies))
-    latencies= []
+
     # print("rewards : ", rewards)
-    total_rewards.append(sum(rewards))
+
+    avg_reward = sum(rewards) / len(rewards)
+
+    print("episode: {}/{}, score: {}, average latency: {}, e: {},"
+                  .format(episode+1, NO_EPISODES, sum(rewards), np.mean(latencies),dqn.epsilon))
+    
+    if avg_reward > -250: 
+        total_rewards.append(avg_reward)
+        total_latency.append(sum(latencies)/len(latencies))
+    
+    latencies = []
     rewards = []
 
 
-plt.figure(1)
 
-plt.plot(np.arange(len(total_rewards)), total_rewards)
+temp_rewards = [np.mean(total_rewards[i:i+50]) for i in range(0,len(total_rewards),50)]
+temp_latencies = [np.mean(total_latency[i:i+50]) for i in range(0,len(total_latency),50)]
+temp_loss = [np.mean(dqn.loss[i:i+50]) for i in range(0,len(dqn.loss),50)]
 
-plt.show()
+f = plt.figure(1)
 
-plt.savefig("dql_episodic_rewards.png")
+plt.plot(np.arange(len(temp_rewards)), temp_rewards)
+
+f.show()
+
+f.savefig("dql_episodic_rewards.png")
 
 
-plt.figure(2)
+g = plt.figure(2)
 
-plt.plot(np.arange(len(total_latency)), total_latency)
+plt.plot(np.arange(len(temp_latencies)), temp_latencies)
 
-plt.show()
+g.show()
 
-plt.savefig("dql_episodic_latency.png")
+g.savefig("dql_episodic_latency.png")
 
-plt.figure(3)
+h = plt.figure(3)
 
-plt.plot(np.arange(len(dqn.loss)), dqn.loss)
+plt.plot(np.arange(len(temp_loss)), temp_loss)
 
-plt.show()
+h.show()
 
-plt.savefig("dql_episodic_latency.png")
+h.savefig("dql_loss.png")
 
 
 
