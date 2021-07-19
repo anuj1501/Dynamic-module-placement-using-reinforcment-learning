@@ -1637,6 +1637,20 @@ class Sim:
 
     #         yield self.env.timeout(1)
 
+    def get_expected_latency(self,src_int,dest_int,message):
+        link = (src_int, dest_int)
+        size_bits = message.bytes
+
+        transmit = size_bits / \
+                    (self.topology.get_edge(link)[
+                        Topology.LINK_BW] * 1000000.0)  # MBITS!
+
+        propagation = self.topology.get_edge(
+                    link)[Topology.LINK_PR]
+
+        latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"])
+        return latency_msg_link
+
     def run(self, until, selector_path, test_initial_deploy=False, show_progress_monitor=True, mobile_behaviour=False):
         """
         Start the simulation

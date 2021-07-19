@@ -231,8 +231,10 @@ class CustomPath(Selection):
                 smallest_node = min(id_cluster)
 
                 # print("the minimum ID of edges is : ", smallest_node)
+                expected_latencies = []
 
                 for edge_node in id_cluster:
+                    expected_latencies.append(sim.get_expected_latency(node_src,edge_node,message))
                     one_link = (self.test_sensor, edge_node)
                     if one_link not in all_links:
                         one_link = (edge_node, self.test_sensor)
@@ -245,6 +247,7 @@ class CustomPath(Selection):
                     current_prs[edge_node-smallest_node] = pr_val
                     memories[edge_node-smallest_node] = (sim.topology.nodeAttributes[edge_node]["peak_memory"],
                                            sim.topology.nodeAttributes[edge_node]["residual_memory"])
+                required_latency = min(expected_latencies)
                 current_state["bandwidth"] = current_bandwidths
                 current_state["PR"] = current_prs
                 current_state["memories"] = memories
@@ -264,7 +267,7 @@ class CustomPath(Selection):
                 # print(self.states)
                 #####
 
-                list_node_id = self.get_action(current_state)
+                list_node_id = self.get_action(current_state,required_latency)
                 
 
                 for m in range(len(list_node_id)):

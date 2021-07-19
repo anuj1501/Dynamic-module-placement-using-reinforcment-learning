@@ -26,7 +26,7 @@ style.use("ggplot")
 # keras.backend.set_session(sess)
 
 #Global Variables
-NO_EPISODES = 1000
+NO_EPISODES = 2000
 TRAIN_END = 0
 current_state = ''
 current_action = 0
@@ -36,6 +36,9 @@ latencies = []
 total_latency = []
 rewards = []
 total_rewards = []
+epsilon_values = []
+deviations = []
+latency_deviation = []
 mean_latency = 0
 beta = 7
 batch_size = 192
@@ -129,7 +132,7 @@ class DeepQNetwork():
                       optimizer=keras.optimizers.Adam(lr=self.alpha)) 
         return model
     
-    def get_action(self,state):
+    def get_action(self,state,required_lat):
         global is_first
         global current_state
         global current_action
@@ -138,7 +141,10 @@ class DeepQNetwork():
         global EPS_DECAY
         global beta
         global invalid_action
+        global REQUIRED_LATENCY
 
+        REQUIRED_LATENCY = required_lat
+        # print(required_lat)
         # print(state)
 
         no_of_edges = len(state['PR'])
@@ -265,6 +271,7 @@ class DeepQNetwork():
         global reward_gamma
         global batch_size
         global invalid_action
+        global deviations
 
         # print("came in reward")
         if is_first:
@@ -272,6 +279,7 @@ class DeepQNetwork():
             # print("Reward function {}".format(obs_latency))
             # print obs_latency
             latencies.append(obs_latency)
+            deviations.append(np.abs(obs_latency - REQUIRED_LATENCY ))
 
             # median_latency = np.median(latencies)
 
@@ -314,7 +322,7 @@ class DeepQNetwork():
             # print("reward calculated = ",reward)
             self.store(current_state, current_action, reward)
             
-
+            # print(reward)
             rewards.append(reward)
                 
             if len(self.memory) > batch_size:
@@ -347,24 +355,30 @@ for episode in range(NO_EPISODES):
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
                   .format(episode+1, NO_EPISODES, sum(rewards), np.mean(latencies),dqn.epsilon))
     
-    if avg_reward > -250: 
-        total_rewards.append(avg_reward)
-        total_latency.append(sum(latencies)/len(latencies))
-    
+    # if avg_reward > -250: 
+    total_rewards.append(avg_reward)
+    total_latency.append(sum(latencies)/len(latencies))
+
+    latency_deviation.append(np.mean(deviations))
+    deviations = []
     latencies = []
     rewards = []
+    epsilon_values.append(dqn.epsilon)
 
 
 
 temp_rewards = [np.mean(total_rewards[i:i+50]) for i in range(0,len(total_rewards),50)]
 temp_latencies = [np.mean(total_latency[i:i+50]) for i in range(0,len(total_latency),50)]
 temp_loss = [np.mean(dqn.loss[i:i+50]) for i in range(0,len(dqn.loss),50)]
+temp_deviation = [np.mean(latency_deviation[i:i+50]) for i in range(0,len(latency_deviation),50)]
+temp_epsilon = [np.mean(epsilon_values[i:i+50]) for i in range(0,len(epsilon_values),50)]
+
 
 f = plt.figure(1)
 
 plt.plot(np.arange(len(temp_rewards)), temp_rewards)
 
-f.show()
+# f.show()
 
 f.savefig("dql_episodic_rewards.png")
 
@@ -373,7 +387,7 @@ g = plt.figure(2)
 
 plt.plot(np.arange(len(temp_latencies)), temp_latencies)
 
-g.show()
+# g.show()
 
 g.savefig("dql_episodic_latency.png")
 
@@ -381,9 +395,25 @@ h = plt.figure(3)
 
 plt.plot(np.arange(len(temp_loss)), temp_loss)
 
-h.show()
+# h.show()
 
 h.savefig("dql_loss.png")
+
+i = plt.figure(4)
+
+plt.plot(np.arange(len(temp_epsilon)), temp_epsilon)
+
+# i.show()
+
+i.savefig("epsilon values.png")
+
+j = plt.figure(5)
+
+plt.plot(np.arange(len(temp_deviation)), temp_deviation)
+
+# j.show()
+
+j.savefig("latency deviation.png")
 
 
 
