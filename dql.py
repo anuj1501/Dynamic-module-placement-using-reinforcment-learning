@@ -1,4 +1,5 @@
 from collections import deque
+# from typing_extensions import final
 import tensorflow as tf
 from tensorflow import keras
 #from keras.models import Sequential
@@ -26,7 +27,7 @@ style.use("ggplot")
 # keras.backend.set_session(sess)
 
 #Global Variables
-NO_EPISODES = 2000
+NO_EPISODES = 10
 TRAIN_END = 0
 current_state = ''
 current_action = 0
@@ -39,6 +40,8 @@ total_rewards = []
 epsilon_values = []
 deviations = []
 latency_deviation = []
+access_rate = []
+episode_access_rate = []
 mean_latency = 0
 beta = 7
 batch_size = 192
@@ -141,6 +144,7 @@ class DeepQNetwork():
         global EPS_DECAY
         global beta
         global invalid_action
+        global episode_access_rate
         global REQUIRED_LATENCY
 
         REQUIRED_LATENCY = required_lat
@@ -189,15 +193,19 @@ class DeepQNetwork():
     
         is_first = True
         gamma = len(return_arr)
+
         
         if valid:
             invalid_action = False
+            episode_access_rate.append(float(len(return_arr))/no_of_edges)
             return return_arr
         elif len(possible_valid_actions) > 0:
             invalid_action = False
+            episode_access_rate.append(float(len(possible_valid_actions))/no_of_edges)
             return possible_valid_actions
         else:
             invalid_action = True
+            episode_access_rate.append(float(len(valid_subsets[0]))/no_of_edges)
             return valid_subsets[0]
 
 
@@ -353,13 +361,15 @@ for episode in range(NO_EPISODES):
     avg_reward = sum(rewards) / len(rewards)
 
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
-                  .format(episode+1, NO_EPISODES, sum(rewards), np.mean(latencies),dqn.epsilon))
+                  .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
     
     # if avg_reward > -250: 
     total_rewards.append(avg_reward)
     total_latency.append(sum(latencies)/len(latencies))
+    access_rate.append(np.mean(episode_access_rate))
 
     latency_deviation.append(np.mean(deviations))
+    episode_access_rate  = []
     deviations = []
     latencies = []
     rewards = []
@@ -372,6 +382,22 @@ temp_latencies = [np.mean(total_latency[i:i+50]) for i in range(0,len(total_late
 temp_loss = [np.mean(dqn.loss[i:i+50]) for i in range(0,len(dqn.loss),50)]
 temp_deviation = [np.mean(latency_deviation[i:i+50]) for i in range(0,len(latency_deviation),50)]
 temp_epsilon = [np.mean(epsilon_values[i:i+50]) for i in range(0,len(epsilon_values),50)]
+
+# final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
+final_df = {}
+
+final_df["total_rewards"] = total_rewards
+final_df["total_latency"] = total_latency
+final_df["latency_deviation"] = latency_deviation
+final_df["epsilon_values"] = epsilon_values
+final_df["access_rate"] = access_rate
+
+save_df = pd.DataFrame.from_dict(final_df)
+
+save_df.to_csv("Obtained Results.csv")
+
+
+
 
 
 f = plt.figure(1)

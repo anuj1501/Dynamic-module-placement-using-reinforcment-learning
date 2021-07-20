@@ -353,11 +353,7 @@ class Sim:
                 # latency_msg_link = transmit + propagation
                 #print "-link: %s -- lat: %d" %(link,latency_msg_link)
                 
-                if src_int == 0 :
-                    # print("success")
-                    # print("latency")
-                    # print(latency_msg_link)
-                    self.reward(latency_msg_link)
+
                 
                 # update link metrics
                 self.metrics.insert_link(
@@ -570,6 +566,13 @@ class Sim:
 
             #print("node removed")
             # print(self.topology.nodeAttributes[id_node]["sensors_accessing"])
+            # print(time_service + self.env.now)
+            if  message.path[0] == 0 :
+                    # print("success")
+                    # print("latency")
+                    # print(latency_msg_link)
+                final_latency = self.env.now  + time_service  - float(message.timestamp) + float(message.timestamp_rec) - float(message.timestamp)
+                self.reward( final_latency )
             self.metrics.insert(
                 {"id": message.id, "type": type, "app": app, "module": module, "message": message.name,
                  "DES.src": sourceDES, "DES.dst": des, "module.src": message.src,
