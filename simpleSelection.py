@@ -63,6 +63,7 @@ class CustomPath(Selection):
         self.number_of_sensor_nodes = 0
         self.pop = None
         self.app = None
+        self.data = []
         self.get_action = get_action
         self.test_sensor = 0
 
@@ -86,7 +87,7 @@ class CustomPath(Selection):
             {"model": "actuator-device", "number": 1, "module": self.app.get_sink_modules()})
 
         dDistribution = deterministicDistribution(
-            name="Deterministic", time=10)
+            name="Deterministic", time=20)
 
         for i in range(self.number_of_sensor_nodes):
 
@@ -94,15 +95,18 @@ class CustomPath(Selection):
                                       "message": self.app.get_message("M.A"), "distribution": dDistribution})
 
     def create_dynamic_links(self, t):
-
+        
+        # print("sensors around Edge 0 = ",self.data[0])
+        # print("sum of sensor IDs = ",max(self.data))
         for i in range(self.number_of_sensor_nodes):
 
             for j in range(self.number_of_compute_nodes):
 
-                link = {"s": i, "d": j + self.number_of_sensor_nodes + 1, "BW": 1,
-                                "PR": random.randint(1, 10)}
+                if i < self.data[j]:
+                    link = {"s": i, "d": j + self.number_of_sensor_nodes + 1, "BW": 1,
+                                    "PR": random.randint(1, 10)}
 
-                t["link"].append(link)
+                    t["link"].append(link)
 
         for j in range(self.number_of_compute_nodes):
 
@@ -123,9 +127,28 @@ class CustomPath(Selection):
 
         # MANDATORY FIELDS
 
-        self.number_of_sensor_nodes = random.randint(6, 10)
+        sensor_vicinity_data = pd.read_csv("Edge Device Vicinity Data.csv")
+
+        sensor_vicinity_data_size = sensor_vicinity_data.shape[0]
+
+        values = sensor_vicinity_data.sample()
+
+        values = values.as_matrix()
+
+        values = values[0][1:]
+
+        for val in values:
+
+            if val > 100:
+                self.data.append((val/100) + 2)
+            elif val > 10 and val < 100:
+                self.data.append((val/10) + 2)
+            else:
+                self.data.append(val + 2)
+
+        self.number_of_sensor_nodes = max(self.data)
         # print(self.number_of_sensor_nodes)
-        self.number_of_compute_nodes = random.randint(3,7)
+        self.number_of_compute_nodes = 10
 
         # print("sensors : ", self.number_of_sensor_nodes)
         # print("edges : ", self.number_of_compute_nodes)
@@ -220,7 +243,7 @@ class CustomPath(Selection):
                 id_cluster = sim.topology.find_IDs(value)
                 # print("Updating.....")
                 # print(sim.env.now)
-
+                # print("check 1")
                 current_state = dict()
                 current_bandwidths = dict()
                 current_prs = dict()
@@ -232,14 +255,15 @@ class CustomPath(Selection):
 
                 # print("the minimum ID of edges is : ", smallest_node)
                 expected_latencies = []
-
+                # print("id_cluster = ",id_cluster)
                 for edge_node in id_cluster:
-                    expected_latencies.append(sim.get_expected_latency(node_src,edge_node,message))
                     one_link = (self.test_sensor, edge_node)
                     if one_link not in all_links:
                         one_link = (edge_node, self.test_sensor)
                     if one_link not in all_links:
                         continue
+
+                    expected_latencies.append(sim.get_expected_latency(node_src,edge_node,message))
                     band_val = sim.topology.get_edge(
                         one_link)[sim.topology.LINK_BW]
                     pr_val = sim.topology.get_edge(one_link)['PR']
@@ -247,6 +271,8 @@ class CustomPath(Selection):
                     current_prs[edge_node-smallest_node] = pr_val
                     memories[edge_node-smallest_node] = (sim.topology.nodeAttributes[edge_node]["peak_memory"],
                                            sim.topology.nodeAttributes[edge_node]["residual_memory"])
+                
+                # print("check 3")
                 required_latency = min(expected_latencies)
                 current_state["bandwidth"] = current_bandwidths
                 current_state["PR"] = current_prs
@@ -266,13 +292,14 @@ class CustomPath(Selection):
                 # print("printing states :")
                 # print(self.states)
                 #####
-
-                list_node_id = self.get_action(current_state,required_latency)
+                # print("check 4")
                 
+                list_node_id = self.get_action(current_state,required_latency)
+                # print("check 5")
 
                 for m in range(len(list_node_id)):
                     list_node_id[m] += smallest_node
-
+                # print("Predicted_action = ",list_node_id)
                 # print("smallest edge : ", smallest_node)
                 # print("Edges : ", list_node_id)
 
@@ -302,7 +329,21 @@ class CustomPath(Selection):
                 final_node = 0
                 alloc_des_reverse = {v: k for k, v in alloc_DES.iteritems()}
 
+                value = {"mytag": "cloud"}
+                id_cluster = sim.topology.find_IDs(value)
+                # print("Updating.....")
+                # print(sim.env.now)
+                all_links = sim.topology.get_edges()
+
+                smallest_node = min(id_cluster)
+                    
                 for single_node in destination_nodes:
+
+                    one_link = (node_src, single_node)
+                    if one_link not in all_links:
+                        one_link = (single_node, node_src)
+                    if one_link not in all_links:
+                        continue
 
                     if self.dict[single_node] < min_val:
                         min_val = self.dict[single_node]

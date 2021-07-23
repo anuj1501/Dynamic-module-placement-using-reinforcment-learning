@@ -5,6 +5,7 @@ from tensorflow import keras
 #from keras.models import Sequential
 #from keras.layers import Dense
 #from keras.optimizers import Adam
+import argparse
 import random
 import numpy as np  
 import pandas as pd
@@ -27,7 +28,7 @@ style.use("ggplot")
 # keras.backend.set_session(sess)
 
 #Global Variables
-NO_EPISODES = 10
+NO_EPISODES = 0
 TRAIN_END = 0
 current_state = ''
 current_action = 0
@@ -43,7 +44,7 @@ latency_deviation = []
 access_rate = []
 episode_access_rate = []
 mean_latency = 0
-beta = 7
+beta = 10
 batch_size = 192
 REQUIRED_LATENCY = 4.00009631
 
@@ -71,18 +72,31 @@ def get_subsets(fullset):
 
 def get_state_input(state):
 
+    '''
+    {'PR': {0: 7, 1: 9, 2: 3, 3: 10, 5: 9, 6: 2, 7: 7, 8: 5, 9: 10}, 
+    'memories': {0: (600, 19400), 1: (600, 19400), 2: (600, 19400), 3: (200, 19800), 5: (400, 19600), 
+    6: (400, 19600), 7: (200, 19800), 8: (400, 19600), 9: (200, 19800)}, 
+    'bandwidth': {0: (3.357142857142857, 3.357142857142857), 1: (2.7285714285714286, 2.7285714285714286), 
+    2: (3.7142857142857144, 3.7142857142857144), 3: (2.9714285714285715, 2.9714285714285715), 
+    5: (3.6285714285714286, 3.6285714285714286), 6: (3.6142857142857143, 3.6142857142857143), 
+    7: (3.5714285714285716, 3.5714285714285716), 8: (3.6714285714285713, 3.6714285714285713), 
+    9: (3.6, 3.6)}, 'input_size': 1100}
+    '''
+
     global beta
     output = []
     
     no_of_edge_devices = len(state["PR"])
-         
+    # print("check 1")
+    # print("beta = ",beta)
+    # print("NOS_edge_devices = ",no_of_edge_devices)
     for a in range(beta):
 
         if a < no_of_edge_devices:
             output.append(state['PR'][a])
         else:
             output.append(15)
-    
+    # print("check 2")
     for a in range(beta):
 
         if a < no_of_edge_devices:
@@ -91,7 +105,7 @@ def get_state_input(state):
         else:
             output.append(0)
             output.append(0)
-    
+    # print("check 3")
     for a in range(beta):
 
         if a < no_of_edge_devices:
@@ -101,6 +115,7 @@ def get_state_input(state):
             output.append(-1)
             output.append(-1)
     
+    # print("check 4")
     output.append(state['input_size'])
     return output
 
@@ -151,22 +166,23 @@ class DeepQNetwork():
         # print(required_lat)
         # print(state)
 
+        # print("check 1")
         no_of_edges = len(state['PR'])
 
         # print(state)
         subsets = get_subsets(set([x for x in range(beta)]))
-
+        # print("check 2")
         # if new_state['bandwidth'] not in all_bands:
         #     all_bands.append(new_state['bandwidth'])
         
         random_value = np.random.uniform(0,1)
 
         valid_subsets = get_subsets(set([x for x in range(no_of_edges)]))
-
+        # print("check 3")
         state_flattened = get_state_input(state)
 
         state_flattened = np.array(state_flattened).reshape(1,self.nS)
-
+        # print("check 4")
         if np.random.rand() <= self.epsilon:
 
             action = np.random.randint(0,self.nA)
@@ -174,12 +190,12 @@ class DeepQNetwork():
             action_vals = self.model.predict(state_flattened) #Exploit: Use the NN to predict the correct action from this state
         
             action = np.argmax(action_vals[0])
-        
+        # print("check 5")
         current_state = state_flattened
         current_action = action
         
         return_arr = subsets[action]
-
+        # print("predicted_action = ",return_arr)
         valid = False
         possible_valid_actions = list()
 
@@ -196,6 +212,7 @@ class DeepQNetwork():
 
         
         if valid:
+            # print("lol")
             invalid_action = False
             episode_access_rate.append(float(len(return_arr))/no_of_edges)
             return return_arr
@@ -285,7 +302,7 @@ class DeepQNetwork():
         if is_first:
             # print("came in is first")
             # print("Reward function {}".format(obs_latency))
-            # print obs_latency
+            # print("the actual latency = ",obs_latency)
             latencies.append(obs_latency)
             deviations.append(np.abs(obs_latency - REQUIRED_LATENCY ))
 
@@ -340,8 +357,19 @@ class DeepQNetwork():
             pass
             # print("Didnt run")  
 
+parser = argparse.ArgumentParser()
 
-#Create the agent
+parser.add_argument("-e", "--Epochs", help = "Show Output")
+ 
+# Read arguments from command line
+args = parser.parse_args()
+print(args)
+if args.Epochs:
+    NO_EPISODES = int(args.Epochs)
+else:
+    NO_EPISODES = 100
+
+
 nS = 5*beta + 1
 nA = 2**beta - 1
 dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.0001)
@@ -358,24 +386,27 @@ for episode in range(NO_EPISODES):
 
     # print("rewards : ", rewards)
 
-    avg_reward = sum(rewards) / len(rewards)
+    if len(rewards) > 0:
+        avg_reward = sum(rewards) / len(rewards)
+        total_rewards.append(avg_reward)
 
+        total_latency.append(sum(latencies)/len(latencies))
+        access_rate.append(np.mean(episode_access_rate))
+
+        latency_deviation.append(np.mean(deviations))
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
                   .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
     
     # if avg_reward > -250: 
-    total_rewards.append(avg_reward)
-    total_latency.append(sum(latencies)/len(latencies))
-    access_rate.append(np.mean(episode_access_rate))
 
-    latency_deviation.append(np.mean(deviations))
+    
     episode_access_rate  = []
     deviations = []
     latencies = []
     rewards = []
     epsilon_values.append(dqn.epsilon)
 
-
+dqn.model.save("DQN_Model.h5")
 
 temp_rewards = [np.mean(total_rewards[i:i+50]) for i in range(0,len(total_rewards),50)]
 temp_latencies = [np.mean(total_latency[i:i+50]) for i in range(0,len(total_latency),50)]
@@ -383,7 +414,7 @@ temp_loss = [np.mean(dqn.loss[i:i+50]) for i in range(0,len(dqn.loss),50)]
 temp_deviation = [np.mean(latency_deviation[i:i+50]) for i in range(0,len(latency_deviation),50)]
 temp_epsilon = [np.mean(epsilon_values[i:i+50]) for i in range(0,len(epsilon_values),50)]
 
-# final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
+final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
 final_df = {}
 
 final_df["total_rewards"] = total_rewards
@@ -395,9 +426,6 @@ final_df["access_rate"] = access_rate
 save_df = pd.DataFrame.from_dict(final_df)
 
 save_df.to_csv("Obtained Results.csv")
-
-
-
 
 
 f = plt.figure(1)
