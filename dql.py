@@ -43,6 +43,7 @@ deviations = []
 latency_deviation = []
 access_rate = []
 episode_access_rate = []
+avg_waiting_time = [0]
 mean_latency = 0
 beta = 10
 batch_size = 192
@@ -87,16 +88,14 @@ def get_state_input(state):
     output = []
     
     no_of_edge_devices = len(state["PR"])
-    # print("check 1")
-    # print("beta = ",beta)
-    # print("NOS_edge_devices = ",no_of_edge_devices)
+
     for a in range(beta):
 
         if a < no_of_edge_devices:
             output.append(state['PR'][a])
         else:
             output.append(15)
-    # print("check 2")
+
     for a in range(beta):
 
         if a < no_of_edge_devices:
@@ -105,7 +104,7 @@ def get_state_input(state):
         else:
             output.append(0)
             output.append(0)
-    # print("check 3")
+
     for a in range(beta):
 
         if a < no_of_edge_devices:
@@ -115,7 +114,6 @@ def get_state_input(state):
             output.append(-1)
             output.append(-1)
     
-    # print("check 4")
     output.append(state['input_size'])
     return output
 
@@ -161,6 +159,7 @@ class DeepQNetwork():
         global invalid_action
         global episode_access_rate
         global REQUIRED_LATENCY
+        global avg_waiting_time
 
         REQUIRED_LATENCY = required_lat
         # print(required_lat)
@@ -297,18 +296,30 @@ class DeepQNetwork():
         global batch_size
         global invalid_action
         global deviations
+        global avg_waiting_time
+
+        
+        # med_latency = (REQUIRED_LATENCY + (np.mean(avg_waiting_time)))
+        med_latency = REQUIRED_LATENCY
+
+        avg_waiting_time.append(abs(obs_latency - REQUIRED_LATENCY))
+
 
         # print("came in reward")
-        if is_first:
+        if is_first and abs(obs_latency - REQUIRED_LATENCY) < 10:
+            # print "required latency : ", REQUIRED_LATENCY
+            # print "actual latency : ",obs_latency
             # print("came in is first")
             # print("Reward function {}".format(obs_latency))
             # print("the actual latency = ",obs_latency)
             latencies.append(obs_latency)
-            deviations.append(np.abs(obs_latency - REQUIRED_LATENCY ))
+            # print("required_latency = ",REQUIRED_LATENCY)
+            deviations.append(np.abs(obs_latency - med_latency))
 
+            # print("check 1")
             # median_latency = np.median(latencies)
 
-            lamda = obs_latency - REQUIRED_LATENCY
+            lamda = (obs_latency - med_latency)
 
             reward = 0
 
@@ -346,8 +357,11 @@ class DeepQNetwork():
             
             # print("reward calculated = ",reward)
             self.store(current_state, current_action, reward)
-            
+            # print("check 1")
             # print(reward)
+
+            # if reward > -300:
+
             rewards.append(reward)
                 
             if len(self.memory) > batch_size:
@@ -388,12 +402,16 @@ for episode in range(NO_EPISODES):
 
     if len(rewards) > 0:
         avg_reward = sum(rewards) / len(rewards)
-        total_rewards.append(avg_reward)
+        # print("reward = ",avg_reward)
 
-        total_latency.append(sum(latencies)/len(latencies))
-        access_rate.append(np.mean(episode_access_rate))
+        if avg_reward > -1000:
+            total_rewards.append(avg_reward)
 
-        latency_deviation.append(np.mean(deviations))
+            total_latency.append(sum(latencies)/len(latencies))
+            access_rate.append(np.mean(episode_access_rate))
+            epsilon_values.append(dqn.epsilon)
+            latency_deviation.append(np.mean(deviations))
+
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
                   .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
     
@@ -401,10 +419,11 @@ for episode in range(NO_EPISODES):
 
     
     episode_access_rate  = []
+    avg_waiting_time = [0]
     deviations = []
     latencies = []
     rewards = []
-    epsilon_values.append(dqn.epsilon)
+    
 
 dqn.model.save("DQN_Model.h5")
 
@@ -430,6 +449,7 @@ save_df.to_csv("Obtained Results.csv")
 
 f = plt.figure(1)
 
+# print(total_rewards)
 plt.plot(np.arange(len(temp_rewards)), temp_rewards)
 
 # f.show()

@@ -87,7 +87,7 @@ class CustomPath(Selection):
             {"model": "actuator-device", "number": 1, "module": self.app.get_sink_modules()})
 
         dDistribution = deterministicDistribution(
-            name="Deterministic", time=20)
+            name="Deterministic", time=40)
 
         for i in range(self.number_of_sensor_nodes):
 
@@ -140,12 +140,13 @@ class CustomPath(Selection):
         for val in values:
 
             if val > 100:
-                self.data.append((val/100) + 2)
+                self.data.append((val/200) + 2)
             elif val > 10 and val < 100:
-                self.data.append((val/10) + 2)
+                self.data.append((val/20) + 2)
             else:
                 self.data.append(val + 2)
 
+        # print("sensors = ",self.data)
         self.number_of_sensor_nodes = max(self.data)
         # print(self.number_of_sensor_nodes)
         self.number_of_compute_nodes = 10
@@ -273,7 +274,9 @@ class CustomPath(Selection):
                                            sim.topology.nodeAttributes[edge_node]["residual_memory"])
                 
                 # print("check 3")
-                required_latency = min(expected_latencies)
+                expected_latencies.sort()
+                # print "expected latencies = ",expected_latencies
+                required_latency = expected_latencies[4]
                 current_state["bandwidth"] = current_bandwidths
                 current_state["PR"] = current_prs
                 current_state["memories"] = memories

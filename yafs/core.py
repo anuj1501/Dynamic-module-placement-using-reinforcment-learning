@@ -81,6 +81,7 @@ class Sim:
     def __init__(self, reward, topology, add_time, name_register='events_log.json', link_register='links_log.json', redis=None, purge_register=True, logger=None, default_results_path=None):
 
         self.reward = reward
+        self.test_sensor = 0
 
         self.env = simpy.Environment()
         """
@@ -349,11 +350,9 @@ class Sim:
                         Topology.LINK_BW] * 1000000.0)  # MBITS!
                 propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
-                latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
+                latency_msg_link = transmit + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
                 # latency_msg_link = transmit + propagation
                 #print "-link: %s -- lat: %d" %(link,latency_msg_link)
-                
-
                 
                 # update link metrics
                 self.metrics.insert_link(
@@ -567,11 +566,12 @@ class Sim:
             #print("node removed")
             # print(self.topology.nodeAttributes[id_node]["sensors_accessing"])
             # print(time_service + self.env.now)
-            if  message.path[0] == 0 :
+            # print("test sensor = ",self.test_sensor)
+            if  message.path[0] == self.test_sensor:
                     # print("success")
                     # print("latency")
                     # print(latency_msg_link)
-                final_latency = self.env.now  + time_service  - float(message.timestamp) + float(message.timestamp_rec) - float(message.timestamp)
+                final_latency = (self.env.now  + time_service  - float(message.timestamp) + float(message.timestamp_rec) - float(message.timestamp))
                 self.reward( final_latency )
             self.metrics.insert(
                 {"id": message.id, "type": type, "app": app, "module": module, "message": message.name,
@@ -1483,7 +1483,7 @@ class Sim:
                 for key, val in self.apps["SimpleCase"].messages.items():
                     if val.src == "Sensor":
                         val.bytes = random.choice(input_size_array)
-                        val.inst = random.choice(ipt_array)/100
+                        val.inst = random.choice(ipt_array)
                         # print(val.inst)
 
                 for edge_node in id_cluster:
@@ -1651,7 +1651,7 @@ class Sim:
         propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
 
-        latency_msg_link = transmit*2 + propagation + message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"])
+        latency_msg_link = ((transmit*2) + propagation + message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"]))
         return latency_msg_link
 
     def run(self, until, selector_path, test_initial_deploy=False, show_progress_monitor=True, mobile_behaviour=False):

@@ -34,19 +34,49 @@
 
 # })
 
-def get_subsets(fullset):
-  listrep = list(fullset)
-  subsets = []
-  for i in range(2**len(listrep)):
-    subset = []
-    for k in range(len(listrep)):            
-      if i & 1<<k:
-        subset.append(listrep[k])
-    subsets.append(subset)        
-  return subsets
-subsets = get_subsets(set([1,2,3,4]))
-subsets = subsets[1:]
-subsets.sort(key=lambda x: len(x))
-# subsets.sort(key=lambda x: x[0])
-print(subsets)
-print(len(subsets))
+# def get_subsets(fullset):
+#   listrep = list(fullset)
+#   subsets = []
+#   for i in range(2**len(listrep)):
+#     subset = []
+#     for k in range(len(listrep)):            
+#       if i & 1<<k:
+#         subset.append(listrep[k])
+#     subsets.append(subset)        
+#   return subsets
+# subsets = get_subsets(set([1,2,3,4]))
+# subsets = subsets[1:]
+# subsets.sort(key=lambda x: len(x))
+# # subsets.sort(key=lambda x: x[0])
+# print(subsets)
+# print(len(subsets))
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import style
+
+style.use("ggplot")
+
+data = pd.read_csv("Obtained Results.csv")
+
+
+latency_deviation = data["latency_deviation"].values
+
+temp_deviation = [np.mean(latency_deviation[i:i+10]) for i in range(0,len(latency_deviation),10)]
+
+plt.plot(np.arange(len(temp_deviation)), temp_deviation)
+
+plt.savefig("latency deviation.png")
+
+
+
+rewards = data["total_rewards"].values
+
+temp_rewards = [np.mean(rewards[i:i+10]) for i in range(0,len(rewards),10)]
+
+plt.plot(np.arange(len(temp_rewards)), temp_rewards)
+
+plt.savefig("dql_episodic_rewards.png")
