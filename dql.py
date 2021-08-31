@@ -44,6 +44,8 @@ latency_deviation = []
 access_rate = []
 episode_access_rate = []
 avg_waiting_time = [0]
+exploit_or_explore = []
+total_exploit_or_explore = []
 mean_latency = 0
 beta = 10
 batch_size = 192
@@ -160,6 +162,7 @@ class DeepQNetwork():
         global episode_access_rate
         global REQUIRED_LATENCY
         global avg_waiting_time
+        global exploit_or_explore
 
         REQUIRED_LATENCY = required_lat
         # print(required_lat)
@@ -183,9 +186,10 @@ class DeepQNetwork():
         state_flattened = np.array(state_flattened).reshape(1,self.nS)
         # print("check 4")
         if np.random.rand() <= self.epsilon:
-
+            exploit_or_explore.append("explore")
             action = np.random.randint(0,self.nA)
         else:
+            exploit_or_explore.append("exploit")
             action_vals = self.model.predict(state_flattened) #Exploit: Use the NN to predict the correct action from this state
         
             action = np.argmax(action_vals[0])
@@ -338,11 +342,11 @@ class DeepQNetwork():
 
                 reward = 0
 
-            elif lamda > 0 and beta - gamma == 1:
+            elif lamda > 0 and beta - gamma == 0:
 
                 reward = 0
 
-            elif lamda > 0 and beta - gamma > 1:
+            elif lamda > 0 and beta - gamma > 0:
 
                 reward = (-1 * np.exp(beta - gamma - 1) * delta)
 
@@ -400,17 +404,27 @@ for episode in range(NO_EPISODES):
 
     # print("rewards : ", rewards)
 
+    if episode > 2000:
+        dqn.epsilon = 0
+
     if len(rewards) > 0:
         avg_reward = sum(rewards) / len(rewards)
         # print("reward = ",avg_reward)
 
         if avg_reward > -1000:
             total_rewards.append(avg_reward)
-
             total_latency.append(sum(latencies)/len(latencies))
             access_rate.append(np.mean(episode_access_rate))
             epsilon_values.append(dqn.epsilon)
             latency_deviation.append(np.mean(deviations))
+
+            count_explore = exploit_or_explore.count("explore")
+            # print "count_explore : ",count_explore
+            # print "length of explore or exploit : ",len(exploit_or_explore)
+            if count_explore > (len(exploit_or_explore) / 2):
+                total_exploit_or_explore.append("explore")
+            else:
+                total_exploit_or_explore.append("exploit")
 
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
                   .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
@@ -419,6 +433,7 @@ for episode in range(NO_EPISODES):
 
     
     episode_access_rate  = []
+    exploit_or_explore = []
     avg_waiting_time = [0]
     deviations = []
     latencies = []
@@ -441,6 +456,7 @@ final_df["total_latency"] = total_latency
 final_df["latency_deviation"] = latency_deviation
 final_df["epsilon_values"] = epsilon_values
 final_df["access_rate"] = access_rate
+final_df["explore/exploit"] = total_exploit_or_explore
 
 save_df = pd.DataFrame.from_dict(final_df)
 
