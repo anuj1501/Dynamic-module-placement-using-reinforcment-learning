@@ -48,7 +48,7 @@ exploit_or_explore = []
 total_exploit_or_explore = []
 mean_latency = 0
 beta = 10
-batch_size = 192
+batch_size = 512
 REQUIRED_LATENCY = 4.00009631
 
 
@@ -127,6 +127,8 @@ class DeepQNetwork():
         self.nS = states
         self.nA = actions
         self.memory = deque([], maxlen=2500)
+        self.map_of_state_best_reward = dict()
+        self.map_of_state_best_action = dict()
         self.alpha = alpha
         self.reward_gamma = reward_gamma
         #Explore/Exploit
@@ -140,9 +142,9 @@ class DeepQNetwork():
     def build_model(self):
 
         model = keras.Sequential() 
-        model.add(keras.layers.Dense(self.nS*2, input_dim=self.nS, activation='relu')) 
+        model.add(keras.layers.Dense(self.nS*2, input_dim=self.nS, activation='sigmoid')) 
         
-        # model.add(keras.layers.Dense(self.ns*4, activation='relu')) 
+        model.add(keras.layers.Dense(self.nS*4, activation='sigmoid')) 
 
         model.add(keras.layers.Dense(self.nA, activation='softmax')) 
 
@@ -228,7 +230,23 @@ class DeepQNetwork():
             episode_access_rate.append(float(len(valid_subsets[0]))/no_of_edges)
             return valid_subsets[0]
 
+    def create_target_vector_with_lambda(self, tg_vector,reward,action):
+        lambda_reward = 0.1
+        
+        exponential_reward = math.exp(reward*lambda_reward)
 
+        target_f_modified = np.zeros(tg_vector.shape)
+        
+        temp = (1 - exponential_reward)/(np.sum(tg_vector) - tg_vector[action])
+        
+        for i in range(target_f_modified.shape[0]):
+
+            if i==action:
+                target_f_modified[i] = exponential_reward
+            else:
+                target_f_modified[i] = (temp * tg_vector[i])
+
+        return target_f_modified 
     def test_action(self, state): #Exploit
         action_vals = self.model.predict(state)
         return np.argmax(action_vals[0])
@@ -255,16 +273,29 @@ class DeepQNetwork():
         index = 0
         for state, action, reward in minibatch:
             x.append(state)
+            state_str = np.array_str(state)
+            if state_str not in self.map_of_state_best_action.keys():
+                self.map_of_state_best_action[state_str] = action
+                self.map_of_state_best_reward[state_str] = reward
+            
+            else:
+                if self.map_of_state_best_reward[state_str] < reward:
+                    self.map_of_state_best_action[state_str] = action
+                    self.map_of_state_best_reward[state_str] = reward
+
             #Predict from state
             # nst_action_predict_model = nst_predict[index]
             # if done == True: #Terminal: Just assign reward much like {* (not done) - QB[state][action]}
             #     target = reward
             # else:   #Non terminal
             #     target = reward + self.gamma * np.amax(nst_action_predict_model)
-            target = reward
-            target_f = st_predict[index]
-            target_f[action] = target
-            y.append(target_f)
+            # target = reward
+            # target_f = st_predict[index]
+            
+            # target_f[action] = target
+            # target_f[self.map_of_state_best_action[state_str]] = 1
+            target_f_with_lambda = self.create_target_vector_with_lambda(st_predict[index],reward, action)
+            y.append(target_f_with_lambda)
             index += 1
 
         
@@ -307,8 +338,9 @@ class DeepQNetwork():
         med_latency = REQUIRED_LATENCY
 
         avg_waiting_time.append(abs(obs_latency - REQUIRED_LATENCY))
-
-
+        # print("obs_latency: ",obs_latency)
+        # print("REQUIRED_LATENCY: ", REQUIRED_LATENCY)
+        # print()
         # print("came in reward")
         if is_first and abs(obs_latency - REQUIRED_LATENCY) < 10:
             # print "required latency : ", REQUIRED_LATENCY
@@ -377,13 +409,13 @@ class DeepQNetwork():
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("-e", "--Epochs", help = "Show Output")
+parser.add_argument("-e", "--Episodes", help = "Show Output")
  
 # Read arguments from command line
 args = parser.parse_args()
 print(args)
-if args.Epochs:
-    NO_EPISODES = int(args.Epochs)
+if args.Episodes:
+    NO_EPISODES = int(args.Episodes)
 else:
     NO_EPISODES = 100
 
@@ -411,20 +443,20 @@ for episode in range(NO_EPISODES):
         avg_reward = sum(rewards) / len(rewards)
         # print("reward = ",avg_reward)
 
-        if avg_reward > -1000:
+        if avg_reward > -500:
             total_rewards.append(avg_reward)
             total_latency.append(sum(latencies)/len(latencies))
             access_rate.append(np.mean(episode_access_rate))
             epsilon_values.append(dqn.epsilon)
             latency_deviation.append(np.mean(deviations))
 
-            count_explore = exploit_or_explore.count("explore")
-            # print "count_explore : ",count_explore
-            # print "length of explore or exploit : ",len(exploit_or_explore)
-            if count_explore > (len(exploit_or_explore) / 2):
-                total_exploit_or_explore.append("explore")
-            else:
-                total_exploit_or_explore.append("exploit")
+        count_explore = exploit_or_explore.count("explore")
+        # print "count_explore : ",count_explore
+        # print "length of explore or exploit : ",len(exploit_or_explore)
+        if count_explore > (len(exploit_or_explore) / 2):
+            total_exploit_or_explore.append("explore")
+        else:
+            total_exploit_or_explore.append("exploit")
 
     print("episode: {}/{}, score: {}, average latency: {}, e: {},"
                   .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
@@ -442,25 +474,22 @@ for episode in range(NO_EPISODES):
 
 dqn.model.save("DQN_Model.h5")
 
-temp_rewards = [np.mean(total_rewards[i:i+50]) for i in range(0,len(total_rewards),50)]
-temp_latencies = [np.mean(total_latency[i:i+50]) for i in range(0,len(total_latency),50)]
-temp_loss = [np.mean(dqn.loss[i:i+50]) for i in range(0,len(dqn.loss),50)]
-temp_deviation = [np.mean(latency_deviation[i:i+50]) for i in range(0,len(latency_deviation),50)]
-temp_epsilon = [np.mean(epsilon_values[i:i+50]) for i in range(0,len(epsilon_values),50)]
+temp_rewards = [np.mean(total_rewards[i:i+25]) for i in range(0,len(total_rewards),25)]
+temp_latencies = [np.mean(total_latency[i:i+25]) for i in range(0,len(total_latency),25)]
+temp_loss = [np.mean(dqn.loss[i:i+25]) for i in range(0,len(dqn.loss),25)]
+temp_deviation = [np.mean(latency_deviation[i:i+25]) for i in range(0,len(latency_deviation),25)]
+temp_epsilon = [np.mean(epsilon_values[i:i+25]) for i in range(0,len(epsilon_values),25)]
+temp_access_rate = [np.mean(access_rate[i:i+25]) for i in range(0,len(access_rate),25)] 
 
-final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
-final_df = {}
+# final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
+# final_df = {}
 
-final_df["total_rewards"] = total_rewards
-final_df["total_latency"] = total_latency
-final_df["latency_deviation"] = latency_deviation
-final_df["epsilon_values"] = epsilon_values
-final_df["access_rate"] = access_rate
-final_df["explore/exploit"] = total_exploit_or_explore
-
-save_df = pd.DataFrame.from_dict(final_df)
-
-save_df.to_csv("Obtained Results.csv")
+# final_df["total_rewards"] = total_rewards
+# final_df["total_latency"] = total_latency
+# final_df["latency_deviation"] = latency_deviation
+# final_df["epsilon_values"] = epsilon_values
+# final_df["access_rate"] = access_rate
+# final_df["explore/exploit"] = total_exploit_or_explore
 
 
 f = plt.figure(1)
@@ -505,6 +534,17 @@ plt.plot(np.arange(len(temp_deviation)), temp_deviation)
 
 j.savefig("latency deviation.png")
 
+j = plt.figure(6)
+
+plt.plot(np.arange(len(temp_access_rate)), temp_access_rate)
+
+# j.show()
+
+j.savefig("access rate variation.png")
+
+# save_df = pd.DataFrame.from_dict(final_df)
+
+# save_df.to_csv("Obtained Results.csv")
 
 
 

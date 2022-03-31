@@ -274,6 +274,7 @@ class CustomPath(Selection):
                                            sim.topology.nodeAttributes[edge_node]["residual_memory"])
                 
                 # print("check 3")
+                # print("expected_latencies: ",expected_latencies)
                 expected_latencies.sort()
                 # print "expected latencies = ",expected_latencies
                 required_latency = expected_latencies[4]

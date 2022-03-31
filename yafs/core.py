@@ -350,7 +350,7 @@ class Sim:
                         Topology.LINK_BW] * 1000000.0)  # MBITS!
                 propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
-                latency_msg_link = transmit + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"])
+                latency_msg_link = (transmit + propagation + message.inst / float(self.topology.nodeAttributes[message.dst_int]["IPT"]))
                 # latency_msg_link = transmit + propagation
                 #print "-link: %s -- lat: %d" %(link,latency_msg_link)
                 
@@ -571,6 +571,15 @@ class Sim:
                     # print("success")
                     # print("latency")
                     # print(latency_msg_link)
+                link = (message.path[0], id_node)
+                size_bits = message.bytes
+
+                trans_time = size_bits / \
+                    (self.topology.get_edge(link)[
+                        Topology.LINK_BW] * 1000000.0)  
+                prop_time = self.topology.get_edge(
+                    link)[Topology.LINK_PR]
+
                 final_latency = (self.env.now  + time_service  - float(message.timestamp) + float(message.timestamp_rec) - float(message.timestamp))
                 self.reward( final_latency )
             self.metrics.insert(
@@ -1651,7 +1660,7 @@ class Sim:
         propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
 
-        latency_msg_link = ((transmit*2) + propagation + message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"]))
+        latency_msg_link = ((transmit*2) + propagation + (message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"])))
         return latency_msg_link
 
     def run(self, until, selector_path, test_initial_deploy=False, show_progress_monitor=True, mobile_behaviour=False):

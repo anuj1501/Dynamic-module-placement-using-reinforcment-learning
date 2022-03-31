@@ -96,7 +96,7 @@ is_first = True
 #     is_first = True
 all_bands = []
 
-def get_action(state):
+def get_action(state, required_lat):
     global is_first
     global q_table
     global current_state

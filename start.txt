@@ -6,5 +6,4 @@
 
 4. deactivate : deactivate
 
-
 5. Activate python 3 : conda activate C:\Users\user\miniconda3\envs\tensorflow
