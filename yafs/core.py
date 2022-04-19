@@ -78,7 +78,7 @@ class Sim:
     SINK_METRIC = "SINK_M"
     LINK_METRIC = "LINK"
 
-    def __init__(self, reward, topology, add_time, name_register='events_log.json', link_register='links_log.json', redis=None, purge_register=True, logger=None, default_results_path=None):
+    def __init__(self, baseline_bool, reward, topology, add_time, name_register='events_log.json', link_register='links_log.json', redis=None, purge_register=True, logger=None, default_results_path=None):
 
         self.reward = reward
         self.test_sensor = 0
@@ -113,7 +113,7 @@ class Sim:
         self.metrics = Metrics(default_results_path=default_results_path)
 
         self.unreachabled_links = 0
-
+        self.baseline = baseline_bool
         "Contains the database where all events are recorded"
 
         """
@@ -581,7 +581,11 @@ class Sim:
                     link)[Topology.LINK_PR]
 
                 final_latency = (self.env.now  + time_service  - float(message.timestamp) + float(message.timestamp_rec) - float(message.timestamp))
-                self.reward( final_latency )
+                
+                if self.baseline:
+                    self.reward( final_latency ,message.path[0],id_node)
+                else:
+                    self.reward(final_latency)
             self.metrics.insert(
                 {"id": message.id, "type": type, "app": app, "module": module, "message": message.name,
                  "DES.src": sourceDES, "DES.dst": des, "module.src": message.src,
@@ -1660,7 +1664,7 @@ class Sim:
         propagation = self.topology.get_edge(
                     link)[Topology.LINK_PR]
 
-        latency_msg_link = ((transmit*2) + propagation + (message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"])))
+        latency_msg_link = ((transmit*2) + (propagation) + (message.inst / float(self.topology.nodeAttributes[dest_int]["IPT"])))
         return latency_msg_link
 
     def run(self, until, selector_path, test_initial_deploy=False, show_progress_monitor=True, mobile_behaviour=False):

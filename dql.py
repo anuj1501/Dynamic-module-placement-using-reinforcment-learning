@@ -1,3 +1,9 @@
+'''
+
+changed action to self.state to action mapper(state_str)
+
+
+'''
 from collections import deque
 # from typing_extensions import final
 import tensorflow as tf
@@ -21,7 +27,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use( 'tkagg' )
 from matplotlib import style
-
+import os
 style.use("ggplot")
 # config = tf.ConfigProto( device_count = {'GPU': 1} ) 
 # sess = tf.Session(config=config) 
@@ -136,7 +142,11 @@ class DeepQNetwork():
         self.epsilon_min = epsilon_min
         self.epsilon_decay = epsilon_decay
         self.model = self.build_model()
+        if os.path.exists("DQN_Model.h5"):
+            print("------------------FOUND EXISTING MODEL----------------------------")
+            self.model.load_weights("DQN_Model.h5")
         self.loss = []
+        self.val_loss = []
 
                 
     def build_model(self):
@@ -302,13 +312,19 @@ class DeepQNetwork():
         #Reshape for Keras Fit
         x_reshape = np.array(x).reshape(batch_size,self.nS)
         y_reshape = np.array(y)
-        epoch_count = 60 #Epochs is the number or iterations
-        hist = self.model.fit(x_reshape, y_reshape, epochs=epoch_count, verbose=0)
+        epoch_count = 30 #Epochs is the number or iterations
+        t4 = time.time()  
+        hist = self.model.fit(x_reshape, y_reshape, epochs=epoch_count, validation_split = 0.2, verbose=0)
+        # print("time taken to train the model: ",time.time() - t4)
         #Graph Losses
         loss_sum = 0
+        val_loss_sum = 0
         for i in range(epoch_count):
             loss_sum += hist.history['loss'][i]
+            val_loss_sum += hist.history['val_loss'][i]
+
         self.loss.append(loss_sum / epoch_count)
+        self.val_loss.append(val_loss_sum / epoch_count)
         #Decay Epsilon
         if self.epsilon > self.epsilon_min:
             self.epsilon -= self.epsilon_decay
@@ -336,13 +352,13 @@ class DeepQNetwork():
         
         # med_latency = (REQUIRED_LATENCY + (np.mean(avg_waiting_time)))
         med_latency = REQUIRED_LATENCY
-
+        # print("required latency: ",REQUIRED_LATENCY)
         avg_waiting_time.append(abs(obs_latency - REQUIRED_LATENCY))
         # print("obs_latency: ",obs_latency)
         # print("REQUIRED_LATENCY: ", REQUIRED_LATENCY)
         # print()
         # print("came in reward")
-        if is_first and abs(obs_latency - REQUIRED_LATENCY) < 10:
+        if is_first and abs(obs_latency - REQUIRED_LATENCY) < 20:
             # print "required latency : ", REQUIRED_LATENCY
             # print "actual latency : ",obs_latency
             # print("came in is first")
@@ -350,7 +366,7 @@ class DeepQNetwork():
             # print("the actual latency = ",obs_latency)
             latencies.append(obs_latency)
             # print("required_latency = ",REQUIRED_LATENCY)
-            deviations.append(np.abs(obs_latency - med_latency))
+            deviations.append(obs_latency - med_latency)
 
             # print("check 1")
             # median_latency = np.median(latencies)
@@ -396,12 +412,14 @@ class DeepQNetwork():
             # print("check 1")
             # print(reward)
 
-            # if reward > -300:
+            if reward > -300:
 
-            rewards.append(reward)
+                rewards.append(reward)
                 
             if len(self.memory) > batch_size:
+                t1 = time.time() 
                 self.experience_replay(batch_size)
+                # print("time to run experience replay: ",time.time() - t1)
 
         else:
             pass
@@ -413,7 +431,7 @@ parser.add_argument("-e", "--Episodes", help = "Show Output")
  
 # Read arguments from command line
 args = parser.parse_args()
-print(args)
+# print(args)
 if args.Episodes:
     NO_EPISODES = int(args.Episodes)
 else:
@@ -422,75 +440,78 @@ else:
 
 nS = 5*beta + 1
 nA = 2**beta - 1
-dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.0001)
+dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.00001)
 print(dqn.model.summary())
 
 
 for episode in range(NO_EPISODES):
-
+    t3 = time.time() 
     episode_reward = 0
 
+    t2 = time.time()
     driver(dqn.get_action,dqn.reward)
+    # print("time taken for the simulation is: ",time.time() - t2)
 
     # print("latencies : ", latencies)
 
     # print("rewards : ", rewards)
 
-    if episode > 2000:
+    if episode > 5000:
         dqn.epsilon = 0
 
     if len(rewards) > 0:
         avg_reward = sum(rewards) / len(rewards)
         # print("reward = ",avg_reward)
 
-        if avg_reward > -500:
+
+        if avg_reward > -100:
             total_rewards.append(avg_reward)
             total_latency.append(sum(latencies)/len(latencies))
             access_rate.append(np.mean(episode_access_rate))
             epsilon_values.append(dqn.epsilon)
             latency_deviation.append(np.mean(deviations))
 
-        count_explore = exploit_or_explore.count("explore")
-        # print "count_explore : ",count_explore
-        # print "length of explore or exploit : ",len(exploit_or_explore)
-        if count_explore > (len(exploit_or_explore) / 2):
-            total_exploit_or_explore.append("explore")
-        else:
-            total_exploit_or_explore.append("exploit")
+            count_explore = exploit_or_explore.count("explore")
+            # print "count_explore : ",count_explore
+            # print "length of explore or exploit : ",len(exploit_or_explore)
+            if count_explore > (len(exploit_or_explore) / 2):
+                total_exploit_or_explore.append("explore")
+            else:
+                total_exploit_or_explore.append("exploit")
 
-    print("episode: {}/{}, score: {}, average latency: {}, e: {},"
-                  .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),dqn.epsilon))
-    
-    # if avg_reward > -250: 
+        print("episode: {}/{}, score: {}, average latency: {}, required_latency: {}, e: {},"
+                    .format(episode+1, NO_EPISODES, np.mean(rewards), np.mean(latencies),REQUIRED_LATENCY,dqn.epsilon))
 
-    
+
+
+
     episode_access_rate  = []
     exploit_or_explore = []
     avg_waiting_time = [0]
     deviations = []
     latencies = []
     rewards = []
-    
-
+    # print("time taken for the episode is: ",time.time() - t3)
+    # print("\n")
 dqn.model.save("DQN_Model.h5")
 
 temp_rewards = [np.mean(total_rewards[i:i+25]) for i in range(0,len(total_rewards),25)]
 temp_latencies = [np.mean(total_latency[i:i+25]) for i in range(0,len(total_latency),25)]
 temp_loss = [np.mean(dqn.loss[i:i+25]) for i in range(0,len(dqn.loss),25)]
+temp_val_loss = [np.mean(dqn.val_loss[i:i+25]) for i in range(0,len(dqn.val_loss),25)]
 temp_deviation = [np.mean(latency_deviation[i:i+25]) for i in range(0,len(latency_deviation),25)]
 temp_epsilon = [np.mean(epsilon_values[i:i+25]) for i in range(0,len(epsilon_values),25)]
 temp_access_rate = [np.mean(access_rate[i:i+25]) for i in range(0,len(access_rate),25)] 
 
-# final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
-# final_df = {}
+final_df = pd.DataFrame(columns=["total_rewards","total_latency","latency_deviation","epsilon","Access_rate"])
+final_df = {}
 
-# final_df["total_rewards"] = total_rewards
-# final_df["total_latency"] = total_latency
-# final_df["latency_deviation"] = latency_deviation
-# final_df["epsilon_values"] = epsilon_values
-# final_df["access_rate"] = access_rate
-# final_df["explore/exploit"] = total_exploit_or_explore
-
+final_df["total_rewards"] = total_rewards
+final_df["total_latency"] = total_latency
+final_df["latency_deviation"] = latency_deviation
+final_df["epsilon_values"] = epsilon_values
+final_df["access_rate"] = access_rate
+final_df["explore/exploit"] = total_exploit_or_explore
 
 f = plt.figure(1)
 
@@ -534,17 +555,23 @@ plt.plot(np.arange(len(temp_deviation)), temp_deviation)
 
 j.savefig("latency deviation.png")
 
-j = plt.figure(6)
+k = plt.figure(6)
 
 plt.plot(np.arange(len(temp_access_rate)), temp_access_rate)
 
 # j.show()
 
-j.savefig("access rate variation.png")
+k.savefig("access rate variation.png")
 
-# save_df = pd.DataFrame.from_dict(final_df)
+l = plt.figure(7)
 
-# save_df.to_csv("Obtained Results.csv")
+plt.plot(np.arange(len(temp_val_loss)), temp_val_loss)
+
+l.savefig("dql_val_loss.png")
+
+save_df = pd.DataFrame.from_dict(final_df)
+
+save_df.to_csv("Obtained Results.csv")
 
 
 

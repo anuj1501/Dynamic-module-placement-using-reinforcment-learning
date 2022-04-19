@@ -58,7 +58,7 @@ def main(get_action,reward,add_time, iteration, simulated_time):
     """
     # Their "selector" is actually the shortest way, there is not type of orchestration algorithm.
     # This implementation is already created in selector.class,called: First_ShortestPath
-    selectorPath = CustomPath(Selection,get_action)
+    selectorPath = CustomPath(Selection,get_action,execution_type="dql")
     selectorPath.create_topology()
     selectorPath.set_population()
 
@@ -67,7 +67,7 @@ def main(get_action,reward,add_time, iteration, simulated_time):
     """
 
     stop_time = simulated_time
-    s = Sim(reward,selectorPath.topology, add_time,
+    s = Sim(False,reward,selectorPath.topology, add_time,
             default_results_path="Results_" + str(iteration))
     s.deploy_app(selectorPath.app, placement, selectorPath.pop, selectorPath)
     selectorPath.init_state(s)

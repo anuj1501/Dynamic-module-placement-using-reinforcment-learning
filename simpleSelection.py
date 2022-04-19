@@ -15,6 +15,7 @@ from yafs.population import *
 from yafs.application import Application, Message
 import argparse
 import sys
+import random
 import pandas as pd
 
 
@@ -55,7 +56,7 @@ def create_application():
 
 class CustomPath(Selection):
 
-    def __init__(self, s,get_action):
+    def __init__(self, s,get_action,execution_type):
 
         Selection.__init__(self, s)
         self.topology = Topology()
@@ -66,7 +67,7 @@ class CustomPath(Selection):
         self.data = []
         self.get_action = get_action
         self.test_sensor = 0
-
+        self.execution_type = execution_type
     def init_state(self, sim):
         self.states = []
 
@@ -276,7 +277,7 @@ class CustomPath(Selection):
                 # print("check 3")
                 # print("expected_latencies: ",expected_latencies)
                 expected_latencies.sort()
-                # print "expected latencies = ",expected_latencies
+                # print("expected latencies = ",expected_latencies)
                 required_latency = expected_latencies[4]
                 current_state["bandwidth"] = current_bandwidths
                 current_state["PR"] = current_prs
@@ -298,9 +299,26 @@ class CustomPath(Selection):
                 #####
                 # print("check 4")
                 
-                list_node_id = self.get_action(current_state,required_latency)
-                # print("check 5")
+                if self.execution_type == "baseline_all_edge_devices":
+                    self.get_action(smallest_node,current_state)
+                    list_node_id = [0,1,2,3,4,5,6,7,8,9]
 
+                elif self.execution_type == "baseline_min_prop":
+                    node_id = self.get_action(smallest_node,current_state)
+                    list_node_id = [node_id]
+                
+                elif self.execution_type == "baseline_max_residual_memory":
+                    node_id = self.get_action(smallest_node,current_state)
+                    list_node_id = [node_id]
+                
+                elif self.execution_type == "baseline_random":
+                    node_id = self.get_action(smallest_node,current_state)
+                    list_node_id = [random.randint(0,10)]
+
+                elif self.execution_type == "dql":    
+                    list_node_id = self.get_action(current_state,required_latency)
+                # print("check 5")
+                
                 for m in range(len(list_node_id)):
                     list_node_id[m] += smallest_node
                 # print("Predicted_action = ",list_node_id)
