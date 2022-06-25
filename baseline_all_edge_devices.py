@@ -14,13 +14,13 @@ import numpy as np
 import sys
 sys.dont_write_bytecode = True
 
-base_line_data = pd.DataFrame(columns=["state","Edge_Device_0","Edge_Device_1","Edge_Device_2","Edge_Device_3","Edge_Device_4","Edge_Device_5","Edge_Device_6","Edge_Device_7","Edge_Device_8","Edge_Device_9"])
+base_line_data = pd.DataFrame(columns=["state","Edge_Device_0","Edge_Device_1","Edge_Device_2","Edge_Device_3","Edge_Device_4","Edge_Device_5","Edge_Device_6","Edge_Device_7","Edge_Device_8","Edge_Device_9","Min Latency"])
 state_edge_device_mapper = dict()
 
 def reward(obs_latency,src,dest):
-    print("source: ",src)
-    print("dest: ",dest - smallest_node)
-    print("latency: ",obs_latency)
+    # print("source: ",src)
+    # print("dest: ",dest - smallest_node)
+    # print("latency: ",obs_latency)
     destination = (dest - smallest_node)
     if str(edges_state) not in state_edge_device_mapper.keys():
         state_edge_device_mapper[str(edges_state)] = dict()
@@ -30,14 +30,14 @@ def reward(obs_latency,src,dest):
         state_edge_device_mapper[str(edges_state)][destination] = min(temp_latency,obs_latency)
 
     state_edge_device_mapper[str(edges_state)][destination] = obs_latency
-    print("successfully calculated the latency")
+    # print("successfully calculated the latency")
 
 def get_action(s_node,state):
     global smallest_node
     smallest_node = s_node
     global edges_state
     edges_state = state  
-    print("action chosen successfully")
+    # print("action chosen successfully")
 
 
 # @profile
@@ -93,14 +93,21 @@ def driver(get_action,reward):
 
 if __name__ == '__main__':
 
-    for i in range(1000):
+    for i in range(12000):
+        print("episode running {}/{}".format(i+1,12000))
         driver(get_action,reward)
-        print("\n")
 
     for sedm in state_edge_device_mapper.keys():
 
         edge_data = state_edge_device_mapper[str(sedm)]
-        print(edge_data)
+        
+        min_latency = min(list(edge_data.values()))
+        avg_latency = sum(list(edge_data.values())) / len(edge_data)
+
+        for i in range(9):
+            if i not in edge_data.keys():
+                edge_data[i] = avg_latency
+
         base_line_data = base_line_data.append({
             "state": str(sedm),
             "Edge_Device_0": edge_data[0],
@@ -112,9 +119,10 @@ if __name__ == '__main__':
             "Edge_Device_6":edge_data[6],
             "Edge_Device_7":edge_data[7],
             "Edge_Device_8":edge_data[8],
-            "Edge_Device_9":edge_data[9]
+            "Edge_Device_9":edge_data[9],
+            "Min Latency": min_latency
         },ignore_index=True)
-        print("\n")
+        # print("\n")
 
 base_line_data.to_csv("baseline_all_edge_devices.csv",index=False)
     

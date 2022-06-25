@@ -31,7 +31,7 @@ def reward(obs_latency,src,dest):
         state_edge_device_mapper[str(edges_state)][destination] = min(temp_latency,obs_latency)
 
     state_edge_device_mapper[str(edges_state)][destination] = obs_latency
-    print("successfully calculated the latency")
+    # print("successfully calculated the latency")
 
 def get_action(s_node,state):
     global smallest_node
@@ -41,7 +41,7 @@ def get_action(s_node,state):
 
     propogation_delay = edges_state["PR"]
     propogation_delay_sorted = sorted(propogation_delay.items(), key=operator.itemgetter(1))
-    print("action chosen successfully")
+    # print("action chosen successfully")
     return propogation_delay_sorted[0][0]
 
 
@@ -98,9 +98,9 @@ def driver(get_action,reward):
 
 if __name__ == '__main__':
 
-    for i in range(1000):
+    for i in range(12000):
+        print("episode running {}/{}".format(i+1,12000))
         driver(get_action,reward)
-        print("\n")
 
     for sedm in state_edge_device_mapper.keys():
 

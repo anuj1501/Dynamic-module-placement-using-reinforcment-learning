@@ -440,7 +440,7 @@ else:
 
 nS = 5*beta + 1
 nA = 2**beta - 1
-dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.00001)
+dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.1, 0.00004)
 print(dqn.model.summary())
 
 
@@ -456,7 +456,7 @@ for episode in range(NO_EPISODES):
 
     # print("rewards : ", rewards)
 
-    if episode > 5000:
+    if episode > 6000:
         dqn.epsilon = 0
 
     if len(rewards) > 0:

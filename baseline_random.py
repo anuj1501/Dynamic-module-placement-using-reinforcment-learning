@@ -17,11 +17,13 @@ sys.dont_write_bytecode = True
 
 base_line_data = pd.DataFrame(columns=["state","Edge Device", "Latency"])
 state_edge_device_mapper = dict()
+latencies = []
 
 def reward(obs_latency,src,dest):
     # print("source: ",src)
     # print("dest: ",dest - smallest_node)
     # print("latency: ",obs_latency)
+
     destination = (dest - smallest_node)
     if str(edges_state) not in state_edge_device_mapper.keys():
         state_edge_device_mapper[str(edges_state)] = dict()
@@ -31,14 +33,14 @@ def reward(obs_latency,src,dest):
         state_edge_device_mapper[str(edges_state)][destination] = min(temp_latency,obs_latency)
 
     state_edge_device_mapper[str(edges_state)][destination] = obs_latency
-    print("successfully calculated the latency")
+    # print("successfully calculated the latency")
 
 def get_action(s_node,state):
     global smallest_node
     smallest_node = s_node
     global edges_state
     edges_state = state
-    print("action chosen successfully")
+    # print("action chosen successfully")
 
 
 
@@ -95,9 +97,10 @@ def driver(get_action,reward):
 
 if __name__ == '__main__':
 
-    for i in range(1000):
+    for i in range(12000):
+        print("episode running {}/{}".format(i+1,12000))
         driver(get_action,reward)
-        print("\n")
+        # print("\n")
 
     for sedm in state_edge_device_mapper.keys():
 
